@@ -1,0 +1,174 @@
+/**********************************************
+*
+* body
+*
+**********************************************/
+body {
+    background-color: #eeeeff;
+}
+
+/**********************************************
+*
+* header
+*
+**********************************************/
+header {
+    padding-left: 30px;
+    padding-top: 10px;
+    background-image: url("../grp/ptn000.jpg");
+    display: flex;
+}
+
+header h1 {
+    font-size: 28px;
+    color: #cccccc;
+}
+
+header h1::first-letter {
+    font-size: 40px;
+    color: #b61616;
+}
+
+header p {
+    margin-left: 30px;
+    margin-top: 20px;
+    display: block;
+    color: #999999;
+}
+
+header p::before,
+header p::after {
+    content: " - ";
+}
+
+
+/**********************************************
+*
+* nav
+*
+**********************************************/
+nav {
+    padding-top: 10px;
+}
+
+nav h2 {
+    display: none;
+}
+
+nav ul {
+    font-size: 12px;
+    margin-right: 10px;
+    display: flex;
+}
+
+nav ul li {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    width: 80px;
+}
+
+nav ul li a {
+    display: block;
+    padding-top: 26px;
+}
+
+
+nav ul li a:link,
+nav ul li a:visited {
+    color: #999999;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+nav ul li a:hover,
+nav ul li a:active {
+    color: #ffffff;
+    background: rgba(100, 100, 100, 0.5);
+    text-decoration: none;
+    border-bottom: solid 5px #cccccc;
+    border-radius: 5px;
+}
+
+
+/**********************************************
+*
+* body ol
+*
+**********************************************/
+body ol {
+    padding-top: 10px;
+    padding-left: 10px;
+    background: linear-gradient(to right, rgba(200, 200, 200, 1), rgba(255, 255, 255, 0));
+    font-size: 12px;
+    display: flex;
+}
+
+body ol li {
+    display: block;
+    text-align: center;
+}
+
+body ol li~li:before {
+    font-family: monospace;
+    margin-left: 5px;
+    content: ">";
+}
+
+/**********************************************
+*
+* main
+*
+**********************************************/
+main section {
+    margin-top: 10px;
+}
+
+main section h2 {
+    padding: 8px 0px 2px 10px;
+    font-size: 17px;
+    color: #eeeeee;
+    border-right: solid 2px #333333;
+    border-bottom: solid 2px #333333;
+    background-image: url("../grp/ptn001.png");
+    margin-bottom: 10px;
+}
+
+/**********************************************
+*
+* aside
+*
+**********************************************/
+aside{
+    background-color:rgb(255, 255, 250);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+aside h3 {
+    font-size: 12px;
+}
+
+aside h3::before,
+aside h3::after{
+    font-family: monospace;
+    content: " - ";
+}
+
+aside li{
+    font-size: 12px;
+}
+
+aside section{
+    margin-top: 10px;
+}
+
+/**********************************************
+*
+* footer
+*
+**********************************************/
+footer {
+    background-image: url("../grp/ptn000.jpg");
+    color: #cccccc;
+}
