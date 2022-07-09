@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Shota�̃c�N�A�h�u�� - �ǉ����� </title>
+	<title>Shotaのツクアド講座 - 追加命令 </title>
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
 	<link rel="stylesheet" href="../css/style.css" type="text/css" />
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div id="main">
-		<span id="header"><h1 id="top">Shota�̃c�N�A�h�u��</h1></span>
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
 		<div id="menu-box">
 			<ul id="menu">
 				<li><a href="../index.html" class="menuleft">Top</a></li>
@@ -25,77 +25,77 @@
 		</div>
 		<div id="main-content">
 			<div id="middle">
-				<span class="category"><h3><a name="p00">�ǉ�����</a></h3></span>
+				<span class="category"><h3><a name="p00">追加命令</a></h3></span>
 				<div class="indent3">
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="p00">�������� - switch(�X�E�B�b�`)</a></h2>
+<h2 class="statement"><a name="p00">条件分岐 - switch(スウィッチ)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-switch �ϐ�
-	case �l
-		�u���b�N
+switch 変数
+	case 値
+		ブロック
 		break
-	case �l
-		�u���b�N
+	case 値
+		ブロック
 		break
 	default
-		�u���b�N
+		ブロック
 endswitch
 </pre>
 <div class="mdocument">
-	�ϐ��̒l�ɂ���ď����𕪊򂷂�<br />
-	break��switch���𔲂���<br />
-	default��else�̖������ʂ���<br />
+	変数の値によって処理を分岐する<br />
+	breakでswitch文を抜ける<br />
+	defaultでelseの役割を果たす<br />
 </div>
 <h4>
-	����
+	注意
 </h4>
 <div class="mdocument">
-	case�Ɏw��ł���̂͒l�ł��B�ϐ��͎w��ł��܂���B<br />
-	�v���v���Z�b�T�ɂ��萔��`�̓R���p�C���i�K�Œl�ɕϊ������̂Ŏg�p�ł��܂��B
+	caseに指定できるのは値です。変数は指定できません。<br />
+	プリプロセッサによる定数定義はコンパイル段階で値に変換されるので使用できます。
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">switch���̏�������</div>
+<div class="mdocument">switch文の条件分岐</div>
 <pre>
 var = 0
 switch var
 	case 0
-		var��1�ł��B
+		varは1です。
 	case 1
-		var��0��1�ł��B
+		varは0か1です。
 		break
 	case 2
-		var��2�ł�
+		varは2です
 	default
-		����ȊO�ł�
+		それ以外です
 endswitch
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="p01">�J��Ԃ� - while(�z���C��)</a></h2>
+<h2 class="statement"><a name="p01">繰り返し - while(ホワイル)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-while ������
-	�u���b�N
+while 条件式
+	ブロック
 endwhile
 </pre>
 <div class="mdocument">
-	�������^�̎��Ƀu���b�N���J��Ԃ����s����<br />
-	break��while�𔲂���<br />
-	continue��while���̍ŏ��ɖ߂�<br />
+	条件が真の時にブロックを繰り返し実行する<br />
+	breakでwhileを抜ける<br />
+	continueでwhile文の最初に戻る<br />
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">a��0����5�ɂȂ�܂ŌJ��Ԃ�</div>
+<div class="mdocument">aが0から5になるまで繰り返し</div>
 <pre>
 a = 0
 while a <= 5
@@ -103,30 +103,30 @@ while a <= 5
 	a + 1
 endwhile
 </pre>
-<div class="mdocument">for����while�ŏ���</div>
+<div class="mdocument">for文をwhileで書く</div>
 <pre>
-i = 0 : while i <= 10 : i + 2 ; for i = 0 to 10 step 2 �Ɠ���
+i = 0 : while i <= 10 : i + 2 ; for i = 0 to 10 step 2 と同じ
 	$i$
 endwhile
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="p02">�z��Z�[�u - saveArray(�Z�[�u�A���C)</a></h2>
+<h2 class="statement"><a name="p02">配列セーブ - saveArray(セーブアレイ)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-saveArray �z�� ��(�l)
+saveArray 配列名 個数(値)
 </pre>
 <div class="mdocument">
-	�z����ꊇ�Z�[�u����<br />
-	���̖��߂�save,loadval���߂̒��ɋL�q����<br />
+	配列を一括セーブする<br />
+	この命令はsave,loadval命令の中に記述する<br />
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�Z�[�u�����[�h</div>
+<div class="mdocument">セーブ＆ロード</div>
 <pre>
 #define ARY_MAX 10
 makeArray ary ARY_MAX
@@ -151,81 +151,81 @@ return
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="p03">�֐��錾 - deffunc(�f�t�@�C���t�@���N�V����)</a></h2>
+<h2 class="statement"><a name="p03">関数宣言 - deffunc(デファインファンクション)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-deffunc �֐���(����1,����2,...)
+deffunc 関数名(引数1,引数2,...)
 </pre>
 <div class="mdocument">
-	�֐���錾����B
-	�֐����`����ӏ����A�֐����Ăԉӏ�������ɂ���ꍇ�͒�`����K�v�͂Ȃ��B
+	関数を宣言する。
+	関数を定義する箇所が、関数を呼ぶ箇所よりも上にある場合は定義する必要はない。
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�֐��̐錾</div>
+<div class="mdocument">関数の宣言</div>
 <pre>
-�ȉ��̊֐���`������񂭂������B
+以下の関数定義をごらんください。
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="p04">�֐���` - func(�t�@���N�V����),endfunc(�G���h�t�@���N�V����)</a></h2>
+<h2 class="statement"><a name="p04">関数定義 - func(ファンクション),endfunc(エンドファンクション)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-func �֐���(����1,����2,...)
-	�֐��̏������e
-endfunc �߂�l(�ȗ��\)
+func 関数名(引数1,引数2,...)
+	関数の処理内容
+endfunc 戻り値(省略可能)
 </pre>
 <div class="mdocument">
-	�֐����`����B
-	�錾����Ă��Ȃ��ꍇ�́A�錾�ƒ�`�𓯎��ɂ���B
+	関数を定義する。
+	宣言されていない場合は、宣言と定義を同時にする。
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�֐��̐錾�ƒ�`</div>
+<div class="mdocument">関数の宣言と定義</div>
 <pre>
-deffunc FuncName(#var0,#var1) ; #����ϐ��̑O�ɂ���ƁA�����I�ɊO���̕ϐ��Ɣ��ɂ������O�ɕϊ����Ă����B
+deffunc FuncName(#var0,#var1) ; #←を変数の前につけると、自動的に外部の変数と被りにくい名前に変換してくれる。
 
 func FuncName(#var0,#var1)
 	#var2 < #var0 * #var1
 	if #var2 = 0 then
-		return #var2 ; return�̌�ɖ߂�l���������Ƃ��ł���
+		return #var2 ; returnの後に戻り値を書くことができる
 	endif
 	#var2 < #var0 + #var1
-endfunc #var2 ; endfunc�̌�ɖ߂�l���������Ƃ��ł���(�ȗ���)
+endfunc #var2 ; endfuncの後に戻り値を書くことができる(省略可)
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="p05">�֐��Ăяo�� - &</a></h2>
+<h2 class="statement"><a name="p05">関数呼び出し - &</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-&�֐���(����1,����2,...)
+&関数名(引数1,引数2,...)
 </pre>
 <div class="mdocument">
-	�֐����Ăяo��
+	関数を呼び出す
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�֐����Ă�</div>
+<div class="mdocument">関数を呼ぶ</div>
 <pre>
 func FuncName(#var0,#var1)
 	#var2 < #var0 + #var1
-endfunc #var2 ; endfunc�̌�ɖ߂�l���������Ƃ��ł���(�ȗ���)
+endfunc #var2 ; endfuncの後に戻り値を書くことができる(省略可)
 
 &FuncName(5,6)
-5�{6��$FuncName_2$ ; �֐��̖߂�l�́@�֐���_�����̐��@�Ŏ擾�ł���
-;var = &FuncName(5,6) ; �v�Z���������Aif���Ɋ܂߂邱�Ƃ��ł��邪�Atext�n�̖��߂̒��ɂ͏����Ȃ��B
+5＋6＝$FuncName_2$ ; 関数の戻り値は　関数名_引数の数　で取得できる
+;var = &FuncName(5,6) ; 計算式や代入文、if文に含めることもできるが、text系の命令の中には書けない。
 
 </pre>
 </div>
@@ -235,8 +235,8 @@ endfunc #var2 ; endfunc�̌�ɖ߂�l���������Ƃ��ł���(�ȗ���)
 			&nbsp;
 		</div>
 		<div id="footer">
-			<p>�g�p�u���E�U��Opera�𐄏����܂��B
-			���u�U�E�U�ł͑������C�A�E�g�������\��������܂��B</p>
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
 			<br />
 		</div>
 	</div>

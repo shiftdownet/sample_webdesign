@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Shota�̃c�N�A�h�u�� - �c�N�A�h�u�� </title>
+	<title>Shotaのツクアド講座 - ツクアド講座 </title>
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
 	<link rel="stylesheet" href="../css/style.css" type="text/css" />
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div id="main">
-		<span id="header"><h1 id="top">Shota�̃c�N�A�h�u��</h1></span>
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
 		<div id="menu-box">
 			<ul id="menu">
 				<li><a href="../index.html" class="menuleft">Top</a></li>
@@ -25,225 +25,225 @@
 		</div>
 		<div id="main-content">
 			<div id="middle">
-				<span class="category"><h3><a name="p00">����</a></h3></span>
+				<span class="category"><h3><a name="p00">文章</a></h3></span>
 				<div class="indent3">
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="text_msg">���͕\�� - text(�e�L�X�g),msg(���b�Z�[�W)</a></h2>
+<h2 class="statement"><a name="text_msg">文章表示 - text(テキスト),msg(メッセージ)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-text(�܂���msg)
-	�\������������(���s�ł��\)
-endtext(�܂��́u.�v)
+text(またはmsg)
+	表示したい文章(何行でも可能)
+endtext(または「.」)
 </pre>
 <pre>
-text(�܂���msg) �ԍ�
-	�\������������(���s�ł��\)
-endtext(�܂��́u.�v)
+text(またはmsg) 番号
+	表示したい文章(何行でも可能)
+endtext(または「.」)
 </pre>
 <pre>
-text(�܂���msg) �ԍ� X���W Y���W ���� �s�� �����F �w�i�F �g���F �z�u
-	�\������������(���s�ł��\)
-endtext(�܂��́u.�v)
+text(またはmsg) 番号 X座標 Y座標 横幅 行数 文字色 背景色 枠線色 配置
+	表示したい文章(何行でも可能)
+endtext(または「.」)
 </pre>
 <div class="mdocument">
-	�utext�v�̎��̍s����uendtext�v�̍s�̑O�܂ł�\�����A�N���b�N�����܂ő҂B<br />
-	�umsg�v�̎��̍s����umsgtext�v�̍s�̑O�܂ł�\������B�N���b�N�҂��͂��Ȃ��B
+	「text」の次の行から「endtext」の行の前までを表示し、クリックされるまで待つ。<br />
+	「msg」の次の行から「msgtext」の行の前までを表示する。クリック待ちはしない。
 </div>
 <h4>
-	����
+	注意
 </h4>
 <div class="mdocument">
-	���p�́u,�v�u%�v�u&�v�u|�v���͑S�p�ɕϊ�����܂��B
-	�܂��A�ꕔ�̕����͕\������Ȃ����Ƃ�����܂�
+	半角の「,」「%」「&」「|」等は全角に変換されます。
+	また、一部の文字は表示されないことがあります
 </div>
 <h4>
-	�p�����[�^
+	パラメータ
 </h4>
 <div class="prm">
-	<span class="bold">�s��</span>
+	<span class="bold">行数</span>
 	<div class="prm_exp">
-		�\������s�����w�肵�܂��B<br />
-		�ȗ������ꍇ�A�f�t�H���g�ł�3�s�ł��B<br />
-		0���w�肷��Ǝ����I�ɍs�����w�肵�܂��B<br />
+		表示する行数を指定します。<br />
+		省略した場合、デフォルトでは3行です。<br />
+		0を指定すると自動的に行数を指定します。<br />
 	</div>
-	<span class="bold">�ԍ�</span>
+	<span class="bold">番号</span>
 	<div class="prm_exp">
-		1�`9�̔ԍ����w�肵�܂��B<br />
-		�ʏ��text�Ƃ��킹�čő�10�܂ŕ\���\�ł��B<br />
-		1�`9�͈̔͊O�Ɏw�肷���1�Ƃ݂Ȃ���܂��B<br />
+		1～9の番号を指定します。<br />
+		通常のtextとあわせて最大10個まで表示可能です。<br />
+		1～9の範囲外に指定すると1とみなされます。<br />
 	</div>
-	<span class="bold">X���W,Y���W,����</span>
+	<span class="bold">X座標,Y座標,横幅</span>
 	<div class="prm_exp">
-		��ʍ��オ(0,0)�ŉE���Ɍ������Đ��ƂȂ�܂��B<br />
-		���F�O���b�h�̖ڐ���+275�A�c�F�O���b�h�̖ڐ���+200<br />
-		�������A�R�}���h�̑O�Ɂu_(�A���_�[�X�R�A)�v������ƃO���b�h�̃������ƈ�v���܂��B<br />
-		��F_text�@_msg<br />
-		�����͎w�肵���l���15�قǑ傫���Ȃ�܂��B
+		画面左上が(0,0)で右下に向かって正となります。<br />
+		横：グリッドの目盛り+275、縦：グリッドの目盛り+200<br />
+		しかし、コマンドの前に「_(アンダースコア)」をつけるとグリッドのメモリと一致します。<br />
+		例：_text　_msg<br />
+		横幅は指定した値より15ほど大きくなります。
 	</div>
-	<span class="bold">�����F �w�i�F �g���F</span>
+	<span class="bold">文字色 背景色 枠線色</span>
 	<div class="prm_exp">
-		16�i��6���Ŏw�肵�܂��B<br />
-		�ϐ��̏ꍇ��10�i���Ŏw�肵�܂��B<br />
-		�w�i�F�܂��͘g�F��-1���w�肷��ƕ\�����܂���B<br />
+		16進数6桁で指定します。<br />
+		変数の場合は10進数で指定します。<br />
+		背景色または枠色に-1を指定すると表示しません。<br />
 	</div>
-	<span class="bold">�z�u</span>
+	<span class="bold">配置</span>
 	<div class="prm_exp">
-		�ucenter�v�uleft�v�uright�v�̂ǂꂩ���w�肵�܂��B<br />
-		center�F�����ɕ\�����܂��B<br />
-		left:���񂹂ŕ\�����܂��B<br />
-		right:�E�񂹂ŕ\�����܂��B<br />
+		「center」「left」「right」のどれかを指定します。<br />
+		center：中央に表示します。<br />
+		left:左寄せで表示します。<br />
+		right:右寄せで表示します。<br />
 	</div>
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�ʏ�̕��@�ŕ��͂�\��</div>
+<div class="mdocument">通常の方法で文章を表示</div>
 <pre>
 text
-	����ɂ��́B
-	�����̓V�C�͂������ł��傤�B
+	こんにちは。
+	今日の天気はいかがでしょう。
 endtext
 </pre>
-<div class="mdocument">�s�����w�肵�ĕ��͂�\��</div>
+<div class="mdocument">行数を指定して文章を表示</div>
 <pre>
 text 2
-	����ɂ��́B
-	�����̓V�C�͂������ł��傤�B
+	こんにちは。
+	今日の天気はいかがでしょう。
 endtext
 </pre>
-<div class="mdocument">�����̃p�����[�^���w�肵�ĕ��͂�\��</div>
+<div class="mdocument">複数のパラメータを指定して文章を表示</div>
 <pre>
 text 1 0 0 250 2 ffffff 000000 ffffff left
-	����ɂ��́B
-	�����̓V�C�͂������ł��傤�B
+	こんにちは。
+	今日の天気はいかがでしょう。
 endtext
 </pre>
-<div class="mdocument">�O���b�h�̃������ƈ�v������@�ŕ\��</div>
+<div class="mdocument">グリッドのメモリと一致する方法で表示</div>
 <pre>
 _text 1 0 0 250 2 ffffff 000000 ffffff left
-	����ɂ��́B
-	�����̓V�C�͂������ł��傤�B
+	こんにちは。
+	今日の天気はいかがでしょう。
 endtext
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="clear">���͏��� - clear(�N���A)</a></h2>
+<h2 class="statement"><a name="clear">文章消去 - clear(クリア)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-clear �ԍ�
+clear 番号
 </pre>
 <div class="mdocument">
-	�w�肵���ԍ���text��msg����������B
+	指定した番号のtextやmsgを消去する。
 </div>
 <h4>
-	�p�����[�^
+	パラメータ
 </h4>
 <div class="prm">
-	<span class="bold">�ԍ�</span>
+	<span class="bold">番号</span>
 	<div class="prm_exp">
-		��������e�L�X�g�ԍ����w�肵�܂��B<br />
-		�l��0�`9�܂ł̒l���w��ł��܂��B(0�͒ʏ�̃e�L�X�g�ł��B)<br />
-		�͈͊O�̒l���w�肵���ꍇ���ׂď������܂��B<br />
-		�p�����[�^���ȗ������ꍇ�����ׂď������܂��B<br />
+		消去するテキスト番号を指定します。<br />
+		値は0～9までの値が指定できます。(0は通常のテキストです。)<br />
+		範囲外の値を指定した場合すべて消去します。<br />
+		パラメータを省略した場合もすべて消去します。<br />
 	</div>
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�\�������e�L�X�g������</div>
+<div class="mdocument">表示したテキストを消去</div>
 <pre>
-�e�L�X�g��\�����܂��B
+テキストを表示します。
 msg 1 0 0 200 2 ffffff 000000 ffffff left
-	text�ԍ�1
+	text番号1
 endtext
 msg 2 0 100 200 2 ffffff 000000 ffffff left
-	text�ԍ�2
+	text番号2
 endtext
 msg 3 0 200 200 2 ffffff 000000 ffffff left
-	text�ԍ�3
+	text番号3
 endtext
-�ԍ�1���������܂��B
+番号1を消去します。
 clear 1
-�����đS�Ẵe�L�X�g���������܂��B
+続いて全てのテキストを消去します。
 clear
-�������܂����B
+完了しました。
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="shake">���͐U�� - shake(�V�F�C�N)</a></h2>
+<h2 class="statement"><a name="shake">文章振動 - shake(シェイク)</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-shake �ԍ�
+shake 番号
 </pre>
 <div class="mdocument">
-	�w�肵���ԍ���text��msg��U������B
+	指定した番号のtextやmsgを振動する。
 </div>
 <h4>
-	�p�����[�^
+	パラメータ
 </h4>
 <div class="prm">
-	<span class="bold">�ԍ�</span>
+	<span class="bold">番号</span>
 	<div class="prm_exp">
-		�U������e�L�X�g�ԍ����w�肵�܂��B<br />
-		�l��0�`9�܂ł̒l���w��ł��܂��B(0�͒ʏ�̃e�L�X�g�ł��B)<br />
-		�͈͊O�̒l���w�肵���ꍇ���ׂĐU�����܂��B<br />
-		�p�����[�^���ȗ������ꍇ�����ׂĐU�����܂��B<br />
+		振動するテキスト番号を指定します。<br />
+		値は0～9までの値が指定できます。(0は通常のテキストです。)<br />
+		範囲外の値を指定した場合すべて振動します。<br />
+		パラメータを省略した場合もすべて振動します。<br />
 	</div>
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�\�������e�L�X�g��U��</div>
+<div class="mdocument">表示したテキストを振動</div>
 <pre>
-�e�L�X�g��\�����܂��B
+テキストを表示します。
 msg 1 0 0 200 2 ffffff 000000 ffffff left
-	text�ԍ�1
+	text番号1
 endtext
 msg 2 0 100 200 2 ffffff 000000 ffffff left
-	text�ԍ�2
+	text番号2
 endtext
 msg 3 0 200 200 2 ffffff 000000 ffffff left
-	text�ԍ�3
+	text番号3
 endtext
-�ԍ�1��U�����܂��B
+番号1を振動します。
 shake 1
-�����đS�Ẵe�L�X�g��U�����܂��B
+続いて全てのテキストを振動します。
 shake
 msg
-	�������܂����B
+	完了しました。
 .
 shake 0
 </pre>
 </div>
 <!-- ------------------------------------------------------------------------------- -->
-<h2 class="statement"><a name="comment">�R�����g</a></h2>
+<h2 class="statement"><a name="comment">コメント</a></h2>
 <div class="manual">
 <h4>
-	����
+	説明
 </h4>
 <pre>
-; ����
+; 文章
 </pre>
 <div class="mdocument">
-	�u;(�Z�~�R����)�v�̂�����ɉ��������Ă����������B
+	「;(セミコロン)」のうしろに何を書いても無視される。
 </div>
 <h4>
-	��
+	例
 </h4>
-<div class="mdocument">�R�����g���̗�</div>
+<div class="mdocument">コメント文の例</div>
 <pre>
-; �R�����g���͂ǂ��ł������܂��B
-text ; ���߂̌��ł������܂��B
-	����ɂ��́B ; ���߂̒��ł������܂��B
+; コメント文はどこでもかけます。
+text ; 命令の後ろでも書けます。
+	こんにちは。 ; 命令の中でも書けます。
 endtext
 </pre>
 </div>
@@ -252,8 +252,8 @@ endtext
 			&nbsp;
 		</div>
 		<div id="footer">
-			<p>�g�p�u���E�U��Opera�𐄏����܂��B
-			���u�U�E�U�ł͑������C�A�E�g�������\��������܂��B</p>
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
 			<br />
 		</div>
 	</div>

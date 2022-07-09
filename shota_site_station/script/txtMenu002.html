@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
-	<title>Shota‚ÌƒcƒNƒAƒhuÀ - ƒcƒNƒAƒhuÀ </title>
+	<title>Shotaã®ãƒ„ã‚¯ã‚¢ãƒ‰è¬›åº§ - ãƒ„ã‚¯ã‚¢ãƒ‰è¬›åº§ </title>
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
 	<link rel="stylesheet" href="../css/style.css" type="text/css" />
@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="main">
-		<span id="header"><h1 id="top">Shota‚ÌƒcƒNƒAƒhuÀ</h1></span>
+		<span id="header"><h1 id="top">Shotaã®ãƒ„ã‚¯ã‚¢ãƒ‰è¬›åº§</h1></span>
 		<div id="menu-box">
 			<ul id="menu">
 				<li><a href="../index.html" class="menuleft">Top</a></li>
@@ -31,11 +31,11 @@
 							<script type="text/javascript">
 								var ary = new Array("","","","","");
 								ary[get] = " class=\"spt_selected\" ";
-								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">ƒTƒNƒ‰ƒGƒfƒBƒ^</a></li>");
-								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPƒGƒfƒBƒ^</a></li>");
-								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPƒXƒNƒŠƒvƒgƒGƒfƒBƒ^</a></li>");
-								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">ƒƒ‚’ </a></li>");
-								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ƒmƒ“ƒXƒ^ƒCƒ‹</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">ã‚µã‚¯ãƒ©ã‚¨ãƒ‡ã‚£ã‚¿</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPã‚¨ãƒ‡ã‚£ã‚¿</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚¨ãƒ‡ã‚£ã‚¿</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">ãƒ¡ãƒ¢å¸³</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ãƒãƒ³ã‚¹ã‚¿ã‚¤ãƒ«</a></li>");
 							</script>
 						</div>
 						<div class="spt_line">
@@ -354,38 +354,38 @@
 <!-- source start -->
 <pre>
 
-<span class='col_comm'>; ‚±‚ÌƒXƒNƒŠƒvƒg‚Í©—R‚É‰ü‘¢‚µ‚Äg—p‚µ‚Ä‚­‚¾‚³‚¢  by Shota(ID:0000009431)</span>
+<span class='col_comm'>; ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯è‡ªç”±ã«æ”¹é€ ã—ã¦ä½¿ç”¨ã—ã¦ãã ã•ã„  by Shota(ID:0000009431)</span>
 
-<span class='col_word'>makeArray</span> txtMenu<span class='col_num'> 30</span> <span class='col_comm'>; txtMenu‚Ìˆø”‚ğ“ü‚ê‚é”z—ñ</span>
-<span class='col_word'>makeArray</span> txtStr <span class='col_num'> 50</span> <span class='col_comm'>; ‘I‘ğˆ‚ÌÅ‘å”‚¾‚¯’è‹`</span>
-<span class='col_word'>makeArray</span> txtExp <span class='col_num'> 50</span> <span class='col_comm'>; à–¾•¶‚ÌÅ‘å”‚¾‚¯’è‹`</span>
+<span class='col_word'>makeArray</span> txtMenu<span class='col_num'> 30</span> <span class='col_comm'>; txtMenuã®å¼•æ•°ã‚’å…¥ã‚Œã‚‹é…åˆ—</span>
+<span class='col_word'>makeArray</span> txtStr <span class='col_num'> 50</span> <span class='col_comm'>; é¸æŠè‚¢ã®æœ€å¤§æ•°ã ã‘å®šç¾©</span>
+<span class='col_word'>makeArray</span> txtExp <span class='col_num'> 50</span> <span class='col_comm'>; èª¬æ˜æ–‡ã®æœ€å¤§æ•°ã ã‘å®šç¾©</span>
 
 
 <span class='col_comm'>;-------------------------------------------------------------------------------</span>
-<span class='col_comm'>; Šî–{“I‚Èg‚¢•û</span>
-<span class='col_comm'>; txtStr‚ğ’è‹`‚·‚é(”z—ñ) ÅŒã‚Í•K‚¸-1</span>
-<span class='col_comm'>; ƒTƒuƒ‹[ƒ`ƒ“TxtMenu‚ğŒÄ‚Ño‚·</span>
-<span class='col_comm'>; ‘I‚ñ‚¾ƒƒjƒ…[”Ô†‚Íret0‚É‘ã“ü‚³‚ê‚Ü‚·B(ƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½ê‡‚Í-1)</span>
+<span class='col_comm'>; åŸºæœ¬çš„ãªä½¿ã„æ–¹</span>
+<span class='col_comm'>; txtStrã‚’å®šç¾©ã™ã‚‹(é…åˆ—) æœ€å¾Œã¯å¿…ãš-1</span>
+<span class='col_comm'>; ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³TxtMenuã‚’å‘¼ã³å‡ºã™</span>
+<span class='col_comm'>; é¸ã‚“ã ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç•ªå·ã¯ret0ã«ä»£å…¥ã•ã‚Œã¾ã™ã€‚(ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸå ´åˆã¯-1)</span>
 txtStr = <span class='col_str'>"a"</span> <span class='col_str'>"b"</span> <span class='col_str'>"c"</span> <span class='col_str'>"d"</span> <span class='col_str'>"e"</span> <span class='col_str'>"-1"</span>
 <span class='col_word'>gosub</span> TxtMenu
 <span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
-	ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½B
+	ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚
 <span class='col_word'>else</span>
-	<span class='col_var'>$txtStr[ret0]$</span>‚ğ‘I‘ğ‚µ‚Ü‚µ‚½B
+	<span class='col_var'>$txtStr[ret0]$</span>ã‚’é¸æŠã—ã¾ã—ãŸã€‚
 <span class='col_word'>endif</span>
 <span class='col_word'>wait</span><span class='col_num'> 5</span>
 <span class='col_comm'>;-------------------------------------------------------------------------------</span>
-<span class='col_comm'>; ‚³‚ç‚ÉƒIƒvƒVƒ‡ƒ“‚ğ‚Â‚¯‚é‚±‚Æ‚à‰Â”\B(ƒIƒvƒVƒ‡ƒ“‚É‚Â‚¢‚Ä‚Í68s–Ú‚©‚ç‚ğQÆ)</span>
-txtStr = <span class='col_str'>"a"</span> <span class='col_str'>"b"</span> <span class='col_str'>"c"</span> <span class='col_str'>"d"</span> <span class='col_str'>"e"</span> <span class='col_str'>"f"</span> <span class='col_str'>"g"</span> <span class='col_str'>"-1"</span> <span class='col_comm'>; •\¦‚·‚é‘I‘ğˆ</span>
-txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-240</span> <span class='col_num'>-190</span> undefined<span class='col_num'> 100</span> 3<span class='col_num'> 0</span> 255 undefined undefined<span class='col_num'> 255</span> <span class='col_comm'>; ©“®’²®‚µ‚Ä‚Ù‚µ‚¢‚Æ‚±‚ë‚Íundefined</span>
-txtMenu[15] =<span class='col_num'> 1</span> <span class='col_comm'>; —v‘f‚ª‚¾‚¢‚Ô—£‚ê‚Ä‚¢‚é‚Æ‚±‚ë‚ÍŒÂX‚É‘ã“ü‚Å‚«‚é</span>
+<span class='col_comm'>; ã•ã‚‰ã«ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ã¤ã‘ã‚‹ã“ã¨ã‚‚å¯èƒ½ã€‚(ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ã¤ã„ã¦ã¯68è¡Œç›®ã‹ã‚‰ã‚’å‚ç…§)</span>
+txtStr = <span class='col_str'>"a"</span> <span class='col_str'>"b"</span> <span class='col_str'>"c"</span> <span class='col_str'>"d"</span> <span class='col_str'>"e"</span> <span class='col_str'>"f"</span> <span class='col_str'>"g"</span> <span class='col_str'>"-1"</span> <span class='col_comm'>; è¡¨ç¤ºã™ã‚‹é¸æŠè‚¢</span>
+txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-240</span> <span class='col_num'>-190</span> undefined<span class='col_num'> 100</span> 3<span class='col_num'> 0</span> 255 undefined undefined<span class='col_num'> 255</span> <span class='col_comm'>; è‡ªå‹•èª¿æ•´ã—ã¦ã»ã—ã„ã¨ã“ã‚ã¯undefined</span>
+txtMenu[15] =<span class='col_num'> 1</span> <span class='col_comm'>; è¦ç´ ãŒã ã„ã¶é›¢ã‚Œã¦ã„ã‚‹ã¨ã“ã‚ã¯å€‹ã€…ã«ä»£å…¥ã§ãã‚‹</span>
 txtMenu[20] =<span class='col_num'> 1</span>
-<span class='col_word'>gosub</span> TxtMenu<span class='col_comm'>; ÀÛ‚ÉTxtMenu‚ğŒÄ‚Ô</span>
-<span class='col_comm'>; ƒLƒƒƒ“ƒZƒ‹‚È‚ç-1A‘I‚ñ‚¾‚È‚çƒƒjƒ…[‚Ìã‚©‚ç”‚¦‚½‚Ì”Ô†‚ğ•Ô‚·</span>
+<span class='col_word'>gosub</span> TxtMenu<span class='col_comm'>; å®Ÿéš›ã«TxtMenuã‚’å‘¼ã¶</span>
+<span class='col_comm'>; ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãªã‚‰-1ã€é¸ã‚“ã ãªã‚‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ä¸Šã‹ã‚‰æ•°ãˆãŸæ™‚ã®ç•ªå·ã‚’è¿”ã™</span>
 <span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
-	ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½B
+	ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚
 <span class='col_word'>else</span>
-	<span class='col_var'>$txtStr[ret0]$</span>‚ğ‘I‘ğ‚µ‚Ü‚µ‚½B
+	<span class='col_var'>$txtStr[ret0]$</span>ã‚’é¸æŠã—ã¾ã—ãŸã€‚
 <span class='col_word'>endif</span>
 <span class='col_word'>wait</span><span class='col_num'> 5</span>
 <span class='col_comm'>;-------------------------------------------------------------------------------</span>
@@ -393,19 +393,19 @@ txtMenu[20] =<span class='col_num'> 1</span>
 <span class='col_word'>for</span> i =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 40</span>
 	txtStr[i] = i
 <span class='col_word'>endfor</span>
-txtStr[i] = <span class='col_num'>-1</span> <span class='col_comm'>; ÅŒã‚Í-1</span>
+txtStr[i] = <span class='col_num'>-1</span> <span class='col_comm'>; æœ€å¾Œã¯-1</span>
 txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-250</span> <span class='col_num'>-190</span> 15<span class='col_num'> 50</span> 8<span class='col_num'> 0</span> 16777215<span class='col_num'> 255</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span>
 txtMenu[15] =<span class='col_num'> 1</span>
 <span class='col_word'>gosub</span> TxtMenu
 <span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
-	ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½B
+	ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚
 <span class='col_word'>else</span>
-	<span class='col_var'>$txtStr[ret0]$</span>‚ğ‘I‘ğ‚µ‚Ü‚µ‚½B
+	<span class='col_var'>$txtStr[ret0]$</span>ã‚’é¸æŠã—ã¾ã—ãŸã€‚
 <span class='col_word'>endif</span>
 <span class='col_word'>wait</span><span class='col_num'> 5</span>
 <span class='col_comm'>;-------------------------------------------------------------------------------</span>
 <span class='col_word'>clear</span>
-txtStr = <span class='col_str'>"‚±‚¤‚°‚«"</span> <span class='col_str'>"‚¶‚ã‚à‚ñ"</span> <span class='col_str'>"‚Æ‚­‚¬"</span> <span class='col_str'>"ƒAƒCƒeƒ€"</span> <span class='col_str'>"‚É‚°‚é"</span> <span class='col_str'>"-1"</span>
+txtStr = <span class='col_str'>"ã“ã†ã’ã"</span> <span class='col_str'>"ã˜ã‚…ã‚‚ã‚“"</span> <span class='col_str'>"ã¨ãã"</span> <span class='col_str'>"ã‚¢ã‚¤ãƒ†ãƒ "</span> <span class='col_str'>"ã«ã’ã‚‹"</span> <span class='col_str'>"-1"</span>
 txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-250</span> <span class='col_num'>-190</span> 18<span class='col_num'> 120</span> 3<span class='col_num'> 0</span> 16777215<span class='col_num'> 255</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span>
 txtMenu[15] =<span class='col_num'> 1</span>
 <span class='col_word'>_msg</span><span class='col_num'> 1</span> txtMenu[1] txtMenu[2] txtMenu[4] txtMenu[5] <span class='col_num'>-1</span> <span class='col_num'>-1</span> ffffff left
@@ -413,37 +413,37 @@ txtMenu[15] =<span class='col_num'> 1</span>
 <span class='col_word'>gosub</span> TxtMenu
 <span class='col_word'>clear</span><span class='col_num'> 1</span>
 <span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
-	ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½B
+	ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚
 <span class='col_word'>else</span>
-	<span class='col_var'>$txtStr[ret0]$</span>‚ğ‘I‘ğ‚µ‚Ü‚µ‚½B
+	<span class='col_var'>$txtStr[ret0]$</span>ã‚’é¸æŠã—ã¾ã—ãŸã€‚
 <span class='col_word'>endif</span>
 <span class='col_word'>wait</span><span class='col_num'> 5</span>
 <span class='col_comm'>;-------------------------------------------------------------------------------</span>
 <span class='col_word'>end</span>
-<span class='col_comm'>; •Ï”–¼      : à–¾                    : ‰Šú’l     : ”õl</span>
-<span class='col_comm'>; txtMenu[0]  : text”Ô†‚Ìn‚Ü‚è‚Ì’l    : 1          : </span>
-<span class='col_comm'>; txtMenu[1]  : •\¦XÀ•W               : -250       : </span>
-<span class='col_comm'>; txtMenu[2]  : •\¦YÀ•W               : -100       : </span>
-<span class='col_comm'>; txtMenu[3]  : •\¦ŠÔŠu                : 43         : </span>
-<span class='col_comm'>; txtMenu[4]  : text‰¡•                : 150        : </span>
-<span class='col_comm'>; txtMenu[5]  : ˆê“x‚É•\¦‚·‚é”        : ƒƒjƒ…[” : </span>
-<span class='col_comm'>; txtMenu[6]  : ƒƒjƒ…[‚Ìo‚Á’£‚è“x    : 0          : </span>
-<span class='col_comm'>; txtMenu[7]  : ”ñ‘I‘ğ‚Ì•¶šF        : 16777215   : </span>
-<span class='col_comm'>; txtMenu[8]  : ‘I‘ğ‚Ì•¶šF          : 16777215   : </span>
-<span class='col_comm'>; txtMenu[9]  : ”ñ‘I‘ğ‚Ì”wŒiF        : -1         : </span>
-<span class='col_comm'>; txtMenu[10] : ‘I‘ğ‚Ì”wŒiF          : 65280      : </span>
-<span class='col_comm'>; txtMenu[11] : ”ñ‘I‘ğ‚Ì˜gF          : 16777215   : </span>
-<span class='col_comm'>; txtMenu[12] : ‘I‘ğ‚Ì˜gF            : 16777215   : </span>
-<span class='col_comm'>; txtMenu[13] : ã‰ºƒ‹[ƒv              : 1          : 0=ƒ‹[ƒv‚µ‚È‚¢ 1=ƒ‹[ƒv‚·‚é</span>
-<span class='col_comm'>; txtMenu[14] : à–¾•\¦                : 0          : 0=•\¦‚µ‚È‚¢   1=•\¦‚·‚é(txtExp‚Ì’è‹`‚ª•K{)</span>
-<span class='col_comm'>; txtMenu[15] : ƒo[g‚¤‚È‚ç0ˆÈã       : -1         : ‚±‚Ì’l‚ÍƒXƒNƒ[ƒ‹ƒo[‚Ì‰æ‘œd‚È‚è‡</span>
-<span class='col_comm'>; txtMenu[16] : ‘I‘ğˆi‚ß‚éƒL          : 38         : ªƒL[</span>
-<span class='col_comm'>; txtMenu[17] : ‘I‘ğˆ–ß‚·ƒL[          : 40         : «ƒL[</span>
-<span class='col_comm'>; txtMenu[18] : Œˆ’èƒL[                : 90         : ZƒL[</span>
-<span class='col_comm'>; txtMenu[19] : ƒLƒƒƒ“ƒZƒ‹ƒL[          : 88         : XƒL[</span>
-<span class='col_comm'>; txtMenu[20] : ƒ}ƒEƒXg—p‰Â”\‚©        : 0          : 0=g—p•s‰Â”\   1=g—p‰Â”\</span>
-<span class='col_comm'>; txtStr      : •\¦‚·‚é‘I‘ğˆ          : –¢’è‹`     : TxtMenuŠÖ”‚ğŒÄ‚ÔÛ‚Í•K‚¸’è‹`‚µ‚Ä‚­‚¾‚³‚¢ ÅŒã‚Í-1‚É‚µ‚Ä‰º‚³‚¢</span>
-<span class='col_comm'>; txtExp      : •\¦‚·‚éà–¾•¶          : –¢’è‹`     : txtMenu[14]‚ª1‚Ì‚Í•K‚¸’è‹`‚µ‚Ä‚­‚¾‚³‚¢</span>
+<span class='col_comm'>; å¤‰æ•°å      : èª¬æ˜                    : åˆæœŸå€¤     : å‚™è€ƒ</span>
+<span class='col_comm'>; txtMenu[0]  : textç•ªå·ã®å§‹ã¾ã‚Šã®å€¤    : 1          : </span>
+<span class='col_comm'>; txtMenu[1]  : è¡¨ç¤ºXåº§æ¨™               : -250       : </span>
+<span class='col_comm'>; txtMenu[2]  : è¡¨ç¤ºYåº§æ¨™               : -100       : </span>
+<span class='col_comm'>; txtMenu[3]  : è¡¨ç¤ºé–“éš”                : 43         : </span>
+<span class='col_comm'>; txtMenu[4]  : textæ¨ªå¹…                : 150        : </span>
+<span class='col_comm'>; txtMenu[5]  : ä¸€åº¦ã«è¡¨ç¤ºã™ã‚‹æ•°        : ãƒ¡ãƒ‹ãƒ¥ãƒ¼æ•° : </span>
+<span class='col_comm'>; txtMenu[6]  : ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®å‡ºã£å¼µã‚Šåº¦    : 0          : </span>
+<span class='col_comm'>; txtMenu[7]  : éé¸æŠæ™‚ã®æ–‡å­—è‰²        : 16777215   : </span>
+<span class='col_comm'>; txtMenu[8]  : é¸æŠæ™‚ã®æ–‡å­—è‰²          : 16777215   : </span>
+<span class='col_comm'>; txtMenu[9]  : éé¸æŠæ™‚ã®èƒŒæ™¯è‰²        : -1         : </span>
+<span class='col_comm'>; txtMenu[10] : é¸æŠæ™‚ã®èƒŒæ™¯è‰²          : 65280      : </span>
+<span class='col_comm'>; txtMenu[11] : éé¸æŠæ™‚ã®æ è‰²          : 16777215   : </span>
+<span class='col_comm'>; txtMenu[12] : é¸æŠæ™‚ã®æ è‰²            : 16777215   : </span>
+<span class='col_comm'>; txtMenu[13] : ä¸Šä¸‹ãƒ«ãƒ¼ãƒ—              : 1          : 0=ãƒ«ãƒ¼ãƒ—ã—ãªã„ 1=ãƒ«ãƒ¼ãƒ—ã™ã‚‹</span>
+<span class='col_comm'>; txtMenu[14] : èª¬æ˜è¡¨ç¤º                : 0          : 0=è¡¨ç¤ºã—ãªã„   1=è¡¨ç¤ºã™ã‚‹(txtExpã®å®šç¾©ãŒå¿…é ˆ)</span>
+<span class='col_comm'>; txtMenu[15] : ãƒãƒ¼ä½¿ã†ãªã‚‰0ä»¥ä¸Š       : -1         : ã“ã®å€¤ã¯ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ç”»åƒé‡ãªã‚Šé †</span>
+<span class='col_comm'>; txtMenu[16] : é¸æŠè‚¢é€²ã‚ã‚‹ã‚­          : 38         : â†‘ã‚­ãƒ¼</span>
+<span class='col_comm'>; txtMenu[17] : é¸æŠè‚¢æˆ»ã™ã‚­ãƒ¼          : 40         : â†“ã‚­ãƒ¼</span>
+<span class='col_comm'>; txtMenu[18] : æ±ºå®šã‚­ãƒ¼                : 90         : Zã‚­ãƒ¼</span>
+<span class='col_comm'>; txtMenu[19] : ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚­ãƒ¼          : 88         : Xã‚­ãƒ¼</span>
+<span class='col_comm'>; txtMenu[20] : ãƒã‚¦ã‚¹ä½¿ç”¨å¯èƒ½ã‹        : 0          : 0=ä½¿ç”¨ä¸å¯èƒ½   1=ä½¿ç”¨å¯èƒ½</span>
+<span class='col_comm'>; txtStr      : è¡¨ç¤ºã™ã‚‹é¸æŠè‚¢          : æœªå®šç¾©     : TxtMenué–¢æ•°ã‚’å‘¼ã¶éš›ã¯å¿…ãšå®šç¾©ã—ã¦ãã ã•ã„ æœ€å¾Œã¯-1ã«ã—ã¦ä¸‹ã•ã„</span>
+<span class='col_comm'>; txtExp      : è¡¨ç¤ºã™ã‚‹èª¬æ˜æ–‡          : æœªå®šç¾©     : txtMenu[14]ãŒ1ã®æ™‚ã¯å¿…ãšå®šç¾©ã—ã¦ãã ã•ã„</span>
 <span class='col_lbl'>*TxtMenu</span>
 	__txtMenuMax    =<span class='col_num'> 0</span> <span class='col_comm'>; </span>
 	__txtMenuTop    =<span class='col_num'> 0</span> <span class='col_comm'>; </span>
@@ -454,14 +454,14 @@ txtMenu[15] =<span class='col_num'> 1</span>
 		__TXT_MAX_ARG < __TXT_SUU_ARG -<span class='col_num'> 1</span>
 		__TXT_MENU_DEFAULT =<span class='col_num'> 1</span> <span class='col_num'>-250</span> <span class='col_num'>-100</span> 43<span class='col_num'> 150</span> 0<span class='col_num'> 0</span> 16777215<span class='col_num'> 16777215</span> <span class='col_num'>-1</span> 65280<span class='col_num'> 16777215</span> 16777215<span class='col_num'> 1</span> 0 <span class='col_num'>-1</span> 38<span class='col_num'> 40</span> 90<span class='col_num'> 88</span> 0<span class='col_num'> 0</span> 0
 		__TXT_MENU_DEFAULT[5] = undefined
-		<span class='col_comm'>; (000000,ff0000,00ff00,0000ff,ffff00,00ffff,ffffff)‚ªg—p‰Â”\</span>
+		<span class='col_comm'>; (000000,ff0000,00ff00,0000ff,ffff00,00ffff,ffffff)ãŒä½¿ç”¨å¯èƒ½</span>
 		__TXT_MENU_DEFAULT[21] = <span class='col_str'>"ffffff"</span>
 		__TXT_MENU_DEFAULT[22] = <span class='col_str'>"ff00ff"</span>
 		txtMenu =<span class='col_num'> 0</span>
 	<span class='col_word'>endif</span>
 	<span class='col_word'>for</span> __i =<span class='col_num'> 0</span> <span class='col_word'>to</span> __TXT_MAX_ARG
-		<span class='col_word'>if</span> txtMenu[__i] != txtMenu[__i] <span class='col_word'>then</span>       <span class='col_comm'>; ˆø”‚ª–¢’è‹`‚È‚ç</span>
-			txtMenu[__i] = __TXT_MENU_DEFAULT[__i] <span class='col_comm'>; ‰Šú’l‚ğ‘ã“ü</span>
+		<span class='col_word'>if</span> txtMenu[__i] != txtMenu[__i] <span class='col_word'>then</span>       <span class='col_comm'>; å¼•æ•°ãŒæœªå®šç¾©ãªã‚‰</span>
+			txtMenu[__i] = __TXT_MENU_DEFAULT[__i] <span class='col_comm'>; åˆæœŸå€¤ã‚’ä»£å…¥</span>
 		<span class='col_word'>endif</span>
 	<span class='col_word'>endfor</span>
 	__break = undefined
@@ -475,7 +475,7 @@ txtMenu[15] =<span class='col_num'> 1</span>
 		<span class='col_word'>endif</span>
 	<span class='col_word'>endfor</span>
 	<span class='col_word'>if</span> txtMenu[15] != <span class='col_num'>-1</span> <span class='col_word'>then</span>
-		<span class='col_word'>if</span> txtScroll != txtScroll <span class='col_word'>then</span> <span class='col_comm'>; –¢’è‹`(‘¼‚Ì‰ÓŠ‚ÅˆêŠ‡‚µ‚Ä“Ç‚İ‚İ‚½‚¢ê‡‚Í‚ ‚ç‚©‚¶‚ß’è‹`‚µ‚Ä‚¨‚­)</span>
+		<span class='col_word'>if</span> txtScroll != txtScroll <span class='col_word'>then</span> <span class='col_comm'>; æœªå®šç¾©(ä»–ã®ç®‡æ‰€ã§ä¸€æ‹¬ã—ã¦èª­ã¿è¾¼ã¿ãŸã„å ´åˆã¯ã‚ã‚‰ã‹ã˜ã‚å®šç¾©ã—ã¦ãŠã)</span>
 			__g<span class='col_word'>if</span> = <span class='col_str'>".g<span class='col_word'>if</span>"</span>
 			__layer0 = txtMenu[15]
 			__layer1 < txtMenu[15] +<span class='col_num'> 1</span>
@@ -529,7 +529,7 @@ txtMenu[15] =<span class='col_num'> 1</span>
 		<span class='col_word'>endfor</span>
 		__txtBarShow =<span class='col_num'> 0</span>
 		<span class='col_word'>if</span> txtMenu[15] ><span class='col_num'> 0</span> <span class='col_word'>then</span>
-			<span class='col_word'>if</span> txtMenu[5] < __txtMenuMax <span class='col_word'>then</span> <span class='col_comm'>; •\¦”‚ªÅ‘å”‚æ‚è¬‚³‚¢ê‡‚Ì‚İ•\¦</span>
+			<span class='col_word'>if</span> txtMenu[5] < __txtMenuMax <span class='col_word'>then</span> <span class='col_comm'>; è¡¨ç¤ºæ•°ãŒæœ€å¤§æ•°ã‚ˆã‚Šå°ã•ã„å ´åˆã®ã¿è¡¨ç¤º</span>
 				__txtBarShow =<span class='col_num'> 1</span>
 				<span class='col_word'>gosub</span> TxtMenuBar
 			<span class='col_word'>endif</span>
@@ -640,7 +640,7 @@ txtMenu[15] =<span class='col_num'> 1</span>
 		<span class='col_word'>endif</span>
 	<span class='col_word'>endfor</span>
 	<span class='col_word'>for</span> __i =<span class='col_num'> 0</span> <span class='col_word'>to</span> __TXT_MAX_ARG
-		txtMenu[__i] = undefined <span class='col_comm'>; –¢’è‹`‚É‚·‚é</span>
+		txtMenu[__i] = undefined <span class='col_comm'>; æœªå®šç¾©ã«ã™ã‚‹</span>
 	<span class='col_word'>endfor</span>
 <span class='col_word'>return</span>
 <span class='col_lbl'>*TxtMenuBar</span>
@@ -669,8 +669,8 @@ txtMenu[15] =<span class='col_num'> 1</span>
 			&nbsp;
 		</div>
 		<div id="footer">
-			<p>g—pƒuƒ‰ƒEƒU‚ÍOpera‚ğ„§‚µ‚Ü‚·B
-			‘¼ƒuƒUƒEƒU‚Å‚Í‘½­ƒŒƒCƒAƒEƒg‚ª•ö‚ê‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B</p>
+			<p>ä½¿ç”¨ãƒ–ãƒ©ã‚¦ã‚¶ã¯Operaã‚’æ¨å¥¨ã—ã¾ã™ã€‚
+			ä»–ãƒ–ã‚¶ã‚¦ã‚¶ã§ã¯å¤šå°‘ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆãŒå´©ã‚Œã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚</p>
 			<br />
 		</div>
 	</div>
