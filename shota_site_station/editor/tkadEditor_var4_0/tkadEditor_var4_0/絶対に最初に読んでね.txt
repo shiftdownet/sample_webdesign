@@ -1,0 +1,35 @@
+----------------------
+　　tkadEditor var4.0
+----------------------
+【はじめに】
+
+ダウンロードありがとうございます。
+このソフトは、オープソースのnEditというソフトウェアをShotaが改造したプログラムです。
+ツクアドでは書くのが大変な処理を、簡潔に記述し、変換することができます。
+ソフトは、tkadEditorをクリックして起動してください。
+詳しい使い方については、マニュアルをごらんください。
+↓マニュアル
+http://shota.site-station.net/tukuado/tkadEditorLecture/index.html
+
+【アンインストール方法】
+
+アンインストールは、フォルダごと削除してください。
+レジストリは使用していません。
+
+【注意】
+
+このソフトを利用することにより生じたいかなる問題に関しても作者はその責任を負いかねます。ご了承ください。
+
+【ソフト情報】
+
+ソフト名   : tkadEditor var4.0
+製作者     : Shota
+制作開始日 : 2010-9/10
+連絡先     : shotaheart@yahoo.co.jp
+移動予定先 : http://shota.site-station.net/tukuado/index.html
+開発環境   : OS:Windows XP
+           : ActivePerl5.16
+           : Borland C++ Compiler 5.5
+動作環境   : Windows95/98/ME/2000/XP
+
+

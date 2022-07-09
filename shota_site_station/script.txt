@@ -1,0 +1,741 @@
+
+
+
+;****************************************************************
+;*                                                              *
+;*  大富豪 ver 0.1 (2009/12/28 ~ 2010/--/--)                    *
+;*                                                              *
+;*                                      ID:0000009249(Shota)    *
+;*                                                              *
+;****************************************************************
+
+;*************** スクリプト構成 *****************
+; const : 定数   : 定数を定義します             :
+; var   : 変数   : 変数を定義します             :
+; main  : メイン : 基本処理                     :
+; init  : 初期化 : 初期化処理                   :
+; load  : ロード : 読み込み関連                 :
+; paint : 描写   : 描写関連                     :
+;************************************************
+
+; ↑分割コンパイルができるようになることを期待して処理分野ごとに分けていたり＞＜
+
+
+
+
+
+
+;########################################## 定数 const #############################################
+USER_PATH  = "#../0000009249/" ; ユーザーパス 
+GRAPH_PATH = "#../0000012506/" ; 画像パス
+EXTENSION  = ".gif"            ; 拡張子
+
+SUU_PLAYER = 4  ; 参加人数
+SUU_JOKER  = 2  ; ジョーカーの枚数
+SUU_MARK   = 4  ; マーク数
+SUU_NUMB   = 13 ; マークごとの枚数
+SUU_CARD   = 54 ; 合計枚数
+MAX_PLAYER < SUU_PLAYER - 1
+MAX_JOKER  < SUU_JOKER  - 1
+MAX_MARK   < SUU_MARK   - 1
+MAX_NUMB   < SUU_NUMB   - 1
+MAX_CARD   < SUU_CARD   - 1
+
+SUU_ARROW  = 4
+MAX_ARROW  < SUU_ARROW - 1
+
+SUU_SELECT = 6
+MAX_SELECT < SUU_SELECT - 1
+
+FILE_NAME  = "clb","dia","hlt","spd","jok","trb","arw" ; ファイル名
+COLOR_CODE = "ff0000","00ff00","0000ff","ffff00" ; カラーコード
+CARD_NAME = "3" "4" "5" "6" "7" "8" "9" "10" "J" "Q" "K" "A" "2" "JOKER"
+
+; 重ね順
+LAYER_FACE  = 1000 ; フェイス
+LAYER_BACK  = 1100 ; バック
+LAYER_ARROW = 1200 ; アロー
+
+
+
+KEY_LEFT  = 0
+KEY_UP    = 1
+KEY_RIGHT = 2
+KEY_DOWN  = 3
+KEY_Z     = 4
+KEY_X     = 5
+KEY_SPACE = 6
+SUU_KEY   = 7
+MAX_KEY   < SUU_KEY - 1
+SUU_CONFIG_KEY = 10 ; configKeyの長さ
+MAX_CONFIG_KEY < SUU_CONFIG_KEY - 1
+
+CARD_CX  = 0   -240    0  240
+CARD_CY  = 150    0 -175    0
+CARD_ROT = 0     90  180  270
+CARD_SPACE = 15
+ 
+PLAYER_ICO = 0
+PLAYER_CX  = 0
+PLAYER_CY  = 0
+
+
+;##########################################  変数 var  #############################################
+configKey = 37 38 39 40 90 88 32 -1 -1 -1 -1 ; 設定キー
+makeArrayR getKey     4 10 ; 取得したキーを格納する配列
+makeArrayR card       4 55 ; 所持カード
+makeArray  ary0       100  ; 作業用配列
+makeArray  usedCard   55   ; 既に使用されたカード
+makeArray  selectCard 10   ; 選んでいるカード
+makeArray  topCard    10    ; 山の一番上のカード
+
+arrow      = 0
+arg0       = 0 
+arg1       = 0
+player     = 0 ; 処理中のプレイヤー
+state      = 1 ; ステータス表示
+funcState  = 0 ; 処理スイッチ
+dealer     = 0 ; 親(流れの後にターンが回るプレイヤー)
+order      = 1 ; 順番 (1なら通常、-1なら逆)
+isStart    = 0 ; ターン最初の処理をするためのフラグ
+isEnd      = 0 ; ターン終了後の処理をするためのフラグ
+isSelect   = 0 ; 選んでいるカード
+isDown     = 0 ; キーが押されているかどうかのフラグ
+revolution = 0 ; 革命
+
+debug = 1
+
+;##########################################  関数 func #############################################
+; 関数名         : 戻り値       : 引数                        : 備考
+; main           : void         : debug(0:OFF  n:ON)          : エントリポイント
+; Initialization : void         : state(0:表示 1:非表示)      : 初期化
+; LoadGrapth     : void         : state(0:表示 1:非表示)      : 画像読み込み
+; LoadSound      : void         : state(0:表示 1:非表示)      : 効果音読み込み
+; CheckHitKey    : getKey       : arg0(人数) arg1(キー数)     : キー取得
+; ...
+; 書き途中
+
+;##########################################  メイン main #############################################
+gosub main
+end
+; エントリポイント
+*main
+	for loop = 0 to 0 step 0
+		if funcState = 0 then      ; 最初に行う処理
+			gosub Initialization   ;     初期化
+			gosub LoadGrapth       ;     画像読み込み
+			gosub LoadSound        ;     効果音読み込み
+			clear
+			funcState = 1          ;     次のステップへ移る
+		else if funcState = 1 then ; メニューなど
+			funcState = 2          ;     次のステップへ移る
+		else if funcState = 2 then ; 開始直前処理
+			for arg0 = 0 to MAX_PLAYER
+				arg1 = 0
+				gosub SuuCard
+				gosub SortCard
+				gosub PaintPlayerCard
+				;gosub PrintPlayerCardTxt
+			endfor
+			funcState = 3
+		else if funcState = 3 then ; メイン処理
+			gosub MainProcess
+		else if funcState = 4 then
+			; 終了後処理
+
+		else if funcState = -1 then
+			loop = 1 ; break
+		endif
+		wait 1
+	endfor
+return
+
+*MainProcess
+	if isStart = 0 then       ; ターン最初のループ
+		for _cnt0 = 0 to MAX_SELECT
+			selectCard[_cnt0] = -1
+		endfor
+		suuSelect = 0
+		isStart = 1
+		arg0 = player
+		gosub SuuCard         ; カードの枚数を取得
+		arg1 = 0
+		gosub SortCard        ; カードを昇降順にソート
+		gosub EraseCard       ; 一度全てのパケットを消去し
+		gosub PaintPlayerCard ; パケットを再描写
+		gosub PaintArrow
+		; selectCard初期化
+	endif
+	if player = 0 then
+		gosub CheckHitKey ; キーの入力状態を取得
+		msg 0
+			$suuSelect$
+			$selectCard[0]$ $selectCard[1]$ $selectCard[2]$ $selectCard[3]$ $selectCard[4]$ $selectCard[5]$
+		endtext
+		if getKey[player][KEY_LEFT] = 1 then
+			isSelect - 1
+			if isSelect < 0 then
+				isSelect = maxCard
+			endif
+		else if getKey[player][KEY_UP] = 1 then
+			gosub AddSelectCard
+		else if getKey[player][KEY_RIGHT] = 1 then
+			isSelect + 1
+			if isSelect > maxCard then
+				isSelect = 0
+			endif
+		else if getKey[player][KEY_DOWN] = 1 then
+			gosub RemoveSelectCard
+		else if getKey[player][KEY_Z] = 1 then
+			gosub CanPutOutCard ; 出すことが出来るかチェック
+			if ret0 = 1 then
+				gosub ErasePileCard   ; 既存のパイルカードを消去
+				gosub PutOutCard      ; カードを出す
+				gosub PaintPileCard   ; パイルのトップカードを描写
+				arg1 = 1
+				gosub SortCard   ; リストの空欄を埋める
+				isEnd = 1
+			else if ret0 = -1 then
+				sound close09 ; 出すことができない
+			endif
+		else if getKey[player][KEY_X] = 1 then
+			; パス
+		else if getKey[player][KEY_SPACE] = 1 then
+			if debug != 0 then
+				menu m0
+					P=0所持List
+					P=1所持List
+					P=2所持List
+					P=3所持List
+					終了
+					戻る
+				endmenu
+				if m0 = 4 then
+					end
+				else if m0 != 5 then
+					arg2 = m0
+					gosub PrintPlayerCardTxt
+				endif
+			endif
+		endif
+		if isDown = 1 then
+			gosub SuuSelectCard         ; 選択中のカードの枚数取得
+			gosub PaintPlayerCard       ; なんらかのキーが押されたら再描写
+			gosub PaintPlayerSelectCard ; 選択中はずらして描写
+			gosub PaintArrow            ; 矢印を描写
+		endif
+	else
+		isEnd   = 1
+	endif
+	
+	if isEnd = 1 then ; ターンが終了
+		gosub EraseArrow      ; 矢印消去
+		gosub PlayerOrder     ; 順番を進める
+		isEnd   = 0
+		isStart = 0
+	endif
+return
+
+;##########################################  初期化 init #############################################
+; 変数･配列を初期化
+*Initialization
+	if state = 1 then
+		msg 0
+			初期化中…。
+		endtext
+	endif
+	; getKey初期化
+	for _cnt0 = 0 to MAX_PLAYER
+		for _cnt1 = 0 to MAX_CONFIG_KEY
+			getKey[_cnt0][_cnt1] = -1
+		endfor
+	endfor
+	; card初期化
+	for _cnt0 = 0 to MAX_PLAYER
+		for _cnt1 = 0 to MAX_CARD
+			card[_cnt0][_cnt1] = -1
+		endfor
+	endfor
+	; ary0初期化
+	for _cnt0 = 0 to MAX_CARD
+		ary0[_cnt0] = _cnt0
+	endfor
+	; card初期化
+	for _cnt0 = 0 to MAX_CARD
+		_var0 < _cnt0 - SUU_PLAYER * ( _cnt0 / SUU_PLAYER )
+		_var1 < _cnt0 / SUU_PLAYER
+		_max0 < MAX_CARD - _cnt0
+		rand _max0 _rnd0
+		card[_var0][_var1] = ary0[_rnd0]
+		for _cnt1 = _rnd0 to _max0
+			_var2 < _cnt1 + 1
+			ary0[_cnt1] = ary0[_var2]
+		endfor
+	endfor
+	; usedCard初期化
+	for _cnt0 = 0 to MAX_CARD
+		usedCard[_cnt0] = -1
+	endfor
+	; selectCard初期化
+	for _cnt0 = 0 to SUU_SELECT
+		selectCard[_cnt0] = -1
+	endfor
+	; pileCard初期化
+	for _cnt0 = 0 to MAX_SELECT
+		topCard[_cnt0] = -1
+	endfor
+return
+
+
+;##########################################  ロード load #############################################
+
+; 画像読み込み
+*LoadGrapth
+	if state = 1 then
+		msg 0
+			画像読み込み中…。
+		endtext
+	endif
+	; カードフェイス読み込み準備
+	for _cnt0 = 0 to MAX_NUMB
+		for _cnt1 = 0 to MAX_MARK
+			fileName = GRAPH_PATH
+			fileName + FILE_NAME[_cnt1]
+			if _cnt0 < 11 then
+				_var0 < _cnt0 + 3
+			else
+				_var0 < _cnt0 - 10
+			endif
+			fileName + _var0
+			fileName + EXTENSION
+			_var1 < _cnt0 * SUU_MARK + _cnt1
+			_var2 < _var1 + LAYER_FACE
+			readyLoad $fileName$ CARD[_var1] _var2
+		endfor
+	endfor
+	; カードジョーカー読み込み準備
+	for _cnt0 = 0 to MAX_JOKER
+		fileName = GRAPH_PATH
+		fileName + FILE_NAME[4]
+		fileName + _cnt0
+		fileName + EXTENSION
+		_var0 < MAX_CARD - MAX_JOKER + _cnt0
+		_var1 < _var0 + LAYER_FACE
+		readyLoad $fileName$ CARD[_var0] _var1
+	endfor
+	; カードバック読み込み準備
+	for _cnt0 = 0 to MAX_CARD
+		fileName = GRAPH_PATH
+		fileName + FILE_NAME[5]
+		fileName + EXTENSION
+		_var0 < _cnt0 + LAYER_BACK
+		readyLoad $fileName$ BACK[_cnt0] _var0
+	endfor
+	; アロー読み込み準備
+	for _cnt0 = 0 to MAX_ARROW
+		fileName = GRAPH_PATH
+		fileName + FILE_NAME[6]
+		fileName + COLOR_CODE[_cnt0]
+		fileName + EXTENSION
+		_var0 < _cnt0 + LAYER_ARROW
+		readyLoad $fileName$ ARROW[_cnt0] _var0
+	endfor
+	; ロード開始
+	startLoad
+return
+
+; 効果音読み込み
+*LoadSound
+	if state = 1 then
+		msg 0
+			効果音読み込み中…。
+		endtext
+	endif
+	loads close09
+return
+
+
+;##########################################  キー key #############################################
+*CheckHitKey
+	if arg0 != arg0 then
+		arg0 = 0 ; 未定義なら0
+	endif
+	isDown = 0
+	for _cnt0 = 0 to arg0
+		for _cnt1 = 0 to MAX_KEY
+			_var0 < _cnt0 * ( MAX_KEY + 1 ) + _cnt1
+			keydown configKey[_var0] getKey[_cnt0][_cnt1]
+			if getKey[_cnt0][_cnt1] = 1 then
+				isDown = 1
+			endif
+		endfor
+	endfor
+return
+
+
+;##########################################  描写 paint #############################################
+; プレイヤーのカードを描写
+*PaintPlayerCard
+	if CARD_CX[arg0] = 0 then
+		mx = 1
+		my = 0
+	else
+		mx = 0
+		my = 1
+	endif
+	for _cnt0 = 0 to maxCard
+		_var0 = card[arg0][_cnt0]
+		_posX < CARD_CX[arg0] + mx * ( _cnt0 - maxCard / 2 ) * CARD_SPACE
+		_posY < CARD_CY[arg0] + my * ( _cnt0 - maxCard / 2 ) * CARD_SPACE * -1
+		if arg0 = 0 then
+			locateCenter CARD[_var0] _posX _posY
+			rotate       CARD[_var0] CARD_ROT[arg0]
+			paint        CARD[_var0]
+		else
+			locateCenter BACK[_var0] _posX _posY
+			rotate       BACK[_var0] CARD_ROT[arg0]
+			paint        BACK[_var0]
+		endif
+	endfor
+return
+; プレイヤーが選択しているカードをずらして描写
+*PaintPlayerSelectCard
+	gosub SuuSelectCard
+	for _cnt0 = 0 to maxSelect
+		_var0 = selectCard[_cnt0]
+		_var0 = card[arg0][_var0]
+		getGrpPos    CARD[_var0] _posX1 _posY1
+		_posX2 = _posX1
+		_posY2 < _posY1 - 10
+		locateCenter CARD[_var0] _posX2 _posY2
+		paint        CARD[_var0]
+	endfor
+return
+; パイルのトップカードを描写
+*PaintPileCard
+	gosub SuuTopCard
+	for _cnt0 = 0 to suuTop
+		_var0 = topCard[_cnt0]
+		_posX < ( _cnt0 - suuTop / 2 ) * CARD_SPACE
+		text
+			$_posX$ < ( $_cnt0$ - $suuTop$ / 2 ) * $CARD_SPACE$
+		.
+		_posY = 0
+		locateCenter CARD[_var0] _poxX _posY
+		paint CARD[_var0]
+	endfor
+return
+
+; 矢印を描写
+*PaintArrow
+	gosub EraseArrow
+	if suuSelect = SUU_SELECT then
+		arrow = 0
+	else if suuSelect = 0 then
+		arrow = 1
+	else
+		arrow = 2
+	endif
+	_posX < CARD_CX[arg0] + ( isSelect - maxCard / 2 ) * CARD_SPACE - 39 + 8
+	_posY < CARD_CY[arg0] - 10 - 54 - 8
+	locateCenter ARROW[arrow] _posX _posY
+	paint        ARROW[arrow]
+return
+; 描写したカードを消去
+*EraseCard
+	if _arg0 != _arg0 then
+		; _arg0が未定義なら全てのカードを消去
+		_arg0 = 0
+		_arg1 = MAX_PLAYER
+	else
+		; _arg0が既定義ならそのプレイヤーのカードのみ消去
+		arg1 = arg0
+	endif
+	for _cnt0 = _arg0 to _arg1
+		for _cnt1 = 0 to MAX_CARD
+			_var0 = card[_cnt0][_cnt1]
+			if _arg0 = 0 then
+				erase CARD[_var0]
+			else
+				erase BACK[_var0]
+			endif
+		endfor
+	endfor
+return
+; パイルのカードのみ消去
+*ErasePileCard
+	gosub SuuTopCard
+	for _cnt0 = 0 to suuTop
+		_var0 = topCard[_cnt0]
+		erase CARD[_var0]
+	endfor
+return
+; 矢印を消去
+*EraseArrow
+	erase ARROW[arrow]
+return
+;##########################################  カード card #############################################
+
+; 持っているカードの枚数を取得
+*SuuCard
+	for _cnt0 = 0 to MAX_CARD
+		_var0 = card[arg0][_cnt0]
+		if _var0 = -1 then
+			suuCard = _cnt0
+			maxCard < suuCard - 1
+			return
+		endif
+	endfor
+return
+
+; 選んでいるカードの枚数を取得
+*SuuSelectCard
+	for _cnt0 = 0 to SUU_SELECT
+		if selectCard[_cnt0] = -1 then
+			suuSelect = _cnt0
+			maxSelect < suuSelect - 1
+			return
+		endif
+	endfor
+return
+
+; パイルのトップカードの枚数を取得
+*SuuTopCard
+	for _cnt0 = 0 to MAX_SELECT
+		if topCard[_cnt0] = -1 then
+			suuTop = _cnt0
+			maxTop < suuTop - 1
+			return
+		endif
+	endfor
+return
+
+; 既に使われたカードの枚数を取得
+*SuuUsedCard
+	for _cnt0 = 0 to MAX_CARD
+		if usedCard[_cnt0] = -1 then
+			suuUsed = _cnt0
+			maxUsed < suuUsed - 1
+			return
+		endif
+	endfor
+return
+
+; カードをソート
+*SortCard
+	max0 < suuCard - 1
+	if arg1 = 0 then
+		; カードを昇降順にソート
+		for _cnt0 = 0 to suuCard
+			_var0 = _cnt0
+			for _cnt1 = _cnt0 to max0
+				if card[arg0][_var0] > card[arg0][_cnt1] then
+					_var0 = _cnt1
+				endif
+			endfor
+			_var1             = card[arg0][_var0]
+			card[arg0][_var0] = card[arg0][_cnt0]
+			card[arg0][_cnt0] = _var1
+		endfor
+	else if arg1 = 1 then
+		; カードの空白を詰める
+		_cnt2 = 0
+		for _cnt0 = 0 to suuCard
+			_cnt2 + 1
+			_var0 = card[arg0][_cnt0]
+			if _var0 = -1 then
+				for _cnt1 = _cnt0 to max0
+					_var1 < _cnt1 + 1
+					card[arg0][_cnt1] = card[arg0][_var1]
+				endfor
+				if card[arg0][_cnt0] = -1 then
+					if _cnt2 < suuCard then
+						_cnt0 - 1 ; もう一度チェック
+					endif
+				endif
+			endif
+		endfor
+	endif
+return
+
+; 選択リストにカード追加
+*AddSelectCard
+	for _cnt0 = 0 to MAX_SELECT
+		if selectCard[_cnt0] = isSelect then
+			return ; 既に追加済みなら何もしない
+		else if selectCard[_cnt0] = -1 then
+			; 空きがあるならセット
+			selectCard[_cnt0] = isSelect
+			return
+		endif
+	endfor
+return
+
+; 選択リストからカード削除
+*RemoveSelectCard
+	for _cnt0 = 0 to MAX_SELECT
+		if selectCard[_cnt0] = isSelect then
+			for _cnt1 = _cnt0 to MAX_SELECT
+				_var0 < _cnt1 + 1
+				selectCard[_cnt1] = selectCard[_var0]
+			endfor
+		endif
+	endfor
+return
+
+
+; カードを出すことが出来るか判定する
+*CanPutOutCard
+	gosub CardSuuCheck ; カードの枚数
+	gosub CardKndCheck ; カードの組み合わせ
+	gosub CardNumCheck ; カードの強さ
+	if _ret0 = 1 then
+		if _ret1 = 1 then
+			if _ret2 = 1 then
+				; 3つの条件をクリアした
+				ret0 = 1
+				return
+			endif
+		endif
+	endif
+	; クリアしなかった
+	ret0 = -1
+return
+*CardSuuCheck
+	gosub SuuSelectCard
+	gosub SuuTopCard
+	if suuSelect = suuTop then ; 前回と出した枚数が同じ
+		_ret0 = 1
+	else if suuSelect = 0 then ; 選んだカードが0枚
+		_ret0 = -1
+	else if suuTop = 0 then    ; 前回が流れの場合
+		_ret0 = 1
+	else                       ; 前回と出した枚数が違う
+		_ret0 = -1
+	endif
+return
+*CardKndCheck
+	_flg0 = 0
+	for _cnt0 = 0 to maxSelect
+		_var1 = selectCard[_cnt0]
+		_var2 = card[arg0][_var1]
+		if _var2 < 52 then ; ジョーカーでないカードが来たらフラグを立てブレイク
+			_flg0 = 1
+			_cnt0 = maxSelect
+		endif
+	endfor
+	if _flg0 = 0 then
+		_ret1 = 1 ; ジョーカーのみだった
+	endif
+	_var1 < _var2 / 4
+	for _cnt0 = 0 to maxSelect
+		_var2 = selectCard[_cnt0]
+		_var3 < card[_arg0][_var2] / 4
+		if _var1 != _var3 then ; 数字が違うカードがある
+			if card[_arg0][_var2] < 52 then ; 更に対象がジョーカーでない
+				_ret1 = -1
+				return
+			endif
+		endif
+	endfor
+	_ret1 = 1
+return
+*CardNumCheck
+	for _cnt0 = 0 to maxSelect
+		_var0 = selectCard[_cnt0]
+		if var0 != -1 then
+			_var0 = card[arg0][_var0]
+			if revolution = 0 then
+				if topCard[_cnt0] >= _var0 then
+					_ret2 = -1
+					return
+				endif
+			else
+				if topCard[_cnt0] <= _var0 then
+					_ret2 = -1
+					return
+				endif
+			endif
+		endif
+	endfor
+	_ret2 = 1
+return
+
+; カードを出す。
+*PutOutCard
+	gosub SuuUsedCard
+	for _cnt0 = 0 to maxSelect
+		_var0 = selectCard[_cnt0]
+		selectCard[_cnt0] = -1
+		_var1 = card[arg0][_var0]
+		card[arg0][_var0] = -1
+		topCard[_cnt0] = _var1
+		_var2 < suuUsed + _cnt0
+		usedCard[_var2] = _var1
+	endfor
+return
+
+;##########################################  敵 cpu #############################################
+
+; 出すことが可能な全てのカードを取得
+*AllPutOutCard
+
+return
+
+; ランダムで出せるカードを選ぶ
+*RandPutOutCard
+
+return
+
+; 出すことが可能な一番弱いカードを取得
+*CanPutOutWeekestCard
+
+return
+
+; 既に使われたカードを調べ、一番打破されにくいカードを取得
+*StrongestCard
+
+return
+
+; 相手の持っているカードを透視し、一番打破されにくいカードを取得
+*FoulSkill
+
+return
+
+;##########################################  その他 else #############################################
+
+; 順番を回す
+*PlayerOrder
+		player + order
+		if player > MAX_PLAYER then
+			player = 0
+		else if player < 0 then
+			player = MAX_PLAYER
+		endif
+return
+
+*PrintPlayerCardTxt
+	_str0 = " "
+	_str1 = " "
+	_str2 = " "
+	_str3 = "-1"
+	for _cnt0 = 0 to suuCard;MAX_CARD
+		if card[arg2][_cnt0] != -1 then
+			_str0 + card[arg2][_cnt0]
+			_str0 + _str1
+			_var0 < card[arg2][_cnt0] / 4
+			_var0 = CARD_NAME[_var0]
+			_str2 + _var0
+			_str2 + _str1
+		else
+			_str0 + _str3
+			_str0 + _str1
+			_str2 + _str3
+			_str2 + _str1
+		endif
+	endfor
+	text 2
+		$_str0$
+		$_str2$
+	endtext
+return

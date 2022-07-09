@@ -1,0 +1,1746 @@
+<html>
+<head>
+	<title>Shotaのツクアド講座 - ツクアド講座 </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.js" />
+	<script type="text/javascript" src="../js/jquery.cookie.js" />
+	<script type="text/javascript" src="../js/cookie.js" />
+	<script type="text/javascript">
+		get = CookieLoad('cssmode');
+		document.write("<link rel=\"stylesheet\" href=\"../css/spt_style"+get+".css\" type=\"text/css\" />");
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html" class="menuleft">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html"  class="selected">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content">
+			<div id="middle">
+				<span class="category"><h3><a name="p00">文章表示をしようpart1</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							文を表示させることは<a href="./basic.html#p02">プログラミングを始めるには</a>で少し触れました。
+							今度は少し高度に文を表示させてみましょう。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>text</span> 
+	表示したい文
+<span class='col_word'>endtext</span> 
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							<a href="./document.html#text_msg">text(テキスト)</a>だとか<a href="./document.html#text_msg">endtext(エンドテキスト)</a>だとか言ういきなり訳の分からない単語がでてきました。
+							これらは一体なんなんでしょう？
+							実はこれ、<span class="bold">文(ステートメント)</span>と呼ばれるものなんです。
+							ステートメントは、コンピュータに指示を出す<span class="bold">命令</span>です。
+							コンピュータに「～しなさい」と命令するわけです。
+							では、<a href="./document.html#text_msg">text</a>とは一体どんな命令なんでしょう？
+							まぁタイトルに「文章表示をしよう」とあるくらいですから分かると思いますが、
+							文章を表示する命令なんです。
+							<a href="./document.html#text_msg">text</a>と<a href="./document.html#text_msg">endtext</a>の間の文章を表示します。
+							とりあえずコンパイルしてプレイしてみてください。
+							「表示したい文」と表示されると思います。
+						</p>
+						※上手くいかない人へ<br />
+						基本的にプログラミングは半角英数で入力を行います。<br />
+						全角入力だと上手く行きません。<br />
+						<p>
+							でも、これだけだったら<a href="./document.html#text_msg">text</a>文を使わずとも、そのまま「文章を表示しよう」
+							と入力すれば同じ結果が得られますよね？何故わざわざtext文を使用するのでしょうか？
+							実は、<a href="./document.html#text_msg">text</a>文は「文章」を表示する命令ですから、
+							さっきのような文を表示するプログラムの場合は<a href="./document.html#text_msg">text</a>文は必要がないんです。
+							さっきは「文」を表示しましたが、今度は「文章」を表示してみましょう。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>text</span> 
+	こんにちは。
+	今日の天気はいかがでしょう。
+<span class='col_word'>endtext</span> 
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							二行に渡って文章が表示されたと思います。
+							もしtextを使わないで
+						</p>
+						<span class="bold">こんにちは。</span><br />
+						<span class="bold">今日の天気はいかがでしょう。</span>
+						<p>
+							とだけ入力すると、「こんにちは。」と「今日の天気はいかがでしょう。」が別々に表示されてしまいます。
+							そうすることが目的の場合はtext文を使用する必要はありません。
+						</p>
+						<p>また、以下のようなことも可能です。</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>text</span><span class='col_num'> 1</span>
+	1行表示
+<span class='col_word'>endtext</span>
+<span class='col_word'>text</span><span class='col_num'> 2</span>
+	2行表示
+<span class='col_word'>endtext</span>
+<span class='col_word'>text</span><span class='col_num'> 3</span>
+	3行表示
+<span class='col_word'>endtext</span>
+<span class='col_word'>text</span><span class='col_num'> 4</span>
+	4行表示
+<span class='col_word'>endtext</span>
+<span class='col_word'>text</span><span class='col_num'> 0</span>
+	自動調整します。
+	2行目
+	3行目
+	4行目
+<span class='col_word'>endtext</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							<a href="./document.html#text_msg">text</a>の後に数字を書くと、行数を指定することができます。
+							この様なオプションを<span class="bold">「引数(パラメータ)」</span>といいます。
+							パラメータと命令の間には半角スペースを入れる必要があります。
+						</p>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p01">コメント</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							プログラムにメモ書きや注釈を入れたいときは<a href="./document.html#comment">コメント文</a>が便利です。
+							<span class="bold">「;(セミコロン)」</span>を使うと、その行のそれ以降の全ての文字がコメントアウト(無視)されます。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_comm'>; text命令を使って複数行にわたって文字を表示する。</span>
+<span class='col_word'>text</span>
+	こんにちは。
+	セミコロンのテストです。
+<span class='col_word'>endtext</span> <span class='col_comm'>; text命令を使ったときは必ずendtextで終了する。</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							分かりやすいように色を変えてあります。セミコロン以降はプログラムには影響しません。
+						</p>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p02">時間待ち</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							一定時間、処理を停止したい場合は<a href="./flowControl.html#wait">wait</a>(ウェイト)を使います。
+						</p>
+						<div class="How_to_use">
+							wait フレーム数
+						</div>
+						<p>
+							フレーム数とは、1秒間に何回画面を描写するかです。
+							パソコンの画面はパラパラ漫画の様に1秒間に何度も画面が描写されています。
+							ツクアドでは初期設定でフレーム数は12になっています。
+							つまり、12＝1秒ですので、「wait 12」と記述すると1秒停止します。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>text</span><span class='col_num'> 0</span>
+	1秒停止します。
+<span class='col_word'>endtext</span>
+<span class='col_word'>wait</span><span class='col_num'> 12</span> <span class='col_comm'>; 12で1秒停止</span>
+<span class='col_word'>text</span><span class='col_num'> 0</span>
+	更に2秒停止します。
+<span class='col_word'>endtext</span>
+<span class='col_word'>wait</span><span class='col_num'> 24</span> <span class='col_comm'>; 2秒停止したい時は 12×2秒＝24</span>
+<span class='col_word'>text</span><span class='col_num'> 0</span>
+	更に更に0.5秒停止します
+<span class='col_word'>endtext</span>
+<span class='col_word'>wait</span><span class='col_num'> 6</span>  <span class='col_comm'>; 0.5秒停止したい時は、1秒の半分だから 12÷2＝6</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+				</div>
+				<span class="category"><h3><a name="p03">ツクアドを終了する</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>ツクアドを終了する時は<a href="./flowControl.html#end">end</a>(エンド)を使います。</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>text</span>
+	こんにちは。
+	終了のテストです。
+<span class='col_word'>endtext</span>
+
+<span class='col_word'>end</span> <span class='col_comm'>; ツクアドを終了する。</span>
+
+<span class='col_word'>text</span>
+	endの命令のあとなので、
+	実際はコレは表示されません。
+<span class='col_word'>endtext</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+				</div>
+				<span class="category"><h3>文章表示をしようpart2<a name="p04"></a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							文字を表示させようPart1では<a href="././document.html#text_msg">text</a>と言う命令を使いました。
+							それに似た<a href="./document.html#text_msg">msg</a>(メッセージ)と言う命令があります。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>msg</span>
+	文字を表示。
+<span class='col_word'>endtext</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							コンパイルして実行しましたか？
+							おそらく何も表示されなかったはずです。
+							実はこのmsgと言う命令、文章を表示した後クリック待ちをしないのです。
+							だから表示結果を見る前に終了してしまうのですね。
+							では、msgの後に時間待ちを入れてすぐに終了しないようにしてみましょう。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>msg</span>
+	文字を表示。
+<span class='col_word'>endtext</span>
+<span class='col_word'>wait</span><span class='col_num'> 12</span> <span class='col_comm'>; 1秒停止</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							1秒間「文字を表示。」と表示されて終了すれば成功です。
+							時間待ちをする命令なら、waitじゃなくてもOKです。
+							例えば<a href="./document.html#shake">shake</a>(シェイク)などの命令があります。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>msg</span>
+	文字を表示。
+<span class='col_word'>endtext</span>
+<span class='col_word'>shake</span> <span class='col_comm'>; 文字を振動</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							テキストが振動するはずです。
+						</p>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p05">便利な箱「変数」</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							プログラミングをやる上でかかせないのは変数です。
+							変数を使わなければ何もできないと言っても過言ではありません。
+						</p>
+						<p>
+							では変数とは一体なんなんでしょう？
+							変数は、箱によく例えられます。
+							箱にはものをしまうことができますよね。
+							変数は数字や文字をしまっておくための箱です。
+							箱にものをしまう時、以下のような書き方をします。
+						</p>
+						<div class="How_to_use">変数名 = 数字</div>
+						<p>または</p>
+						<div class="How_to_use">変数名 = "文字列"</div>
+						<p>です。簡単に書くと、</p>
+						<div class="How_to_use">箱の名前 = 入れたいもの</div>
+						<p>
+							と、なります。
+							気をつけないといけないのは、「=(イコール)」は算数で使う時が意味が違うと言うことです。
+							算数では<span class="bold">右側と左側の数字が同じ</span>と言う意味ですが、
+							プログラミングでは<span class="bold">左側に右側の物を代入する</span>と言う意味になります。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_comm'>; 変数の使い方</span>
+A =<span class='col_num'> 5</span> <span class='col_comm'>; 変数名(Aと言う名前の箱)に数字(5)を代入</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							Aに5を代入しました。
+							変数に何か代入して物が入っている状態にすることを変数を定義すると言います。
+							つまりAと言う変数(箱)に5(物)と言う数字が入っていることになります。
+						</p>
+						<img src="../grp/expl001.png" />
+						<p>箱の中身を見る時は、「$(ダラー)」で変数を囲みます。</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A =<span class='col_num'> 5</span> <span class='col_comm'>; 変数名(Aと言う名前の箱)に数字(5)を代入</span>
+変数Aの中身は<span class='col_var'>$A$</span>です。 <span class='col_comm'>; $で囲むと表示</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							実行すると「変数Aの中身は5です。」と表示されるはずです。
+							代入する値を変えて色々試してみてください。
+							文字を入れる場合は「"(ダブルクオーテーション)」で囲みます。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A = <span class='col_str'>"ハンバーグ"</span> <span class='col_comm'>; 変数Aに「ハンバーグ」を代入</span>
+好きな食べ物は<span class='col_var'>$A$</span>です。
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							変数の名前はAじゃなくて好きな名前でも大丈夫です。
+							ただし、半角で。
+							ツクアドの場合全角文字でも可能ではあるのですが、
+							他の言語に移行した場合や見易さを考えるとお勧めはしません。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+abc =<span class='col_num'> 5</span> <span class='col_comm'>; abc に 5 を代入</span>
+f =<span class='col_num'> 6</span>   <span class='col_comm'>;   f に 6 を代入</span>
+F =<span class='col_num'> 9</span>   <span class='col_comm'>;   F に 9 を代入</span>
+<span class='col_word'>text</span>
+	abcは<span class='col_var'>$abc$</span>
+	fは<span class='col_var'>$f$</span>
+	Fは<span class='col_var'>$F$</span>
+<span class='col_word'>endtext</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							大文字と小文字では、別の変数として扱われます。
+							また、
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+a =<span class='col_num'> 15</span>
+a =<span class='col_num'> 20</span>
+aは<span class='col_var'>$a$</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							このようにするとどうなるでしょうか。
+							最初に15を代入した後に20を代入しています。
+							実は、最初に代入した15は綺麗サッパリ忘れられてしまいます。
+							変数には<span class="bold">一番最後に代入した値が残る</span>んですね。
+						</p>
+						<p>
+							では変数を定義しないとどうなるでしょうか。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_var'>$a$</span> <span class='col_comm'>; 変数aを定義しないで表示</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							おそらく実行すると、<span class="bold">undefined(アンディファインド)</span>と表示されます。
+							undefinedは未定義と言う意味です。
+							未定義の変数をプログラムで使うとバグの原因となります。
+							注意して下さい。
+						</p>
+						<p>
+							変数の名前は分かりやすくつけましょう。
+							例えば名前を入れる変数ならば、
+						</p>
+						<div class="How_to_use">
+							namae = "なまえ"<br />
+							name = "ネーム"<br />
+						</div>
+						<p>
+							年齢を入れる変数ならば、
+						</p>
+						<div class="How_to_use">
+							nenrei = 16<br />
+							age = 16<br />
+						</div>
+						<p>
+							などがベストです。
+							変数の名前のつけ方には決まりがあります。
+							変数の名前の最初に数字が来ては駄目です。
+						</p>
+						<p>
+							良い例
+						</p>
+						<div class="How_to_use">
+							a1 = 5<br />
+							a2 = 6<br />
+						</div>
+						<p>
+							悪い例
+						</p>
+						<div class="How_to_use">
+							1a = 5<br />
+							2a = 6<br />
+						</div>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p06">さまざまな計算</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							コンピュータは日本語では「電子計算機」と言います。もともと計算をするために作られた装置なんです。
+							だから計算は大得意なんです。
+							パソコンに計算しろとツクアドから命令を出すには以下のように書きます。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A =<span class='col_num'> 90</span>  <span class='col_comm'>; Aに90を代入</span>
+A +<span class='col_num'> 10</span>  <span class='col_comm'>; 90に10を足したので100</span>
+A /<span class='col_num'> 2</span>   <span class='col_comm'>; 100を2で割ったので50</span>
+A -<span class='col_num'> 10</span>  <span class='col_comm'>; 50から10を引いたので40</span>
+A *<span class='col_num'> 3</span>   <span class='col_comm'>; 40に3をかけたので120</span>
+Aの値は<span class='col_var'>$A$</span>です。
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							注意しなければならないのは、掛け算は「*(アスタリスク)」、割り算は「/(スラッシュ)」を使う点です。
+							間違って「×」「÷」を使わないようにしましょう。
+						</p>
+						<p>
+							にしてもこの計算、何行も場所をとるし、書くときも面倒くさいと思いませんか？
+							実は、この計算は1行で書くことができます。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A < ( (<span class='col_num'> 90</span> +<span class='col_num'> 10</span> ) /<span class='col_num'> 2</span> -<span class='col_num'> 10</span> ) *<span class='col_num'> 3</span>
+Aの値は<span class='col_var'>$A$</span>です。
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							「=(イコール)」が「<(レスザン,小なり)」になっただけで、あとは普通に計算式を書くだけです。
+							計算の優先順位は「掛け算、割り算」「足し算、引き算」の順番ですので、「()(丸カッコ,パーレン)」で囲って順番を変えましょう。
+							ただし、「{}(中カッコ、ブレイス)」は使用できません。
+						</p>
+						<p>
+							もちろん、計算式に変数を含めることも可能です。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A =<span class='col_num'> 20</span>
+B =<span class='col_num'> 30</span>
+C < ( A + B ) /<span class='col_num'> 2</span>
+<span class='col_var'>$A$</span>と<span class='col_var'>$B$</span>の平均値は<span class='col_var'>$C$</span>です。
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							基本的な計算はマスターできたのではないでしょうか？
+						</p>
+						<p>
+							ここで気をつけなければならないのは、未定義の値を使って計算した場合です。
+						</p>
+						<div class="How_to_use">
+							a * b<br />
+							$a$<br />
+						</div>
+						<p>
+							このようなプログラムを書くと、aの値は<span class="bold">Nan(ナン)</span>となります。 また、文字を含む不正な計算
+						</p>
+						<div class="How_to_use">
+							a = 0<br />
+							b = "あ"<br />
+							a * b<br />
+							$a$<br />
+						</div>
+						<p>
+							でも同じことが言えます。
+							ただし、計算方法が<span class="bold">変数同士</span>の<span class="bold">「<」を使わない足し算の場合</span>のみ正常な結果が得られます。
+						</p>
+						<div class="How_to_use">
+							a = 500<br />
+							b = "円"<br />
+							a + b<br />
+							$a$<br />
+						</div>
+						<p>500円、と表示されます。</p>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p07">もし～ならば</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							プログラムを書いていると「こう言う場合はああして」「ああ言う場合はこうして…」など、
+							状況によって実行結果を変えたい場合が出てくると思います。
+							そんなときに使うのが<span class="bold">if(イフ)文</span>です。
+						</p>
+						<div class="How_to_use">
+							if 条件式 then<br />
+								ブロック(やりたいこと)<br />
+							endif<br />
+						</div>
+						<p>
+							このように書きます。
+							条件式とは、
+							もし～ならば、の「～」の部分です。
+							例えば、もし「変数var0の値が1」ならば、など。
+							これを条件式として書くと「var0 = 1」です。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+var0 =<span class='col_num'> 1</span>
+<span class='col_word'>if</span> var0 =<span class='col_num'> 1</span> <span class='col_word'>then</span> <span class='col_comm'>; var0と1を比較。var0が1ならif～endifまでを処理する。</span>
+	var0は1です。
+<span class='col_word'>endif</span>
+<span class='col_word'>if</span> var0 =<span class='col_num'> 2</span> <span class='col_word'>then</span> <span class='col_comm'>; var0と2を比較。var0が2ならif～endifまでを処理する。</span>
+	var0は2です。
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							実行すると「var0は1です。」と表示されます。
+							このように、条件式が正しいとき、この条件式が「<span class="bold">真(しん)</span>」であるといいます。
+							逆に、この条件式が正しくないときは、条件式が「<span class="bold">偽(ぎ)</span>」であるといいます。
+							この場合、「if var0 = 1 then」が真で「if var0 = 2 then」が偽です。
+						</p>
+						<p>
+							ひとつ注意すべきは、<span class="bold">文字列の比較はできない</span>ことです。
+							つまり、
+						</p>
+<div class="How_to_use">
+<pre>
+str0 = "いちご"
+if str0 = "いちご" then
+	str0はいちごです。
+endif
+</pre>
+</div>
+						<p>
+							と言うプログラムの条件式は<span class="bold">常に偽</span>です。
+							現時点で文字列の比較はできないので、ツクアドがヴァージョンアップするまで待ちましょう。
+						</p>
+						<p>
+							先ほど、条件式にイコールを使いましたが、それ以外にも以下のようなものが使用可能です。
+						</p>
+						<table border="1" width="460">
+							<tr>
+								<td colspan="2">
+									比較演算子
+								</td>
+							</tr>
+							<tr>
+								<td>
+									=
+								</td>
+								<td>
+									左辺と右辺が同じ
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<=
+								</td>
+								<td>
+									左辺が右辺以下
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<
+								</td>
+								<td>
+									左辺が右辺より小さい
+								</td>
+							</tr>
+							<tr>
+								<td>
+									>=
+								</td>
+								<td>
+									左辺が右辺以上
+								</td>
+							</td>
+							<tr>
+								<td>
+									>
+								</td>
+								<td>
+									左辺が右辺より大きい
+								</td>
+							</td>
+							<tr>
+								<td>
+									!=
+								</td>
+								<td>
+									左辺と右辺が等しくない
+								</td>
+							</td>
+						</table>
+						<p>
+							例を挙げますと、
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+var0 = <span class='col_num'> 50</span>
+var1 =<span class='col_num'> 100</span>
+<span class='col_word'>if</span> var0 < var1 <span class='col_word'>then</span>
+	<span class='col_word'>text</span>
+		var0はvar1よりも小さい
+		<span class='col_var'>$var0$</span><<span class='col_var'>$var1$</span>
+	<span class='col_word'>endtext</span>
+<span class='col_word'>endif</span>
+<span class='col_word'>if</span> var0 >= var1 <span class='col_word'>then</span>
+	<span class='col_word'>text</span>
+		var0はvar1以上
+		<span class='col_var'>$var0$</span>>=<span class='col_var'>$var1$</span>
+	<span class='col_word'>endtext</span>
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							こんなことが可能です。
+						</p>
+						<p>
+							また、else(エルス)と言う命令も便利です。
+							elseは「他に」といった意味で、条件式に当てはまらないものを実行します。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+var0 =<span class='col_num'> 6</span>
+<span class='col_word'>if</span> var0 =<span class='col_num'> 5</span> <span class='col_word'>then</span>
+	var0は5です。
+<span class='col_word'>else</span>
+	var0は5以外です。
+<span class='col_word'>endif</span>
+
+var1 =<span class='col_num'> 5</span>
+<span class='col_word'>if</span> var1 <=<span class='col_num'> 10</span> <span class='col_word'>then</span>
+	var1は10以下です。
+<span class='col_word'>else</span>
+	var1は10より大きいです。
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							RPGなどのキャラクターが生きているかどうかの判別も、これで出来ますね。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+HP =<span class='col_num'> 25</span> <span class='col_comm'>; HPを25に設定</span>
+damage =<span class='col_num'> 30</span> <span class='col_comm'>; ダメージ</span>
+HP - damage <span class='col_comm'>; 喰らったダメージをHPから引く</span>
+<span class='col_word'>if</span> HP <=<span class='col_num'> 0</span> <span class='col_word'>then</span>
+	死んだ
+	<span class='col_word'>end</span>
+<span class='col_word'>endif</span>
+耐えた
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							ところで、if文で沢山の場合分けをしたい場合どうしますか？
+							わざわざ 
+						</p>
+<div class="How_to_use">
+<pre>
+if A = 0 then
+	Aは0
+endif
+if A = 1 then
+	Aは1
+endif
+if A = 2 then
+	Aは2
+endif
+</pre>
+</div>
+						<p>
+							としますか？
+							この作業はとても面倒な上にミスも多くなります。ハッキリ言って効率が悪いです。
+							こういう場合は<span class="bold">else if(エルスイフ)</span>が便利です。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+B =<span class='col_num'> 1</span>
+<span class='col_word'>if</span> B =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+	Bは0です。
+<span class='col_word'>else</span> <span class='col_word'>if</span> B =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	Bは1です。
+<span class='col_word'>else</span> <span class='col_word'>if</span> B =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+	Bは2です。
+<span class='col_word'>else</span>
+	Bは0でも1でも2でもありません。
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							とても便利ですね。
+							<span class="bold">endifは一番最後にのみつけます。</span>
+							そうしないと<span class="bold">エラーになります。</span>
+							さて、今回if else文に使う変数は全て同じ変数(B)でした。
+							ではこのようにしたらどうなるでしょうか。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A =<span class='col_num'> 5</span>
+B =<span class='col_num'> 6</span>
+C =<span class='col_num'> 7</span>
+<span class='col_word'>if</span> A =<span class='col_num'> 4</span> <span class='col_word'>then</span>
+	Aは4です。
+<span class='col_word'>else</span> <span class='col_word'>if</span> B =<span class='col_num'> 6</span> <span class='col_word'>then</span>
+	Bは6です。
+<span class='col_word'>else</span> <span class='col_word'>if</span> C =<span class='col_num'> 7</span> <span class='col_word'>then</span>
+	Cは7です。
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							一番最初にもしAが4ならば、と言う条件文があります。
+							しかしAは5なので無視されますね。
+							次に、他にもしBが6ならば、と言う条件文があります。Bは6です。
+							よってこれは実行されます。
+							さて、次はどうなるでしょう。
+							もしCが7ならば、と言う文があります。Cは7です。Cは実行…されません。
+							実は、else文にした場合<span class="bold">実行されるのはelse文のなかからひとつだけ</span>なのです。
+							よってCは真なのに実行されないという不思議な現象が起こります。
+						</p>
+						<p>
+							つまり作りたいプログラムによって、以下のように書き分けることが必要です。
+						</p>
+						<p>
+							↓全てが実行されるパターン
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A =<span class='col_num'> 1</span>
+B =<span class='col_num'> 1</span>
+C =<span class='col_num'> 1</span>
+<span class='col_word'>if</span> A =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	A:<span class='col_var'>$A$</span>
+<span class='col_word'>endif</span>
+<span class='col_word'>if</span> B =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	B:<span class='col_var'>$B$</span>
+<span class='col_word'>endif</span>
+<span class='col_word'>if</span> C =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	C:<span class='col_var'>$C$</span>
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							↓if A = 1 thenのブロックのみが実行されるパターン
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+A =<span class='col_num'> 1</span>
+B =<span class='col_num'> 1</span>
+C =<span class='col_num'> 1</span>
+<span class='col_word'>if</span> A =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	A:<span class='col_var'>$A$</span>
+<span class='col_word'>else</span> <span class='col_word'>if</span> B =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	B:<span class='col_var'>$B$</span>
+<span class='col_word'>else</span>
+	C:<span class='col_var'>$B$</span>
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							間違えないように気をつけましょう。こういう区別をあやふやにしておくと思わぬところでバグが発生するかもしれません。
+						</p>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p08">選択肢！</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+						<p>
+							選択肢を表示し、プレイヤーに選択肢の中から選ばせるには<span class="bold">menu(メニュー)</span>を使います。
+						</p>
+<div class="How_to_use">
+<pre>
+menu 変数名
+	選択肢A
+	選択肢B
+	選択肢C
+	選択肢D
+	.
+	.
+endmenu
+</pre>
+</div>
+						<p>
+							と言ったような書き方をします。<br />
+							選択肢Aを選ぶと変数名に0が代入されます。<br />
+							選択肢Bを選ぶと変数名に1が代入されます。<br />
+							選択肢Cを選ぶと変数名に2が代入されます。<br />
+							選択肢Dを選ぶと…<br />
+							といった仕組みになっています。
+							サンプルを見てみましょう。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>menu</span> m0
+	たたかう <span class='col_comm'>; これを選択するとm0に0が代入されます。</span>
+	まほう   <span class='col_comm'>; これを選択するとm0に1が代入されます。</span>
+	どうぐ   <span class='col_comm'>; これを選択するとm0に2が代入されます。</span>
+	にげる   <span class='col_comm'>; これを選択するとm0に3が代入されます。</span>
+<span class='col_word'>endmenu</span>           <span class='col_comm'>
+あなたは<span class='col_var'>$m0$</span>番目を選択しました。
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							注意しないといけないのは、代入される値は0から始まることです。
+							またendmenuをつけないとエラーになります。
+						</p>
+						<p>
+							menuとifを使って、選択肢に応じた結果を表示してみましょう。
+						</p>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_menu">
+							<script type="text/javascript" />
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_word'>msg</span><span class='col_num'> 0</span>
+	あなたが好きな食べ物は？
+<span class='col_word'>endtext</span>
+
+<span class='col_word'>menu</span> tabemono
+	ハンバーグ
+	ラーメン
+	キャビア
+<span class='col_word'>endmenu</span>
+
+<span class='col_word'>if</span> tabemono =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+	僕もハンバーグ大好きだよ！
+<span class='col_word'>else</span> <span class='col_word'>if</span> tabemono =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+	アツアツのラーメンはおいしいよね！
+<span class='col_word'>else</span> <span class='col_word'>if</span> tabemono =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+	本当に食べたことあるの？？
+<span class='col_word'>endif</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="document">
+						<p>
+							ifの使い方さえ知っていれば簡単ですね。
+						</p>
+					</div>
+				</div>
+				<span class="category"><h3><a name="p09">ジャンプとラベル</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+
+					</div>
+				</div>
+				<span class="category"><h3><a name="p10">ループ</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+
+					</div>
+				</div>
+				<span class="category"><h3><a name="p11">画像の読み込みと表示</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+
+					</div>
+				</div>
+				<span class="category"><h3><a name="p12">音楽と効果音の再生</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+
+					</div>
+				</div>
+				<span class="category"><h3><a name="p13">文章を表示しようpart3</a></h3></span>
+				<div class="indent3">
+					<div class="document">
+
+					</div>
+				</div>
+			</div>
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

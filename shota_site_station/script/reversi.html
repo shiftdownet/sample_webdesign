@@ -1,0 +1,1247 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<title>Shotaのツクアド講座 - ツクアド講座 </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/cookie.js"></script>
+	<script type="text/javascript">
+		get = CookieLoad('cssmode');
+		document.write("<link rel=\"stylesheet\" href=\"../css/spt_style"+get+".css\" type=\"text/css\" />");
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html" class="menuleft">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html"  class="selected">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content2">
+<!-- source -->
+					<div class="script2">
+						<div class="spt_menu">
+							<script type="text/javascript">
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+<span class='col_comm'>;*********************************************</span>
+<span class='col_comm'>;*                                           *</span>
+<span class='col_comm'>;*     Script : reversi                      *</span>
+<span class='col_comm'>;*                                           *</span>
+<span class='col_comm'>;*             maker shota(ID:0000014086)    *</span>
+<span class='col_comm'>;*                                           *</span>
+<span class='col_comm'>;*********************************************</span>
+
+<span class='col_comm'>;##########################################   初期定義   #############################################</span>
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXXX 定数 XXXXXXXXXXXXXXXXXXXX</span>
+TRUE  =<span class='col_num'> 1</span> <span class='col_comm'>; 真</span>
+FALSE =<span class='col_num'> 0</span> <span class='col_comm'>; 偽</span>
+
+
+LOOPMAX =<span class='col_num'> 100</span>       <span class='col_comm'>; 最大ループ回数</span>
+
+<span class='col_comm'>; パス</span>
+USER_PATH = <span class='col_str'>"#../0000014086/"</span>
+GRP_PIECE = <span class='col_str'>"othe_empty.png"</span> <span class='col_str'>"othe_black.png"</span> <span class='col_str'>"othe_white.png"</span> <span class='col_str'>"othe_<span class='col_word'>mouse</span>.png"</span>
+ARY_BOARD = <span class='col_str'>"#../0000014086/othe_ary.txt"</span>
+
+<span class='col_comm'>; レイヤー</span>
+LAYER_TOP   = <span class='col_num'> 10</span>  <span class='col_comm'>; トップ画</span>
+LAYER_LOAD  = <span class='col_num'> 11</span>  <span class='col_comm'>; ロード表示</span>
+LAYER_CELL  =<span class='col_num'> 100</span>  <span class='col_comm'>; セル</span>
+LAYER_MOUSE =<span class='col_num'> 1000</span> <span class='col_comm'>; セルポインタ</span>
+
+CELL_SIZE  =<span class='col_num'> 32</span>   <span class='col_comm'>; セルのサイズ</span>
+CELL_SPACE =<span class='col_num'> 31</span>   <span class='col_comm'>; セルとセルの表示間隔</span>
+BOARD_POSX = <span class='col_num'>-150</span> <span class='col_comm'>; ボードX</span>
+BOARD_POSY = <span class='col_num'>-150</span> <span class='col_comm'>; ボードY</span>
+
+
+BOARD_ARY_MAX  =<span class='col_num'> 9</span>
+BOARD_CELL_MIN =<span class='col_num'> 1</span>
+BOARD_CELL_MAX =<span class='col_num'> 8</span>
+
+<span class='col_comm'>; ボードチェック方法</span>
+CHECK_CELL_MIN1  = BOARD_CELL_MIN  BOARD_CELL_MIN  BOARD_CELL_MAX  BOARD_CELL_MAX <span class='col_comm'>; 外側ループ初期値</span>
+CHECK_CELL_MAX1  = BOARD_CELL_MAX  BOARD_CELL_MAX  BOARD_CELL_MIN  BOARD_CELL_MIN <span class='col_comm'>; 外側ループ終値</span>
+CHECK_CELL_MIN2  = BOARD_CELL_MIN  BOARD_CELL_MAX  BOARD_CELL_MIN  BOARD_CELL_MAX <span class='col_comm'>; 内側ループ初期値</span>
+CHECK_CELL_MAX2  = BOARD_CELL_MAX  BOARD_CELL_MIN  BOARD_CELL_MAX  BOARD_CELL_MIN <span class='col_comm'>; 内側ループ終値</span>
+CHECK_CELL_STEP1 =             <span class='col_num'> 1</span>              <span class='col_num'> 1</span>              <span class='col_num'>-1</span>              <span class='col_num'>-1</span> <span class='col_comm'>; 外側ループ増値</span>
+CHECK_CELL_STEP2 =             <span class='col_num'> 1</span>              <span class='col_num'>-1</span>              <span class='col_num'> 1</span>              <span class='col_num'>-1</span> <span class='col_comm'>; 内側ループ増値</span>
+
+<span class='col_word'>makeArrayR</span> BOARD_POINT<span class='col_num'> 10</span> 10     <span class='col_comm'>; ボード配置評価配列</span>
+<span class='col_word'>readArrayR</span> BOARD_POINT #othe_ary <span class='col_comm'>; ボード配置評価配列</span>
+
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXXX 変数 XXXXXXXXXXXXXXXXXXXX</span>
+<span class='col_word'>makeArray</span> ClickPh<span class='col_num'> 9</span> <span class='col_comm'>; クリックエリア縦の長さを格納する配列</span>
+<span class='col_word'>makeArrayR</span> board<span class='col_num'> 10</span> 10 <span class='col_comm'>; ボード配列</span>
+<span class='col_comm'>; 1番目の要素は使用しない</span>
+PLAYER_NAME = <span class='col_str'>""</span> <span class='col_str'>"黒"</span> <span class='col_str'>"白"</span>
+PLAYER_COM = <span class='col_num'>-1</span> <span class='col_num'> 0</span> 5 <span class='col_comm'>; コンピュータのレベル(0ならプレイヤー)</span>
+
+cellState =<span class='col_num'> 0</span> 0<span class='col_num'> 0</span> <span class='col_comm'>; セルの状態(左から 空白のセル数、黒石のセル数、白石のセル数)</span>
+
+player    =<span class='col_num'> 1</span> <span class='col_comm'>; 処理中のプレイヤー(1と2を使用)</span>
+funcState =<span class='col_num'> 0</span> <span class='col_comm'>; 処理スイッチ</span>
+passCount =<span class='col_num'> 0</span> <span class='col_comm'>; パスカウント</span>
+flipCount =<span class='col_num'> 0</span> <span class='col_comm'>; 裏返す枚数</span>
+putFlg    =<span class='col_num'> 0</span>
+isFirst   =<span class='col_num'> 1</span>
+
+menuFlg =<span class='col_num'> 0</span>
+
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXXX 関数 XXXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; 関数名       : 引数      : 戻り値    : 備考</span>
+<span class='col_comm'>; MainProcess  : debug     : void      : ゲームの処理の中枢</span>
+<span class='col_comm'>; MainMenu     : void      : void      : メニューを表示</span>
+<span class='col_comm'>; CheckCell    : x,y,flip  : flipCount : (x,y)に置けるかチェック、flipがTRUEならひっくり返す</span>
+<span class='col_comm'>; CheckCellAll : arg0,arg1 : x,y       : 引数で指定した方法で全ての座標をチェックし引数に応じた最善手を返す</span>
+<span class='col_comm'>; GetCellState : void      : cellState : セルの状態を取得 cellState[0]=空セル数 cellState[1]=黒石数 cellState[2]=白石数</span>
+<span class='col_comm'>; PutPiece     : void      : void      : 実際に石を置くに至るまでの処理の集合</span>
+<span class='col_comm'>; ComputerTurn : void      : void      : レベルに応じた動作で石を置く場所を取得</span>
+<span class='col_comm'>; ShowBoard    : void      : void      : ボードを描写</span>
+<span class='col_comm'>; HideBorad    : void      : void      : ボードを消去</span>
+<span class='col_comm'>; ClickCell    : void      : x,y       : クリックしたセルを返す</span>
+<span class='col_comm'>; MoveMouse    : void      : ret0      : マウス操作においてなんらかのアクションが起こるとTRUEを返す</span>
+<span class='col_comm'>; Initialize   : void      : void      : ボードを初期化する</span>
+<span class='col_comm'>; LoadGraph    : void      : void      : 画像を読み込み初期化する</span>
+
+<span class='col_comm'>;########################################## ソースコード #############################################</span>
+<span class='col_comm'>; 読み込み画面</span>
+<span class='col_word'>load</span> #reversi.png TOP  LAYER_TOP
+<span class='col_word'>load</span> #loading.png LOAD LAYER_LOAD
+<span class='col_word'>paint</span> TOP
+<span class='col_word'>locateCenter</span> LOAD<span class='col_num'> 200</span> 170
+<span class='col_word'>paint</span> LOAD
+
+<span class='col_word'>loads</span> decide13
+<span class='col_word'>loads</span> clear2
+<span class='col_word'>loads</span> soft-c02
+<span class='col_word'>loads</span> weapon00
+
+<span class='col_comm'>;モジュール：クリックメニュー-----------------</span>
+STR_PLAYER_LEVEL = <span class='col_str'>""</span> <span class='col_str'>"レベル1"</span> <span class='col_str'>"レベル2"</span> <span class='col_str'>"レベル3"</span> <span class='col_str'>"レベル4"</span> <span class='col_str'>"レベル5"</span>
+STR_PLAYER_TURN  = <span class='col_str'>""</span> <span class='col_str'>"先行"</span> <span class='col_str'>"後攻"</span>
+STR_START        = <span class='col_str'>"スタート"</span>
+MSG_MIN_ID =<span class='col_num'> 1</span> <span class='col_comm'>; 使用するtextウィンドウID(定義しなければ2から使用する)</span>
+<span class='col_comm'>; クリック領域</span>
+ClickPx  = <span class='col_num'>-220</span>  <span class='col_num'>-220</span> <span class='col_num'>-220</span> <span class='col_num'> 0</span> <span class='col_comm'>; 左上X座標</span>
+ClickPy  =  <span class='col_num'>-50</span>    <span class='col_num'> 0</span>  <span class='col_num'> 50</span> <span class='col_num'> 0</span> <span class='col_comm'>; 左上Y座標</span>
+ClickPw  = <span class='col_num'> 150</span>  <span class='col_num'> 150</span> <span class='col_num'> 150</span> <span class='col_num'> 0</span> <span class='col_comm'>; 横の長さ</span>
+ClickPl  =   <span class='col_num'> 1</span>    <span class='col_num'> 1</span>   <span class='col_num'> 1</span> <span class='col_num'> 0</span> <span class='col_comm'>; text行数</span>
+<span class='col_comm'>; 通常時のウィンドウカラー</span>
+arg000 <<span class='col_num'> 255</span> *<span class='col_num'> 65536</span> +<span class='col_num'> 255</span> *<span class='col_num'> 256</span> +<span class='col_num'> 255</span> <span class='col_comm'>; 文字色 : 255 255 255 : 白</span>
+arg010 <<span class='col_num'> 000</span> *<span class='col_num'> 65536</span> +<span class='col_num'> 000</span> *<span class='col_num'> 256</span> +<span class='col_num'> 000</span> <span class='col_comm'>; 背景色 : 000 000 000 : 黒</span>
+arg020 <<span class='col_num'> 255</span> *<span class='col_num'> 65536</span> +<span class='col_num'> 255</span> *<span class='col_num'> 256</span> +<span class='col_num'> 255</span> <span class='col_comm'>; 枠色   : 255 255 255 : 白</span>
+<span class='col_comm'>; オンマウス時のウィンドウカラー　※定義した場合のみ変更</span>
+<span class='col_comm'>; arg001 定義しないため通常時と同じ</span>
+arg011 <<span class='col_num'> 000</span> *<span class='col_num'> 65536</span> +<span class='col_num'> 128</span> *<span class='col_num'> 256</span> +<span class='col_num'> 000</span> <span class='col_comm'>; 背景色 : 000 000 128 : 青</span>
+<span class='col_comm'>; arg021 定義しないため通常時と同じ</span>
+option1 =<span class='col_num'> 1</span>
+option2 =<span class='col_num'> 1</span>
+<span class='col_comm'>;---------------------------------------------</span>
+
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX メイン XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; メインルーチン</span>
+<span class='col_word'>for</span> count =<span class='col_num'> 0</span> <span class='col_word'>to</span> undefined
+	<span class='col_word'>if</span> funcState =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+		<span class='col_word'>gosub</span> Initialize <span class='col_comm'>; 初期化</span>
+		<span class='col_word'>gosub</span> LoadGraph  <span class='col_comm'>; 画像読み込み</span>
+		<span class='col_word'>erase</span> LOAD
+		<span class='col_word'>music</span> A16_091
+		funcState =<span class='col_num'> 1</span>
+	<span class='col_word'>else</span> <span class='col_word'>if</span> funcState =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+		<span class='col_word'>gosub</span> MainMenu   <span class='col_comm'>; メニュー</span>
+	<span class='col_word'>else</span> <span class='col_word'>if</span> funcState =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+		<span class='col_word'>erase</span> TOP <span class='col_word'>wipe</span>
+		<span class='col_word'>gosub</span> ShowBoard
+		<span class='col_word'>gosub</span> GetCellState
+		funcState =<span class='col_num'> 3</span>
+		<span class='col_word'>stopm</span>
+		<span class='col_word'>music</span> A16_105
+	<span class='col_word'>else</span> <span class='col_word'>if</span> funcState =<span class='col_num'> 3</span> <span class='col_word'>then</span>
+		<span class='col_word'>gosub</span> MainProcess
+	<span class='col_word'>else</span> <span class='col_word'>if</span> funcState =<span class='col_num'> 4</span> <span class='col_word'>then</span>
+		<span class='col_word'>gosub</span> Initialize
+		funcState =<span class='col_num'> 1</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>wait</span><span class='col_num'> 1</span>
+<span class='col_word'>endfor</span>
+<span class='col_word'>end</span>
+<span class='col_comm'>; メインプロセス</span>
+<span class='col_comm'>; 引数   : debug => デバッグフラグ</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*MainProcess</span>
+	var0 = player
+	<span class='col_word'>gosub</span> PlayerState
+	<span class='col_word'>if</span> PLAYER_COM[player] =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+		<span class='col_word'>if</span> isFirst = TRUE <span class='col_word'>then</span>
+			isFirst = FALSE
+			arg0 =<span class='col_num'> 0</span>
+			arg1 =<span class='col_num'> 0</span>
+			flip = FALSE
+			<span class='col_word'>gosub</span> CheckCellAll
+			<span class='col_word'>if</span> suu =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+				passCount +<span class='col_num'> 1</span>
+				player <<span class='col_num'> 3</span> - player
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span>
+			<span class='col_word'>gosub</span> ClickCell
+			<span class='col_word'>if</span> ret0 = TRUE <span class='col_word'>then</span>
+				<span class='col_word'>if</span> mc =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+					<span class='col_word'>gosub</span> CheckCell <span class='col_comm'>; 置くことが可能かチェック</span>
+					suu = flipCount
+					<span class='col_word'>if</span> suu ><span class='col_num'> 0</span> <span class='col_word'>then</span>
+						<span class='col_word'>gosub</span> PutPiece
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>else</span> <span class='col_word'>if</span> PLAYER_COM[player] !=<span class='col_num'> 0</span> <span class='col_word'>then</span>
+		flip = FALSE
+		<span class='col_word'>gosub</span> ConputerTurn
+		<span class='col_word'>gosub</span> PutPiece
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> passCount =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+		<span class='col_word'>if</span> cellState[1] > cellState[2] <span class='col_word'>then</span>
+			<span class='col_word'>sound</span> clear2
+			黒<span class='col_var'>$cellState[1]$</span> 白<span class='col_var'>$cellState[2]$</span>であなたの勝ち！
+		<span class='col_word'>else</span> <span class='col_word'>if</span> cellState[1] = cellState[2] <span class='col_word'>then</span>
+			黒<span class='col_var'>$cellState[1]$</span> 白<span class='col_var'>$cellState[2]$</span>で引き分け！
+		<span class='col_word'>else</span>
+			<span class='col_word'>sound</span> soft-c02
+			黒<span class='col_var'>$cellState[1]$</span> 白<span class='col_var'>$cellState[2]$</span>であなたの負けです…。
+		<span class='col_word'>endif</span>
+		<span class='col_word'>end</span>
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+
+<span class='col_comm'>; メインメニュー</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*MainMenu</span>
+	<span class='col_word'>if</span> menuFlg =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+		ClickMes = <span class='col_str'>"VS人間"</span> <span class='col_str'>"VSコンピュータ"</span> <span class='col_str'>"-1"</span> <span class='col_str'>"-1"</span>
+		<span class='col_word'>gosub</span> ClickMapMenu
+		<span class='col_word'>if</span> m0 =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+			<span class='col_word'>clear</span>
+			<span class='col_word'>sound</span> decide13
+			funcState =<span class='col_num'> 2</span>
+			PLAYER_COM = <span class='col_num'>-1</span> <span class='col_num'> 0</span> 0
+		<span class='col_word'>else</span>
+			<span class='col_word'>sound</span> decide13
+			menuFlg =<span class='col_num'> 1</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>else</span>
+		ClickMes = STR_PLAYER_LEVEL[option1] STR_PLAYER_TURN[option2] STR_START <span class='col_num'>-1</span>
+		<span class='col_word'>gosub</span> ClickMapMenu
+		<span class='col_word'>if</span> m0 =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+			option1 +<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> option1 =<span class='col_num'> 6</span> <span class='col_word'>then</span>
+				option1 =<span class='col_num'> 1</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span> <span class='col_word'>if</span> m0 =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+			option2 +<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> option2 =<span class='col_num'> 3</span> <span class='col_word'>then</span>
+				option2 =<span class='col_num'> 1</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span>
+			<span class='col_word'>clear</span>
+			<span class='col_word'>sound</span> decide13
+			funcState =<span class='col_num'> 2</span>
+			PLAYER_COM = <span class='col_num'>-1</span> <span class='col_num'> 0</span> option1
+			player = option2
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endif</span>
+
+<span class='col_word'>return</span>
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX  処理  XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; (x,y)において裏返すことのできる石の数を取得する。flipがTRUEなら実際に裏返す。</span>
+<span class='col_comm'>; 引数   : (x,y)     => 座標</span>
+<span class='col_comm'>; 〃     : flip      => フラグ(TRUEなら実際に裏返す)</span>
+<span class='col_comm'>; 戻り値 : flipCount => 裏返すことのできる石の数</span>
+<span class='col_lbl'>*CheckCell</span>
+	flipCount =<span class='col_num'> 0</span>
+	nextPlayer <<span class='col_num'> 3</span> - player
+	<span class='col_word'>if</span> board[x][y] =<span class='col_num'> 0</span> <span class='col_word'>then</span> <span class='col_comm'>; セルが空</span>
+		<span class='col_word'>for</span> dx = <span class='col_num'>-1</span> <span class='col_word'>to</span><span class='col_num'> 1</span>
+			<span class='col_word'>for</span> dy = <span class='col_num'>-1</span> <span class='col_word'>to</span><span class='col_num'> 1</span>
+				<span class='col_word'>if</span> dx =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+					<span class='col_word'>if</span> dy =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+						dy +<span class='col_num'> 1</span> <span class='col_comm'>; (dx,dy)=(0,0)ならdyを1進める</span>
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+				nx < x + dx
+				ny < y + dy
+				var0 =<span class='col_num'> 0</span>
+				<span class='col_word'>for</span> while =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 0</span> <span class='col_word'>step</span><span class='col_num'> 0</span>
+					<span class='col_word'>if</span> board[nx][ny] = nextPlayer <span class='col_word'>then</span>
+						nx + dx
+						ny + dy
+						var0 +<span class='col_num'> 1</span>
+					<span class='col_word'>else</span>
+						while =<span class='col_num'> 1</span>
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endfor</span>
+				<span class='col_word'>if</span> var0 ><span class='col_num'> 0</span> <span class='col_word'>then</span>
+					<span class='col_word'>if</span> board[nx][ny] = player <span class='col_word'>then</span>
+						flipCount + var0
+						<span class='col_word'>if</span> flip = TRUE <span class='col_word'>then</span>
+							nx < x + dx
+							ny < y + dy
+							<span class='col_word'>for</span> while =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 0</span> <span class='col_word'>step</span><span class='col_num'> 0</span>
+								<span class='col_word'>if</span> board[nx][ny] = nextPlayer <span class='col_word'>then</span>
+									board[nx][ny] = player
+									nx + dx
+									ny + dy
+								<span class='col_word'>else</span>
+									while =<span class='col_num'> 1</span>
+								<span class='col_word'>endif</span>
+							<span class='col_word'>endfor</span>
+							board[x][y] = player
+						<span class='col_word'>endif</span>
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>endfor</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; 全ての座標でおけるかどうかチェックする</span>
+<span class='col_comm'>; 引数   : arg0 => 0=ノーマル 1=石を一番とれる 2=石を一番とれない</span>
+<span class='col_comm'>; 〃     : arg1 => 0=評価する 1=評価しない</span>
+<span class='col_comm'>; 戻り値 : </span>
+<span class='col_lbl'>*CheckCellAll</span>
+	suu   =<span class='col_num'> 0</span> <span class='col_comm'>; </span>
+	point =<span class='col_num'> 100</span> <span class='col_comm'>; 得点</span>
+	<span class='col_word'>if</span> arg0 =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+		suu =<span class='col_num'> 100</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> arg1 =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+		point = <span class='col_num'>-100</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>rand</span><span class='col_num'> 3</span> rnd
+	<span class='col_word'>for</span> x =<span class='col_num'> 8</span> <span class='col_word'>to</span><span class='col_num'> 1</span> <span class='col_word'>step</span> <span class='col_num'>-1</span><span class='col_comm'>;CHECK_CELL_MIN1[rnd] to CHECK_CELL_MAX1[rnd] step CHECK_CELL_STEP1[rnd]</span>
+		<span class='col_word'>for</span> y =<span class='col_num'> 8</span> <span class='col_word'>to</span><span class='col_num'> 1</span> <span class='col_word'>step</span> <span class='col_num'>-1</span><span class='col_comm'>;CHECK_CELL_MIN2[rnd] to CHECK_CELL_MAX2[rnd] step CHECK_CELL_STEP2[rnd]</span>
+			<span class='col_word'>gosub</span> CheckCell
+			<span class='col_word'>if</span> arg0 =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+				var0 =<span class='col_num'> 0</span>
+				var1 =<span class='col_num'> 0</span>
+			<span class='col_word'>else</span> <span class='col_word'>if</span> arg0 =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+				var0 = suu
+				var1 = flipCount
+			<span class='col_word'>else</span> <span class='col_word'>if</span> arg0 =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+				var0 = flipCount
+				var1 = suu
+			<span class='col_word'>endif</span>
+			<span class='col_word'>if</span> flipCount ><span class='col_num'> 0</span> <span class='col_word'>then</span>
+				<span class='col_word'>if</span> var0 <= var1 <span class='col_word'>then</span>
+					<span class='col_word'>if</span> BOARD_POINT[x][y] >= point <span class='col_word'>then</span>
+						suu = flipCount
+						_x  = x
+						_y  = y
+						point = BOARD_POINT[x][y]
+					<span class='col_word'>else</span>
+						<span class='col_word'>if</span> arg1 =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+							suu = flipCount
+							_x  = x
+							_y  = y
+						<span class='col_word'>endif</span>
+					<span class='col_word'>endif</span>
+				<span class='col_word'>else</span> <span class='col_word'>if</span> BOARD_POINT[x][y] >= point <span class='col_word'>then</span>
+					suu   = flipCount
+					_x  = x
+					_y  = y
+				<span class='col_word'>endif</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+	x = _x
+	y = _y
+	<span class='col_word'>if</span> suu =<span class='col_num'> 100</span> <span class='col_word'>then</span>
+		suu =<span class='col_num'> 0</span>
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; セルの状態を取得する</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : cellState</span>
+<span class='col_lbl'>*GetCellState</span>
+	cellState =<span class='col_num'> 0</span> 0<span class='col_num'> 0</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 1</span> <span class='col_word'>to</span><span class='col_num'> 8</span>
+		<span class='col_word'>for</span> cnt1 =<span class='col_num'> 1</span> <span class='col_word'>to</span><span class='col_num'> 8</span>
+			var0 = board[cnt0][cnt1]
+			cellState[var0] +<span class='col_num'> 1</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; 石を置く処理全般</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*PutPiece</span>
+	<span class='col_word'>if</span> suu ><span class='col_num'> 0</span> <span class='col_word'>then</span>  <span class='col_comm'>; 置くことが可能なら</span>
+		suu       =<span class='col_num'> 0</span>
+		flipCount =<span class='col_num'> 0</span>
+		passCount =<span class='col_num'> 0</span>
+		flip = TRUE
+		<span class='col_word'>sound</span> weapon00
+		<span class='col_word'>gosub</span> CheckCell     <span class='col_comm'>; 実際に置き</span>
+		<span class='col_word'>gosub</span> HideBoard    <span class='col_comm'>; 一度すべて消去し</span>
+		<span class='col_word'>gosub</span> ShowBoard    <span class='col_comm'>; 再描写</span>
+		<span class='col_word'>gosub</span> GetCellState <span class='col_comm'>; セルの状態を取得</span>
+		var0 = nextPlayer
+		<span class='col_word'>gosub</span> PlayerState
+	<span class='col_word'>else</span>
+		passCount +<span class='col_num'> 1</span>
+	<span class='col_word'>endif</span>
+	player <<span class='col_num'> 3</span> - player
+	isFirst = TRUE
+<span class='col_word'>return</span>
+<span class='col_comm'>; コンピュータ</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*ConputerTurn</span>
+	<span class='col_word'>if</span> PLAYER_COM[player] =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+		arg0 =<span class='col_num'> 0</span>
+		arg1 =<span class='col_num'> 0</span>
+		<span class='col_word'>gosub</span> CheckCellAll
+	<span class='col_word'>else</span> <span class='col_word'>if</span> PLAYER_COM[player] =<span class='col_num'> 2</span> <span class='col_word'>then</span>
+		arg0 =<span class='col_num'> 1</span>
+		arg1 =<span class='col_num'> 0</span>
+		<span class='col_word'>gosub</span> CheckCellAll
+	<span class='col_word'>else</span> <span class='col_word'>if</span> PLAYER_COM[player] =<span class='col_num'> 3</span> <span class='col_word'>then</span>
+		arg0 =<span class='col_num'> 2</span>
+		<span class='col_word'>if</span> cellState[player] <<span class='col_num'> 30</span> <span class='col_word'>then</span>
+			arg0 =<span class='col_num'> 1</span>
+		<span class='col_word'>endif</span>
+		arg1 =<span class='col_num'> 0</span>
+		<span class='col_word'>gosub</span> CheckCellAll
+	<span class='col_word'>else</span> <span class='col_word'>if</span> PLAYER_COM[player] =<span class='col_num'> 4</span> <span class='col_word'>then</span>
+		arg0 =<span class='col_num'> 0</span>
+		arg1 =<span class='col_num'> 1</span>
+		<span class='col_word'>gosub</span> CheckCellAll
+	<span class='col_word'>else</span> <span class='col_word'>if</span> PLAYER_COM[player] =<span class='col_num'> 5</span> <span class='col_word'>then</span>
+		arg0 =<span class='col_num'> 2</span>
+		<span class='col_word'>if</span> cellState[player] <<span class='col_num'> 30</span> <span class='col_word'>then</span>
+			arg0 =<span class='col_num'> 1</span>
+		<span class='col_word'>endif</span>
+		arg1 =<span class='col_num'> 1</span>
+		<span class='col_word'>gosub</span> CheckCellAll
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; プレイヤーの状態を表示</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*PlayerState</span>
+		<span class='col_word'>msg</span><span class='col_num'> 0</span>
+			<span class='col_var'>$PLAYER_NAME[var0]$</span>のターン
+			黒<span class='col_var'>$cellState[1]$</span> 白<span class='col_var'>$cellState[2]$</span>
+		.
+<span class='col_word'>return</span>
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX  描写  XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; ボードを描写する</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*ShowBoard</span>
+	<span class='col_word'>for</span> cnt0 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+		<span class='col_word'>for</span> cnt1 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+			var0 = board[cnt0][cnt1]
+			var0 < var0 * ( BOARD_ARY_MAX * BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt0 * ( BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt1
+			<span class='col_word'>paint</span> CELL[var0]
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; 全てのセルを消去する</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*HideBoard</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 2</span>
+		<span class='col_word'>for</span> cnt1 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+			<span class='col_word'>for</span> cnt2 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+				var0  < cnt0 * ( BOARD_ARY_MAX * BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt1 * ( BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt2
+				<span class='col_word'>erase</span> CELL[var0]
+			<span class='col_word'>endfor</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX  入力  XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; クリックしたセルを返す</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : (x,y) => 座標</span>
+<span class='col_comm'>; 〃     : ret0  => 1=クリックした</span>
+<span class='col_lbl'>*ClickCell</span>
+	<span class='col_word'>mouse</span> mx my mc
+	<span class='col_word'>gosub</span> MoveMouse
+	<span class='col_word'>if</span> ret0 = TRUE <span class='col_word'>then</span>
+		var0 < BOARD_POSX + CELL_SIZE /<span class='col_num'> 2</span>
+		var1 < BOARD_POSY + CELL_SIZE /<span class='col_num'> 2</span>
+		<span class='col_word'>if</span> mx > var0 <span class='col_word'>then</span>
+			<span class='col_word'>if</span> my > var1 <span class='col_word'>then</span>
+				<span class='col_word'>for</span> cnt0 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+					<span class='col_word'>for</span> cnt1 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+						posX0 < cnt0 * CELL_SPACE + BOARD_POSX
+						posY0 < cnt1 * CELL_SPACE + BOARD_POSY
+						posX1 < posX0 + ( CELL_SIZE /<span class='col_num'> 2</span> )
+						posY1 < posY0 + ( CELL_SIZE /<span class='col_num'> 2</span> )
+						<span class='col_word'>if</span> mx < posX1 <span class='col_word'>then</span>
+							<span class='col_word'>if</span> my < posY1 <span class='col_word'>then</span>
+								<span class='col_word'>locateCenter</span> MOUSE posX0 posY0
+								<span class='col_word'>paint</span>        MOUSE
+								ret0 =<span class='col_num'> 1</span>
+								x = cnt0
+								y = cnt1
+								<span class='col_word'>return</span>
+							<span class='col_word'>endif</span>
+						<span class='col_word'>endif</span>
+					<span class='col_word'>endfor</span>
+				<span class='col_word'>endfor</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endif</span>
+		<span class='col_word'>erase</span> MOUSE
+		ret0 =<span class='col_num'> 0</span>
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; マウス操作においてなんらかのアクションが起こるとTRUEを返す</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : ret0</span>
+<span class='col_lbl'>*MoveMouse</span>
+	<span class='col_word'>if</span> __mx1 != __mx1 <span class='col_word'>then</span>
+		<span class='col_word'>mouse</span> __mx1 __my1 __mc1
+	<span class='col_word'>endif</span>
+	<span class='col_word'>mouse</span> __mx2 __my2 __mc2
+	__var0 < ( __mx1 - __mx2 ) + ( __my1 - __my2 )
+	<span class='col_word'>if</span> __var0 !=<span class='col_num'> 0</span> <span class='col_word'>then</span>
+		__mx1 = undefined
+		ret0  = TRUE
+	<span class='col_word'>else</span> <span class='col_word'>if</span> __mc2 =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+		ret0  = TRUE
+	<span class='col_word'>else</span>
+		ret0 = FALSE
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX 初期化 XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; ボードを初期化する</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*Initialize</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 0</span> <span class='col_word'>to</span> BOARD_ARY_MAX
+		<span class='col_word'>for</span> cnt1 =<span class='col_num'> 0</span> <span class='col_word'>to</span> BOARD_ARY_MAX
+			board[cnt0][cnt1] =<span class='col_num'> 0</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+	board[4][5] =<span class='col_num'> 1</span>
+	board[5][4] =<span class='col_num'> 1</span>
+	board[4][4] =<span class='col_num'> 2</span>
+	board[5][5] =<span class='col_num'> 2</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX ロード XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_comm'>; 画像を読み込みついでに初期化する</span>
+<span class='col_comm'>; 引数   : void</span>
+<span class='col_comm'>; 戻り値 : void</span>
+<span class='col_lbl'>*LoadGraph</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 2</span>
+		fileName = USER_PATH
+		fileName + GRP_PIECE[cnt0]
+		<span class='col_word'>for</span> cnt1 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+			<span class='col_word'>for</span> cnt2 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+				var0  < cnt0 * ( BOARD_ARY_MAX * BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt1 * ( BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt2
+				layer < var0 + LAYER_CELL
+				<span class='col_word'>readyLoad</span> <span class='col_var'>$fileName$</span> CELL[var0] layer
+			<span class='col_word'>endfor</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+	fileName = USER_PATH
+	fileName + GRP_PIECE[3]
+	<span class='col_word'>readyLoad</span> <span class='col_var'>$fileName$</span> MOUSE LAYER_MOUSE
+	<span class='col_word'>startLoad</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 2</span>
+		<span class='col_word'>for</span> cnt1 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+			<span class='col_word'>for</span> cnt2 = BOARD_CELL_MIN <span class='col_word'>to</span> BOARD_CELL_MAX
+				var0 < cnt0 * ( BOARD_ARY_MAX * BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt1 * ( BOARD_ARY_MAX +<span class='col_num'> 1</span> ) + cnt2
+				posX < BOARD_POSX + cnt1 * CELL_SPACE
+				posY < BOARD_POSY + cnt2 * CELL_SPACE
+				<span class='col_word'>size</span>         CELL[var0] CELL_SIZE CELL_SIZE
+				<span class='col_word'>locateCenter</span> CELL[var0] posX      posY
+			<span class='col_word'>endfor</span>
+		<span class='col_word'>endfor</span>
+	<span class='col_word'>endfor</span>
+	<span class='col_word'>size</span> MOUSE CELL_SIZE CELL_SIZE
+<span class='col_word'>return</span>
+
+<span class='col_comm'>; XXXXXXXXXXXXXXXXXXXXX 自作モジュール XXXXXXXXXXXXXXXXXXX</span>
+<span class='col_lbl'>*ClickMapMenu</span>
+	<span class='col_comm'>; 選択肢の数をカウントする</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 0</span> <span class='col_word'>to</span> LOOPMAX
+		ClickPh[cnt0] < ( ClickPl[cnt0] -<span class='col_num'> 1</span> ) *<span class='col_num'> 25</span> +<span class='col_num'> 45</span>
+		<span class='col_word'>if</span> ClickMes[cnt0] = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+			ClickMax = cnt0
+			cnt0 = LOOPMAX
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endfor</span>
+	<span class='col_word'>gosub</span> PrintMsg
+	<span class='col_word'>clickmap</span> m0 ClickMax ClickPx ClickPy ClickPw ClickPh
+	<span class='col_word'>endclickmap</span>
+<span class='col_word'>return</span>
+
+<span class='col_lbl'>*onMoveMenu</span>
+	<span class='col_word'>gosub</span> PrintMsg
+<span class='col_word'>return</span>
+<span class='col_lbl'>*onOutMenu</span>
+	<span class='col_word'>gosub</span> PrintMsg
+<span class='col_word'>return</span>
+<span class='col_lbl'>*PrintMsg</span>
+	loop < ClickMax -<span class='col_num'> 1</span>
+	<span class='col_word'>if</span> MSG_MIN_ID != MSG_MIN_ID <span class='col_word'>then</span>
+		MSG_MIN_ID =<span class='col_num'> 2</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>for</span> cnt0 =<span class='col_num'> 0</span> <span class='col_word'>to</span> loop
+		CHAR_COL = arg000
+		BACK_COL = arg010
+		FRAM_COL = arg020
+		<span class='col_word'>if</span> m0 = cnt0 <span class='col_word'>then</span>
+			<span class='col_word'>if</span> arg001 = arg001 <span class='col_word'>then</span>
+				CHAR_COL = arg001
+			<span class='col_word'>endif</span>
+			<span class='col_word'>if</span> arg011 = arg011 <span class='col_word'>then</span>
+				BACK_COL = arg011
+			<span class='col_word'>endif</span>
+			<span class='col_word'>if</span> arg021 = arg021 <span class='col_word'>then</span>
+				FRAM_COL = arg021
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endif</span>
+		var0 < MSG_MIN_ID + cnt0
+		Pw < ClickPw[cnt0] -<span class='col_num'> 15</span>
+		<span class='col_word'>_msg</span> var0 ClickPx[cnt0] ClickPy[cnt0] Pw ClickPl[cnt0] CHAR_COL BACK_COL FRAM_COL left
+			<span class='col_var'>$ClickMes[cnt0]$</span>
+		<span class='col_word'>endtext</span>
+	<span class='col_word'>endfor</span>
+<span class='col_word'>return</span>
+<span class='col_comm'>;##########################################     EOP      #############################################</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

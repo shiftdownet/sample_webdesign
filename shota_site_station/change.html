@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>Shotaのツクアド講座 - ツクアドのスクリプトを見やすく加工するツール(仮) </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+</head>
+<body>
+<SCRIPT type="text/javascript">
+<!--
+		var oldStr = string();
+		
+		function changeColor(id,color){
+
+			if (oldStr!=color){
+				oldStr = color;
+				if(id=="back"){
+					document.getElementById(id).style.backgroundColor=color;
+				}else{
+					document.getElementById(id).style.color=color;
+				}
+			}
+		}
+//-->
+</SCRIPT>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="./index.html" class="menuleft">Top</a></li>
+				<li><a href="./info.html">Information</a></li>
+				<li><a href="./tukuado.html" class="selected">Tukuado</a></li>
+				<li><a href="./comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content">
+			<div id="middle">
+				<span class="category"><h2>ツクアドのスクリプトを見やすく加工するツール(仮)</h2></span>
+				<div class="document">
+					試作品なので不具合があるかもしれません。<br />
+					ブラウザのページソースを表示する機能を使って加工後のソースをコピーし使用してください。<br />
+					加工後のソースは私の力量不足のため非常に汚いですが、それでも構わないというかたのみご使用ください。<br />
+					
+					<form method="POST" action="change.php">
+						<table border="1" id="back" style="background-color:#fffbf0">
+								<td><span >背景色</span></td>
+								<td><span style="color:#000000" id="normal">通常文字</span></td>
+								<td><span style="color:#0066cc" id="label">ラベル</span></td>
+								<td><span style="color:#990000" id="string">文字列</span></td>
+								<td><span style="color:#ff0000" id="number">数列</span></td>
+								<td><span style="color:#006600" id="comment">コメント</span></td>
+								<td><span style="color:#0000ff" id="word">予約語</span></td>
+								<td><span style="color:#ff6600" id="value">変数表示</span></td>
+							</tr>
+							<tr>
+								<td><input name="back"    size="10" type="text" value="#fffbf0" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="normal"  size="10" type="text" value="#000000" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="label"   size="10" type="text" value="#0066cc" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="string"  size="10" type="text" value="#990000" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="number"  size="10" type="text" value="#ff0000" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="comment" size="10" type="text" value="#006600" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="word"    size="10" type="text" value="#0000ff" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+								<td><input name="value"   size="10" type="text" value="#ff6600" onkeyup="changeColor(this.name,this.value);" onchange="changeColor(this.name,this.value);"></td>
+							</tr>
+							<tr>
+								<td colspan="8">
+									<div style="text-align:center;">スクリプト</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="8">
+									<textarea name="script" cols="80px" rows="5"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="8">
+									<div style="text-align:center;"><input type="submit" value="加　工"></div>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+	
+	.script{
+		width:90%;
+		margin-left:120px;
+		width:600px;
+	}
+
+	.script2{
+		width:100%;
+	}
+
+	.spt_menu{
+		font-size: 12px;
+		list-style-type: none;
+		height: 20px;
+	}
+	.spt_menu li{
+		line-height: 18px;
+		display: inline;
+	}
+	.spt_menu li a{
+		/* リンクをブロック要素にする */
+		display: block;
+		float: left;
+		padding:0px 5px;
+		margin:0px 2px 0px 2px;
+	}
+
+	.spt_menu li a:hover{
+		border-top   : solid 1px #cccccc;
+		border-right : solid 1px #333333;
+		border-left  : solid 1px #cccccc;
+		border-bottom: solid 1px #333333;
+		line-height: 16px;
+		margin:1px;
+	}
+	.spt_menu li a:active{
+		border-top   : solid 1px #333333;
+		border-right : solid 1px #cccccc;
+		border-left  : solid 1px #333333;
+		border-bottom: solid 1px #cccccc;
+		line-height: 16px;
+		margin:1px !important;
+	}
+	.spt_selected{
+		border-top   : solid 1px #333333;
+		border-right : solid 1px #cccccc;
+		border-left  : solid 1px #333333;
+		border-bottom: solid 1px #cccccc;
+		line-height: 16px;
+		margin:1px !important;
+	}
+
+
+	.spt_line{
+		float:left;
+		text-align:right;
+		width:5%;
+		padding: 3px 3px;
+
+	}
+	.spt_source{
+		float:right;
+		width:92%;
+		padding: 3px 3px;
+	}
+	
+

@@ -1,0 +1,261 @@
+<html>
+<head>
+	<title>Shotaのツクアド講座 - ツクアド講座 </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.js" />
+	<script type="text/javascript" src="../js/jquery.cookie.js" />
+	<script type="text/javascript" src="../js/cookie.js" />
+	<script type="text/javascript">
+		get = CookieLoad('cssmode');
+		document.write("<link rel=\"stylesheet\" href=\"../css/spt_style"+get+".css\" type=\"text/css\" />");
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html" class="menuleft">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html"  class="selected">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content">
+			<div id="middle">
+				<span class="category"><h3><a name="p00">文章</a></h3></span>
+				<div class="indent3">
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="text_msg">文章表示 - text(テキスト),msg(メッセージ)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+text(またはmsg)
+	表示したい文章(何行でも可能)
+endtext(または「.」)
+</pre>
+<pre>
+text(またはmsg) 番号
+	表示したい文章(何行でも可能)
+endtext(または「.」)
+</pre>
+<pre>
+text(またはmsg) 番号 X座標 Y座標 横幅 行数 文字色 背景色 枠線色 配置
+	表示したい文章(何行でも可能)
+endtext(または「.」)
+</pre>
+<div class="mdocument">
+	「text」の次の行から「endtext」の行の前までを表示し、クリックされるまで待つ。<br />
+	「msg」の次の行から「msgtext」の行の前までを表示する。クリック待ちはしない。
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	半角の「,」「%」「&」「|」等は全角に変換されます。
+	また、一部の文字は表示されないことがあります
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">行数</span>
+	<div class="prm_exp">
+		表示する行数を指定します。<br />
+		省略した場合、デフォルトでは3行です。<br />
+		0を指定すると自動的に行数を指定します。<br />
+	</div>
+	<span class="bold">番号</span>
+	<div class="prm_exp">
+		1～9の番号を指定します。<br />
+		通常のtextとあわせて最大10個まで表示可能です。<br />
+		1～9の範囲外に指定すると1とみなされます。<br />
+	</div>
+	<span class="bold">X座標,Y座標,横幅</span>
+	<div class="prm_exp">
+		画面左上が(0,0)で右下に向かって正となります。<br />
+		横：グリッドの目盛り+275、縦：グリッドの目盛り+200<br />
+		しかし、コマンドの前に「_(アンダースコア)」をつけるとグリッドのメモリと一致します。<br />
+		例：_text　_msg<br />
+		横幅は指定した値より15ほど大きくなります。
+	</div>
+	<span class="bold">文字色 背景色 枠線色</span>
+	<div class="prm_exp">
+		16進数6桁で指定します。<br />
+		変数の場合は10進数で指定します。<br />
+		背景色または枠色に-1を指定すると表示しません。<br />
+	</div>
+	<span class="bold">配置</span>
+	<div class="prm_exp">
+		「center」「left」「right」のどれかを指定します。<br />
+		center：中央に表示します。<br />
+		left:左寄せで表示します。<br />
+		right:右寄せで表示します。<br />
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">通常の方法で文章を表示</div>
+<pre>
+text
+	こんにちは。
+	今日の天気はいかがでしょう。
+endtext
+</pre>
+<div class="mdocument">行数を指定して文章を表示</div>
+<pre>
+text 2
+	こんにちは。
+	今日の天気はいかがでしょう。
+endtext
+</pre>
+<div class="mdocument">複数のパラメータを指定して文章を表示</div>
+<pre>
+text 1 0 0 250 2 ffffff 000000 ffffff left
+	こんにちは。
+	今日の天気はいかがでしょう。
+endtext
+</pre>
+<div class="mdocument">グリッドのメモリと一致する方法で表示</div>
+<pre>
+_text 1 0 0 250 2 ffffff 000000 ffffff left
+	こんにちは。
+	今日の天気はいかがでしょう。
+endtext
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="clear">文章消去 - clear(クリア)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+clear 番号
+</pre>
+<div class="mdocument">
+	指定した番号のtextやmsgを消去する。
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">番号</span>
+	<div class="prm_exp">
+		消去するテキスト番号を指定します。<br />
+		値は0～9までの値が指定できます。(0は通常のテキストです。)<br />
+		範囲外の値を指定した場合すべて消去します。<br />
+		パラメータを省略した場合もすべて消去します。<br />
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">表示したテキストを消去</div>
+<pre>
+テキストを表示します。
+msg 1 0 0 200 2 ffffff 000000 ffffff left
+	text番号1
+endtext
+msg 2 0 100 200 2 ffffff 000000 ffffff left
+	text番号2
+endtext
+msg 3 0 200 200 2 ffffff 000000 ffffff left
+	text番号3
+endtext
+番号1を消去します。
+clear 1
+続いて全てのテキストを消去します。
+clear
+完了しました。
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="shake">文章振動 - shake(シェイク)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+shake 番号
+</pre>
+<div class="mdocument">
+	指定した番号のtextやmsgを振動する。
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">番号</span>
+	<div class="prm_exp">
+		振動するテキスト番号を指定します。<br />
+		値は0～9までの値が指定できます。(0は通常のテキストです。)<br />
+		範囲外の値を指定した場合すべて振動します。<br />
+		パラメータを省略した場合もすべて振動します。<br />
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">表示したテキストを振動</div>
+<pre>
+テキストを表示します。
+msg 1 0 0 200 2 ffffff 000000 ffffff left
+	text番号1
+endtext
+msg 2 0 100 200 2 ffffff 000000 ffffff left
+	text番号2
+endtext
+msg 3 0 200 200 2 ffffff 000000 ffffff left
+	text番号3
+endtext
+番号1を振動します。
+shake 1
+続いて全てのテキストを振動します。
+shake
+msg
+	完了しました。
+.
+shake 0
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="comment">コメント</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+; 文章
+</pre>
+<div class="mdocument">
+	「;(セミコロン)」のうしろに何を書いても無視される。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">コメント文の例</div>
+<pre>
+; コメント文はどこでもかけます。
+text ; 命令の後ろでも書けます。
+	こんにちは。 ; 命令の中でも書けます。
+endtext
+</pre>
+</div>
+				</div>
+			</div>
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

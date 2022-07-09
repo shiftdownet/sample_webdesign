@@ -1,0 +1,498 @@
+<html>
+<head>
+	<title>Shotaのツクアド講座</title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta name="ROBOTS" content="ALL" />
+	<meta name="description" content="シフトアップネットのコンテンツであるツクローアドベンチャーの解説サイトです。" />
+	<meta name="keywords"    content="シフトアップネット,ツクアド,ツクアド2,ツクローアドベンチャー,ツクローアドベンチャー2,ゲーム,ゲーム作成,プログラミング,プログラム,FLASH,RPG,Shotaのツクアド講座" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script language="JavaScript" src="../js/cookie.js"></script>
+	<script type="text/javascript" />
+		$.cookie("cssmode",5);
+		get = $.cookie("cssmode");
+		document.write(get);
+		
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+				<li><a href="../debug.html" class="selected">Test and Debug</a></li>
+			</ul>
+		</div>
+		<div id="main-content">
+			<div id="middle">
+				<div id="menu-box2">
+					<ul id="menu2">
+						<script type="text/javascript" />
+
+		$.cookie('cssmode',5,{expires:30,path:'/'});
+		get = $.cookie('cssmode');
+		document.write($.cookie('cssmode'));
+		
+
+							var ary = new Array("","","","");
+							ary[get] = " class=\"selected2\"";
+							document.write("<li><a href=\"./?mode=0\" "+ary[0]+">サクラエディタ風</a></li>");
+							document.write("<li><a href=\"./?mode=1\" "+ary[1]+">PHPエディタ風</a></li>");
+							document.write("<li><a href=\"./?mode=2\" "+ary[2]+">HSPスクリプトエディタ風</a></li>");
+							document.write("<li><a href=\"./?mode=3\" "+ary[3]+">スタイル無し</a></li>");
+						</script>
+					</ul>
+				</div>
+<!-- ------------------------------------------------------------------------------- -->
+					<div class="script">
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+
+
+<span class='col_comm'>; 概要説明</span>
+<span class='col_comm'>; このスクリプトはtext命令を使ったメニューを簡単に作ってしまうツールです。</span>
+
+
+<span class='col_comm'>; 基本的な使い方</span>
+<span class='col_comm'>; mstrを定義する(配列) 最後は必ず-1</span>
+<span class='col_comm'>; サブルーチンTxtMenuを呼び出す</span>
+<span class='col_comm'>; 選んだメニュー番号はret0に代入されます。(キャンセルされた場合は-1)</span>
+mstr  = <span class='col_str'>"選択肢A"</span>,<span class='col_str'>"選択肢B"</span>,<span class='col_str'>"選択肢C"</span>,<span class='col_str'>"選択肢D"</span>,<span class='col_str'>"選択肢E"</span>,<span class='col_str'>"選択肢F"</span>,<span class='col_str'>"-1"</span>
+<span class='col_word'>gosub</span> TxtMenu
+選択したのは<span class='col_var'>$ret0$</span>番目です。
+<span class='col_word'>wait</span><span class='col_num'> 24</span>
+<span class='col_comm'>; これだけです。</span>
+<span class='col_comm'>; また様々なオプションをつけることも可能です。</span>
+<span class='col_comm'>; mrowf : 一度に表示するメニューの数を指定できます。</span>
+mrowf =<span class='col_num'> 3</span>
+mstr  = <span class='col_str'>"選択肢A"</span>,<span class='col_str'>"選択肢B"</span>,<span class='col_str'>"選択肢C"</span>,<span class='col_str'>"選択肢D"</span>,<span class='col_str'>"選択肢E"</span>,<span class='col_str'>"選択肢F"</span>,<span class='col_str'>"-1"</span>
+<span class='col_word'>gosub</span> TxtMenu
+選択したのは<span class='col_var'>$ret0$</span>番目です。
+<span class='col_word'>wait</span><span class='col_num'> 24</span>
+<span class='col_comm'>; また色の設定や説明文の表示も可能です。</span>
+mrowf  =<span class='col_num'> 4</span>
+mcol1  =<span class='col_num'> 1175057</span>
+mcol3  =<span class='col_num'> 1175057</span>
+mplux  =<span class='col_num'> 0</span>
+mexpf  =<span class='col_num'> 1</span>
+mstr   = <span class='col_str'>"選択肢A"</span>,<span class='col_str'>"選択肢B"</span>,<span class='col_str'>"選択肢C"</span>,<span class='col_str'>"選択肢D"</span>,<span class='col_str'>"選択肢E"</span>,<span class='col_str'>"選択肢F"</span>,<span class='col_str'>"-1"</span>
+mexp   = <span class='col_str'>"説明文A"</span>,<span class='col_str'>"説明文B"</span>,<span class='col_str'>"説明文C"</span>,<span class='col_str'>"説明文D"</span>,<span class='col_str'>"説明文E"</span>,<span class='col_str'>"説明文F"</span>,<span class='col_str'>"-1"</span>
+<span class='col_word'>gosub</span> TxtMenu
+選択したのは<span class='col_var'>$ret0$</span>番目です。
+<span class='col_word'>wait</span><span class='col_num'> 24</span>
+
+<span class='col_comm'>; 他にも沢山のオプション引数があります。</span>
+
+<span class='col_comm'>; 変数名 :           説明               :   初期値</span>
+<span class='col_comm'>; mmsid  : TEXT番号の最小値             :          2</span>
+<span class='col_comm'>; mposx  : 表示X座標                    :         20</span>
+<span class='col_comm'>; mposy  : 表示Y座標                    :         20</span>
+<span class='col_comm'>; mposh  : 表示する間隔                 :         43</span>
+<span class='col_comm'>; mposw  : TEXTの横幅                   :        150</span>
+<span class='col_comm'>; mrowf  : 一度に表示できるメニュー数   : メニュー数</span>
+<span class='col_comm'>; mplux  : 選択時のメニューの出っ張り度 :         30</span>
+<span class='col_comm'>; mcol0  : 文字色                       :   16777215</span>
+<span class='col_comm'>; mcol1  : 選択時の背景色               :         -1</span>
+<span class='col_comm'>; mcol2  : 非選択時の背景色             :         -1</span>
+<span class='col_comm'>; mcol3  : 枠の色                       :   16777215</span>
+<span class='col_comm'>; mloop  : 上下にループするか 1ならする :          1</span>
+<span class='col_comm'>; mexpf  : 説明文の表示するか 1ならする :          0</span>
+<span class='col_comm'>; mstr   : 表示する選択肢               :     未定義</span>
+<span class='col_comm'>; mexp   : 表示する説明文               :     未定義</span>
+
+<span class='col_word'>end</span>
+
+<span class='col_lbl'>*TxtMenu</span>
+	_direct_9431 = <span class='col_str'>"TxtMenu"</span> <span class='col_comm'>; 処理中のディレクトリ名</span>
+	<span class='col_comm'>; 他ユーザとの変数名の重複を防ぐため変数名の最後にはIDをつけています。</span>
+	_fix0_9431 =<span class='col_num'> 99</span> <span class='col_comm'>; ループ最大数</span>
+	_max0_9431 = <span class='col_num'> 0</span> <span class='col_comm'>;メニュー最大値</span>
+	_min0_9431 = <span class='col_num'> 0</span><span class='col_comm'>; メニュー最小値</span>
+	_max1_9431 = <span class='col_num'> 0</span><span class='col_comm'>;表示番号最大値</span>
+	_min1_9431 = <span class='col_num'> 0</span> <span class='col_comm'>; 表示番号最小値</span>
+	_menu_9431 = <span class='col_num'> 0</span> <span class='col_comm'>; メニュー値</span>
+	<span class='col_comm'>; メニュー数取得</span>
+	<span class='col_word'>for</span> _cnt0_9431 =<span class='col_num'> 0</span> <span class='col_word'>to</span> _fix0_9431
+		<span class='col_word'>if</span> mstr[_cnt0_9431] = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+			_max0_9431 < _cnt0_9431 -<span class='col_num'> 1</span>
+			_cnt0_9431 = _fix0_9431 <span class='col_comm'>; ループを抜ける</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endfor</span>
+	<span class='col_comm'>; 未定義時の変数セット</span>
+	<span class='col_word'>if</span> mmsid != mmsid <span class='col_word'>then</span> <span class='col_comm'>; msg番号</span>
+		mmsid =<span class='col_num'> 2</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mposx != mposx <span class='col_word'>then</span> <span class='col_comm'>; X座標</span>
+		mposx =<span class='col_num'> 20</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mposy != mposy <span class='col_word'>then</span> <span class='col_comm'>; Y座標</span>
+		mposy =<span class='col_num'> 20</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mposh != mposh <span class='col_word'>then</span> <span class='col_comm'>; 間隔</span>
+		mposh =<span class='col_num'> 43</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mposw != mposw <span class='col_word'>then</span> <span class='col_comm'>; 横幅</span>
+		mposw =<span class='col_num'> 150</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mrowf != mrowf <span class='col_word'>then</span> <span class='col_comm'>; 表示数</span>
+		mrowf = _max0_9431
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mplux != mplux <span class='col_word'>then</span> <span class='col_comm'>; ずらす</span>
+		mplux =<span class='col_num'> 30</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mcol0 != mcol0 <span class='col_word'>then</span> <span class='col_comm'>; 文字色</span>
+		mcol0 =<span class='col_num'> 16777215</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mcol1 != mcol1 <span class='col_word'>then</span> <span class='col_comm'>; 選択時の背景色</span>
+		mcol1 = <span class='col_num'>-1</span><span class='col_comm'>;1175057</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mcol2 != mcol2 <span class='col_word'>then</span> <span class='col_comm'>; 非選択時の背景色</span>
+		mcol2 = <span class='col_num'>-1</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mcol3 != mcol3 <span class='col_word'>then</span> <span class='col_comm'>; 枠の色</span>
+		mcol3 =<span class='col_num'> 16777215</span><span class='col_comm'>;1175057</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mloop != mloop <span class='col_word'>then</span> <span class='col_comm'>; 上下にループ</span>
+		mloop =<span class='col_num'> 1</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> mexpf != mexpf <span class='col_word'>then</span> <span class='col_comm'>; 説明文</span>
+		mexpf =<span class='col_num'> 0</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>for</span> _ever_9431 =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 1</span> <span class='col_word'>step</span><span class='col_num'> 0</span>
+		_max1_9431 < _min1_9431 + mrowf
+		<span class='col_word'>if</span> mexpf =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+			<span class='col_word'>msg</span><span class='col_num'> 0</span>
+				<span class='col_var'>$mexp[_menu_9431]$</span>
+			<span class='col_word'>endtext</span>
+		<span class='col_word'>endif</span>
+		<span class='col_word'>for</span> _cnt0_9431 = _min1_9431 <span class='col_word'>to</span> _max1_9431
+			_var0_9431 < mmsid + _cnt0_9431
+			_posy_9431 < mposy + mposh * _cnt0_9431 - _min1_9431 * mposh
+			<span class='col_word'>if</span> _cnt0_9431 = _menu_9431 <span class='col_word'>then</span>
+				_col_9431 = mcol1
+				_posx_9431 < mposx + mplux
+			<span class='col_word'>else</span>
+				_col_9431 = mcol2
+				_posx_9431 = mposx
+			<span class='col_word'>endif</span>
+			<span class='col_word'>msg</span> _var0_9431 _posx_9431 _posy_9431 mposw<span class='col_num'> 0</span> mcol0 _col_9431 mcol3 left
+				<span class='col_var'>$mstr[_cnt0_9431]$</span>
+			<span class='col_word'>endtext</span>
+		<span class='col_word'>endfor</span>
+		<span class='col_word'>wait</span><span class='col_num'> 1</span>
+		<span class='col_word'>for</span> _cnt0_9431 =<span class='col_num'> 0</span> <span class='col_word'>to</span> _max0_9431
+			_var0_9431 < mmsid + _cnt0_9431
+			<span class='col_word'>clear</span> _var0_9431
+		<span class='col_word'>endfor</span>
+		<span class='col_word'>key</span> _KEY_9431
+		<span class='col_word'>if</span> _KEY_9431 = _key0_9431 <span class='col_word'>then</span>
+			_menu_9431 -<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> _menu_9431 <=<span class='col_num'> 0</span> <span class='col_word'>then</span>
+				<span class='col_word'>if</span> mloop =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+					_menu_9431 =<span class='col_num'> 0</span>
+				<span class='col_word'>else</span>
+					<span class='col_word'>if</span> _menu_9431 <<span class='col_num'> 0</span> <span class='col_word'>then</span>
+						_menu_9431 = _max0_9431
+						_min1_9431 < _max0_9431 - mrowf
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>else</span> <span class='col_word'>if</span> _menu_9431 <= _min1_9431 <span class='col_word'>then</span>
+				<span class='col_word'>if</span> _min0_9431 <= _min1_9431 <span class='col_word'>then</span>
+					_min1_9431 -<span class='col_num'> 1</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span> <span class='col_word'>if</span> _KEY_9431 = _key1_9431 <span class='col_word'>then</span>
+			_menu_9431 +<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> _menu_9431 >= _max0_9431 <span class='col_word'>then</span>
+				<span class='col_word'>if</span> mloop =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+					_menu_9431 = _max0_9431
+				<span class='col_word'>else</span>
+					<span class='col_word'>if</span> _menu_9431 > _max0_9431 <span class='col_word'>then</span>
+						_menu_9431 =<span class='col_num'> 0</span>
+						_min1_9431 =<span class='col_num'> 0</span>
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>else</span> <span class='col_word'>if</span> _menu_9431 >= _max1_9431 <span class='col_word'>then</span>
+				<span class='col_word'>if</span> _max0_9431 >= _max1_9431 <span class='col_word'>then</span>
+					_min1_9431 +<span class='col_num'> 1</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span> <span class='col_word'>if</span> _KEY_9431 = _key2_9431 <span class='col_word'>then</span>
+			<span class='col_word'>goto</span> UndefRet_9431
+		<span class='col_word'>else</span> <span class='col_word'>if</span> _KEY_9431 = _key3_9431 <span class='col_word'>then</span>
+			_menu_9431 = <span class='col_num'>-1</span>
+			<span class='col_word'>goto</span> UndefRet_9431
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endfor</span>
+<span class='col_lbl'>*UndefRet_9431</span>
+	mmsid  = undefined
+	mposx  = undefined
+	mposy  = undefined
+	mposh  = undefined
+	mposw  = undefined
+	mrowf  = undefined
+	mdire  = undefined
+	mplux  = undefined
+	mcol0  = undefined
+	mcol1  = undefined
+	mcol2  = undefined
+	mcol3  = undefined
+	mloop  = undefined
+	mexpf  = undefined
+	ret0   = _menu_9431
+<span class='col_word'>return</span>
+<span class='col_comm'>; デバッグ用サブルーチン</span>
+<span class='col_lbl'>*Debug_9431</span>
+	<span class='col_word'>if</span> mrowf > _max0_9431 <span class='col_word'>then</span>
+		<span class='col_word'>text</span><span class='col_num'> 0</span>
+			エラーが発生しました。
+			エラー関数:<span class='col_var'>$_direct_9431$</span>
+			mrowfの値をmstrの要素数以下に設定して下さい。
+		<span class='col_word'>endtext</span>
+		<span class='col_word'>end</span>
+	<span class='col_word'>else</span> <span class='col_word'>if</span> undefined = undefined <span class='col_word'>then</span>
+		<span class='col_word'>text</span><span class='col_num'> 0</span>
+			エラーが発生しました。
+			エラー関数:<span class='col_var'>$_direct_9431$</span>
+			undefinedが変数として定義されています。
+		<span class='col_word'>endtext</span>
+		<span class='col_word'>end</span>
+	<span class='col_word'>endif</span>
+<span class='col_word'>return</span>
+</pre>
+			</div>
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<a href="./test.html">test page for debug</a><br />
+			<a href="./script.php">script print</a>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

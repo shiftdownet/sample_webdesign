@@ -1,0 +1,86 @@
+
+makeArrays 5
+	ab
+	a
+	df
+endMakeArrays
+
+readArrays #TEST
+	ab
+	a
+	df
+endReadArrays
+
+makeReadArrays 5 #a
+	ab
+	a
+	df
+endMakeReadArrays
+
+; 関数のオーバーロードができる
+; オーバーロード→引数の数が違えば同じ名前の関数を定義できる機能
+deffunc Ave(#var0,#var1)
+deffunc Ave(#var0,#var1,#var2)
+
+deffunc showVar(#var0)
+
+; 関数の呼び方
+; var3までは
+; call 関数名(引数)
+; だったが、var4からは
+; &関数名(引数)
+; となった。
+
+; こんなこともできる。
+; ただ、textやmsgの中には書けないので注意
+10,20の平均値は$&Ave(10,20)$です。
+10,20,30の平均値は$&Ave(10,20,30)$です。
+
+; 一度呼んだ関数の戻り値は、「関数名_引数の数」で得ることもできる
+; こっちはただの変数なのでtextの中に書くことができる
+text
+	もう一度いいます。
+	10,20の平均値は$Ave_2$です。
+	10,20,30の平均値は$Ave_3$です。
+endtext
+
+; if文に含めることもできる
+if &Ave(10,20) = 15 then
+	そりゃ10と20の平均値は15ですよね。
+else
+	そんなバカな。
+endif
+
+; 計算式にももちろん含めることができる。
+var < &Ave(10,20) + &Ave(10,20,30)
+両方の平均値を足すと$var$です。
+
+因みに10+20+30は
+; 関数の引数に計算式を含めることも可能
+&showVar(10 + 20 + 30)
+ですね。
+
+
+end
+
+; 関数の実態
+; 関数はfuncで始め、endfuncで終わる。
+func Ave(#var0,#var1)
+	#ret < ( #var0 + #var1 ) / 2
+endfunc #ret ; endfuncの後に戻り値を書ける
+
+func Ave(#var0,#var1,#var2)
+	#ret < #var0 + #var1 + #var2
+	return #ret / 3 ; returnの後にも書ける。
+endfunc
+
+func showVar(#var0)
+	text
+		$#var0$
+	endtext
+endfunc
+
+
+
+
+

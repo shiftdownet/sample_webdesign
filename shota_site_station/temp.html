@@ -1,0 +1,43 @@
+<h2 class="statement"><a name="text_msg">text(テキスト),msg(メッセージ)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+text(またはmsg)
+	表示したい文章(何行でも可能)
+endtext(または「.」)
+</pre>
+<div class="mdocument">
+	「text」の次の行から「endtext」の行の前までを表示し、クリックされるまで待つ。<br />
+	「msg」の次の行から「msgtext」の行の前までを表示する。クリック待ちはしない。
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	半角の「,」「%」「&」「|」等は全角に変換されます。
+	また、一部の文字は表示されないことがあります
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">行数</span>
+	<div class="prm_exp">
+		表示する行数を指定します。<br />
+		省略した場合、デフォルトでは3行です。<br />
+		0を指定すると自動的に行数を指定します。<br />
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">通常の方法で文章を表示</div>
+<pre>
+text
+	こんにちは。
+	今日の天気はいかがでしょう。
+endtext
+</pre>
+</div>

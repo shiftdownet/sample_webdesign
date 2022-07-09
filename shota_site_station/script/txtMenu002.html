@@ -1,0 +1,678 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<title>Shotaのツクアド講座 - ツクアド講座 </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/cookie.js"></script>
+	<script type="text/javascript">
+		get = CookieLoad('cssmode');
+		document.write("<link rel=\"stylesheet\" href=\"../css/spt_style"+get+".css\" type=\"text/css\" />");
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html" class="menuleft">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html"  class="selected">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content2">
+<!-- source -->
+					<div class="script2">
+						<div class="spt_menu">
+							<script type="text/javascript">
+								var ary = new Array("","","","","");
+								ary[get] = " class=\"spt_selected\" ";
+								document.write("<li><a onClick=\"$.cookie('cssmode',0);location.replace(location.pathname);\" "+ary[0]+">サクラエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',1);location.replace(location.pathname);\" "+ary[1]+">PHPエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',2);location.replace(location.pathname);\" "+ary[2]+">HSPスクリプトエディタ</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',3);location.replace(location.pathname);\" "+ary[3]+">メモ帳</a></li>");
+								document.write("<li><a onClick=\"$.cookie('cssmode',4);location.replace(location.pathname);\" "+ary[4]+">ノンスタイル</a></li>");
+							</script>
+						</div>
+						<div class="spt_line">
+<!-- line start -->
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+</pre>
+<!-- line end -->
+						</div>
+						<div class="spt_source">
+<!-- source start -->
+<pre>
+
+<span class='col_comm'>; このスクリプトは自由に改造して使用してください  by Shota(ID:0000009431)</span>
+
+<span class='col_word'>makeArray</span> txtMenu<span class='col_num'> 30</span> <span class='col_comm'>; txtMenuの引数を入れる配列</span>
+<span class='col_word'>makeArray</span> txtStr <span class='col_num'> 50</span> <span class='col_comm'>; 選択肢の最大数だけ定義</span>
+<span class='col_word'>makeArray</span> txtExp <span class='col_num'> 50</span> <span class='col_comm'>; 説明文の最大数だけ定義</span>
+
+
+<span class='col_comm'>;-------------------------------------------------------------------------------</span>
+<span class='col_comm'>; 基本的な使い方</span>
+<span class='col_comm'>; txtStrを定義する(配列) 最後は必ず-1</span>
+<span class='col_comm'>; サブルーチンTxtMenuを呼び出す</span>
+<span class='col_comm'>; 選んだメニュー番号はret0に代入されます。(キャンセルされた場合は-1)</span>
+txtStr = <span class='col_str'>"a"</span> <span class='col_str'>"b"</span> <span class='col_str'>"c"</span> <span class='col_str'>"d"</span> <span class='col_str'>"e"</span> <span class='col_str'>"-1"</span>
+<span class='col_word'>gosub</span> TxtMenu
+<span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+	キャンセルしました。
+<span class='col_word'>else</span>
+	<span class='col_var'>$txtStr[ret0]$</span>を選択しました。
+<span class='col_word'>endif</span>
+<span class='col_word'>wait</span><span class='col_num'> 5</span>
+<span class='col_comm'>;-------------------------------------------------------------------------------</span>
+<span class='col_comm'>; さらにオプションをつけることも可能。(オプションについては68行目からを参照)</span>
+txtStr = <span class='col_str'>"a"</span> <span class='col_str'>"b"</span> <span class='col_str'>"c"</span> <span class='col_str'>"d"</span> <span class='col_str'>"e"</span> <span class='col_str'>"f"</span> <span class='col_str'>"g"</span> <span class='col_str'>"-1"</span> <span class='col_comm'>; 表示する選択肢</span>
+txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-240</span> <span class='col_num'>-190</span> undefined<span class='col_num'> 100</span> 3<span class='col_num'> 0</span> 255 undefined undefined<span class='col_num'> 255</span> <span class='col_comm'>; 自動調整してほしいところはundefined</span>
+txtMenu[15] =<span class='col_num'> 1</span> <span class='col_comm'>; 要素がだいぶ離れているところは個々に代入できる</span>
+txtMenu[20] =<span class='col_num'> 1</span>
+<span class='col_word'>gosub</span> TxtMenu<span class='col_comm'>; 実際にTxtMenuを呼ぶ</span>
+<span class='col_comm'>; キャンセルなら-1、選んだならメニューの上から数えた時の番号を返す</span>
+<span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+	キャンセルしました。
+<span class='col_word'>else</span>
+	<span class='col_var'>$txtStr[ret0]$</span>を選択しました。
+<span class='col_word'>endif</span>
+<span class='col_word'>wait</span><span class='col_num'> 5</span>
+<span class='col_comm'>;-------------------------------------------------------------------------------</span>
+<span class='col_word'>clear</span>
+<span class='col_word'>for</span> i =<span class='col_num'> 0</span> <span class='col_word'>to</span><span class='col_num'> 40</span>
+	txtStr[i] = i
+<span class='col_word'>endfor</span>
+txtStr[i] = <span class='col_num'>-1</span> <span class='col_comm'>; 最後は-1</span>
+txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-250</span> <span class='col_num'>-190</span> 15<span class='col_num'> 50</span> 8<span class='col_num'> 0</span> 16777215<span class='col_num'> 255</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span>
+txtMenu[15] =<span class='col_num'> 1</span>
+<span class='col_word'>gosub</span> TxtMenu
+<span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+	キャンセルしました。
+<span class='col_word'>else</span>
+	<span class='col_var'>$txtStr[ret0]$</span>を選択しました。
+<span class='col_word'>endif</span>
+<span class='col_word'>wait</span><span class='col_num'> 5</span>
+<span class='col_comm'>;-------------------------------------------------------------------------------</span>
+<span class='col_word'>clear</span>
+txtStr = <span class='col_str'>"こうげき"</span> <span class='col_str'>"じゅもん"</span> <span class='col_str'>"とくぎ"</span> <span class='col_str'>"アイテム"</span> <span class='col_str'>"にげる"</span> <span class='col_str'>"-1"</span>
+txtMenu =<span class='col_num'> 2</span> <span class='col_num'>-250</span> <span class='col_num'>-190</span> 18<span class='col_num'> 120</span> 3<span class='col_num'> 0</span> 16777215<span class='col_num'> 255</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span> <span class='col_num'>-1</span>
+txtMenu[15] =<span class='col_num'> 1</span>
+<span class='col_word'>_msg</span><span class='col_num'> 1</span> txtMenu[1] txtMenu[2] txtMenu[4] txtMenu[5] <span class='col_num'>-1</span> <span class='col_num'>-1</span> ffffff left
+<span class='col_word'>endtext</span>
+<span class='col_word'>gosub</span> TxtMenu
+<span class='col_word'>clear</span><span class='col_num'> 1</span>
+<span class='col_word'>if</span> ret0 = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+	キャンセルしました。
+<span class='col_word'>else</span>
+	<span class='col_var'>$txtStr[ret0]$</span>を選択しました。
+<span class='col_word'>endif</span>
+<span class='col_word'>wait</span><span class='col_num'> 5</span>
+<span class='col_comm'>;-------------------------------------------------------------------------------</span>
+<span class='col_word'>end</span>
+<span class='col_comm'>; 変数名      : 説明                    : 初期値     : 備考</span>
+<span class='col_comm'>; txtMenu[0]  : text番号の始まりの値    : 1          : </span>
+<span class='col_comm'>; txtMenu[1]  : 表示X座標               : -250       : </span>
+<span class='col_comm'>; txtMenu[2]  : 表示Y座標               : -100       : </span>
+<span class='col_comm'>; txtMenu[3]  : 表示間隔                : 43         : </span>
+<span class='col_comm'>; txtMenu[4]  : text横幅                : 150        : </span>
+<span class='col_comm'>; txtMenu[5]  : 一度に表示する数        : メニュー数 : </span>
+<span class='col_comm'>; txtMenu[6]  : メニューの出っ張り度    : 0          : </span>
+<span class='col_comm'>; txtMenu[7]  : 非選択時の文字色        : 16777215   : </span>
+<span class='col_comm'>; txtMenu[8]  : 選択時の文字色          : 16777215   : </span>
+<span class='col_comm'>; txtMenu[9]  : 非選択時の背景色        : -1         : </span>
+<span class='col_comm'>; txtMenu[10] : 選択時の背景色          : 65280      : </span>
+<span class='col_comm'>; txtMenu[11] : 非選択時の枠色          : 16777215   : </span>
+<span class='col_comm'>; txtMenu[12] : 選択時の枠色            : 16777215   : </span>
+<span class='col_comm'>; txtMenu[13] : 上下ループ              : 1          : 0=ループしない 1=ループする</span>
+<span class='col_comm'>; txtMenu[14] : 説明表示                : 0          : 0=表示しない   1=表示する(txtExpの定義が必須)</span>
+<span class='col_comm'>; txtMenu[15] : バー使うなら0以上       : -1         : この値はスクロールバーの画像重なり順</span>
+<span class='col_comm'>; txtMenu[16] : 選択肢進めるキ          : 38         : ↑キー</span>
+<span class='col_comm'>; txtMenu[17] : 選択肢戻すキー          : 40         : ↓キー</span>
+<span class='col_comm'>; txtMenu[18] : 決定キー                : 90         : Zキー</span>
+<span class='col_comm'>; txtMenu[19] : キャンセルキー          : 88         : Xキー</span>
+<span class='col_comm'>; txtMenu[20] : マウス使用可能か        : 0          : 0=使用不可能   1=使用可能</span>
+<span class='col_comm'>; txtStr      : 表示する選択肢          : 未定義     : TxtMenu関数を呼ぶ際は必ず定義してください 最後は-1にして下さい</span>
+<span class='col_comm'>; txtExp      : 表示する説明文          : 未定義     : txtMenu[14]が1の時は必ず定義してください</span>
+<span class='col_lbl'>*TxtMenu</span>
+	__txtMenuMax    =<span class='col_num'> 0</span> <span class='col_comm'>; </span>
+	__txtMenuTop    =<span class='col_num'> 0</span> <span class='col_comm'>; </span>
+	__txtMenuBottom =<span class='col_num'> 0</span> <span class='col_comm'>; </span>
+	__txtMenuChoose =<span class='col_num'> 0</span> ;
+	<span class='col_word'>if</span> txtMenu != txtMenu <span class='col_word'>then</span>
+		__TXT_SUU_ARG =<span class='col_num'> 23</span>
+		__TXT_MAX_ARG < __TXT_SUU_ARG -<span class='col_num'> 1</span>
+		__TXT_MENU_DEFAULT =<span class='col_num'> 1</span> <span class='col_num'>-250</span> <span class='col_num'>-100</span> 43<span class='col_num'> 150</span> 0<span class='col_num'> 0</span> 16777215<span class='col_num'> 16777215</span> <span class='col_num'>-1</span> 65280<span class='col_num'> 16777215</span> 16777215<span class='col_num'> 1</span> 0 <span class='col_num'>-1</span> 38<span class='col_num'> 40</span> 90<span class='col_num'> 88</span> 0<span class='col_num'> 0</span> 0
+		__TXT_MENU_DEFAULT[5] = undefined
+		<span class='col_comm'>; (000000,ff0000,00ff00,0000ff,ffff00,00ffff,ffffff)が使用可能</span>
+		__TXT_MENU_DEFAULT[21] = <span class='col_str'>"ffffff"</span>
+		__TXT_MENU_DEFAULT[22] = <span class='col_str'>"ff00ff"</span>
+		txtMenu =<span class='col_num'> 0</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>for</span> __i =<span class='col_num'> 0</span> <span class='col_word'>to</span> __TXT_MAX_ARG
+		<span class='col_word'>if</span> txtMenu[__i] != txtMenu[__i] <span class='col_word'>then</span>       <span class='col_comm'>; 引数が未定義なら</span>
+			txtMenu[__i] = __TXT_MENU_DEFAULT[__i] <span class='col_comm'>; 初期値を代入</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endfor</span>
+	__break = undefined
+	<span class='col_word'>for</span> __i =<span class='col_num'> 0</span> <span class='col_word'>to</span> __break
+		<span class='col_word'>if</span> txtStr[__i] = <span class='col_num'>-1</span> <span class='col_word'>then</span>
+			__txtMenuMax < __i -<span class='col_num'> 1</span>
+			__break =<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> txtMenu[5] != txtMenu[5] <span class='col_word'>then</span>
+				txtMenu[5] = __txtMenuMax
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endfor</span>
+	<span class='col_word'>if</span> txtMenu[15] != <span class='col_num'>-1</span> <span class='col_word'>then</span>
+		<span class='col_word'>if</span> txtScroll != txtScroll <span class='col_word'>then</span> <span class='col_comm'>; 未定義(他の箇所で一括して読み込みたい場合はあらかじめ定義しておく)</span>
+			__g<span class='col_word'>if</span> = <span class='col_str'>".g<span class='col_word'>if</span>"</span>
+			__layer0 = txtMenu[15]
+			__layer1 < txtMenu[15] +<span class='col_num'> 1</span>
+			__TXT_MENU_USER_PATH = <span class='col_str'>"#../0000009431/"</span>
+			__fileName0 = __TXT_MENU_USER_PATH
+			__fileName0 + txtMenu[21]
+			__fileName0 + __g<span class='col_word'>if</span>
+			__fileName1 = __TXT_MENU_USER_PATH
+			__fileName1 + txtMenu[22]
+			__fileName1 + __g<span class='col_word'>if</span>
+			<span class='col_word'>load</span> <span class='col_var'>$__fileName0$</span> TXTBAR0 __layer0
+			<span class='col_word'>load</span> <span class='col_var'>$__fileName1$</span> TXTBAR1 __layer1
+			<span class='col_word'>group</span>              TXTBAR0 __layer0
+			<span class='col_word'>group</span>              TXTBAR1 __layer1
+			txtScroll =<span class='col_num'> 0</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endif</span>
+	<span class='col_word'>if</span> txtMenu[20] =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+		<span class='col_word'>if</span> txtMouse != txtMouse <span class='col_word'>then</span>
+			__layer0 < txtMenu[15] +<span class='col_num'> 2</span>
+			<span class='col_word'>load</span> <span class='col_str'>"#../0000009431/ffffff.g<span class='col_word'>if</span>"</span> TXTMOUSE __layer0
+			txtMouse =<span class='col_num'> 0</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endif</span>
+	__break = undefined
+	<span class='col_word'>for</span> __i =<span class='col_num'> 0</span> <span class='col_word'>to</span> __break
+		__txtMenuTop < __txtMenuBottom + txtMenu[5]
+		<span class='col_word'>if</span> txtMenu[14] =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+			<span class='col_word'>msg</span><span class='col_num'> 0</span>
+				<span class='col_var'>$txtExp[__txtMenuChoose]$</span>
+			<span class='col_word'>endtext</span>
+		<span class='col_word'>endif</span>
+		<span class='col_word'>for</span> __j = __txtMenuBottom <span class='col_word'>to</span> __txtMenuTop
+			__var0 < txtMenu[0] + __j - __txtMenuBottom
+			__posY < ( txtMenu[2] + txtMenu[3] * __j ) - ( __txtMenuBottom * txtMenu[3] )
+			<span class='col_word'>if</span> __j = __txtMenuChoose <span class='col_word'>then</span>
+				__col0 = txtMenu[8]
+				__col1 = txtMenu[10]
+				__col2 = txtMenu[12]
+				__posX < txtMenu[1] + txtMenu[6]
+			<span class='col_word'>else</span>
+				__col0 = txtMenu[7]
+				__col1 = txtMenu[9]
+				__col2 = txtMenu[11]
+				__posX = txtMenu[1]
+			<span class='col_word'>endif</span>
+			__sizW < txtMenu[4] -<span class='col_num'> 15</span>
+			<span class='col_word'>_msg</span> __var0 __posX __posY __sizW<span class='col_num'> 0</span> __col0 __col1 __col2 left
+				<span class='col_var'>$txtStr[__j]$</span>
+			<span class='col_word'>endtext</span>
+		<span class='col_word'>endfor</span>
+		__txtBarShow =<span class='col_num'> 0</span>
+		<span class='col_word'>if</span> txtMenu[15] ><span class='col_num'> 0</span> <span class='col_word'>then</span>
+			<span class='col_word'>if</span> txtMenu[5] < __txtMenuMax <span class='col_word'>then</span> <span class='col_comm'>; 表示数が最大数より小さい場合のみ表示</span>
+				__txtBarShow =<span class='col_num'> 1</span>
+				<span class='col_word'>gosub</span> TxtMenuBar
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endif</span>
+		<span class='col_word'>if</span> txtMenu[20] =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+			__var0 < txtMenu[15] +<span class='col_num'> 1</span>
+			<span class='col_word'>mouse</span> __mx __my __mc
+			<span class='col_word'>if</span> __mc =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+				<span class='col_word'>locateCenter</span> TXTMOUSE __mx __my
+				__flg2 =<span class='col_num'> 1</span>
+				<span class='col_word'>if</span> __txtBarShow =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+					<span class='col_word'>hit</span> TXTMOUSE __wk __var0 __var0
+					<span class='col_word'>if</span> __wk >=<span class='col_num'> 0</span> <span class='col_word'>then</span>
+						__flg0 =<span class='col_num'> 1</span>
+						__flg2 =<span class='col_num'> 0</span>
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+				<span class='col_word'>if</span> __flg2 =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+						<span class='col_word'>for</span> __k = __txtMenuBottom <span class='col_word'>to</span> __txtMenuTop
+							__posY0 < ( txtMenu[2] + txtMenu[3] * __k ) - ( __txtMenuBottom * txtMenu[3] )
+							<span class='col_word'>if</span> __j = __txtMenuChoose <span class='col_word'>then</span>
+								__posX0 < txtMenu[1] + txtMenu[6]
+							<span class='col_word'>else</span>
+								__posX0 = txtMenu[1]
+							<span class='col_word'>endif</span>
+							__sizW < txtMenu[4] -<span class='col_num'> 15</span>
+							__posX1 < __posX0 + __sizW
+							__posY1 < __posY0 + txtMenu[3]
+							<span class='col_word'>if</span> __posX0 < __mx <span class='col_word'>then</span>
+								<span class='col_word'>if</span> __mx < __posX1 <span class='col_word'>then</span>
+									<span class='col_word'>if</span> __posY0 < __my <span class='col_word'>then</span>
+										<span class='col_word'>if</span> __my < __posY1 <span class='col_word'>then</span>
+											<span class='col_word'>if</span> __txtMenuChoose = __k <span class='col_word'>then</span>
+												<span class='col_word'>if</span> __flg1 =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+													ret0 = __k
+													__break =<span class='col_num'> 1</span>
+												<span class='col_word'>endif</span>
+											<span class='col_word'>endif</span>
+											__txtMenuChoose = __k
+											__flg1 =<span class='col_num'> 1</span>
+										<span class='col_word'>endif</span>
+									<span class='col_word'>endif</span>
+								<span class='col_word'>endif</span>
+							<span class='col_word'>endif</span>
+						<span class='col_word'>endfor</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>else</span>
+				__flg0 =<span class='col_num'> 0</span>
+				__flg1 =<span class='col_num'> 0</span>
+			<span class='col_word'>endif</span>
+			<span class='col_word'>if</span> __flg0 =<span class='col_num'> 1</span> <span class='col_word'>then</span>
+				__var0  < txtMenu[2] + ( txtMenu[3] * txtMenu[5] +<span class='col_num'> 40</span> ) *<span class='col_num'> 0</span> / __txtMenuMax + txtBarSizeY1 /<span class='col_num'> 2</span> +<span class='col_num'> 1</span>
+				__var1  < txtMenu[2] + ( txtMenu[3] * txtMenu[5] +<span class='col_num'> 40</span> ) * ( __txtMenuMax - txtMenu[5] ) / __txtMenuMax + txtBarSizeY1 /<span class='col_num'> 2</span> +<span class='col_num'> 1</span>
+				__txtMenuBottom < ( __my - ( txtMenu[2] + txtBarSizeY1 /<span class='col_num'> 2</span> +<span class='col_num'> 1</span> ) ) * __txtMenuMax / ( txtMenu[3] * txtMenu[5] +<span class='col_num'> 40</span> )
+				__var2 < __txtMenuMax - txtMenu[5]
+				<span class='col_word'>if</span> 	__txtMenuBottom <<span class='col_num'> 0</span> <span class='col_word'>then</span>
+						__txtMenuBottom =<span class='col_num'> 0</span>
+				<span class='col_word'>else</span> <span class='col_word'>if</span> __txtMenuBottom > __var2 <span class='col_word'>then</span>
+						__txtMenuBottom = __var2
+				<span class='col_word'>endif</span>
+				<span class='col_word'>if</span> __my >= __var0 <span class='col_word'>then</span>
+					<span class='col_word'>if</span> __my <= __var1 <span class='col_word'>then</span>
+						<span class='col_word'>locateCenter</span> TXTBAR1 txtBarPosX1 __my
+					<span class='col_word'>endif</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>endif</span>
+		<span class='col_word'>wait</span><span class='col_num'> 1</span>
+		<span class='col_word'>if</span> txtMenu[15] ><span class='col_num'> 0</span> <span class='col_word'>then</span>
+			<span class='col_word'>erase</span> TXTBAR0
+			<span class='col_word'>erase</span> TXTBAR1
+		<span class='col_word'>endif</span>
+		<span class='col_word'>for</span> __j =<span class='col_num'> 0</span> <span class='col_word'>to</span> __txtMenuMax
+			__var0 < txtMenu[0] + __j
+			<span class='col_word'>clear</span> __var0
+		<span class='col_word'>endfor</span>
+		<span class='col_word'>key</span> __pushKey
+		<span class='col_word'>if</span> __pushKey = txtMenu[16] <span class='col_word'>then</span>
+			__txtMenuChoose -<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> __txtMenuChoose <<span class='col_num'> 0</span> <span class='col_word'>then</span>
+				<span class='col_word'>if</span> txtMenu[13] =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+					__txtMenuChoose =<span class='col_num'> 0</span>
+				<span class='col_word'>else</span>
+					__txtMenuChoose = __txtMenuMax
+					__txtMenuBottom < __txtMenuMax - txtMenu[5]
+				<span class='col_word'>endif</span>
+			<span class='col_word'>else</span> <span class='col_word'>if</span> __txtMenuChoose < __txtMenuBottom <span class='col_word'>then</span>
+				__txtMenuBottom -<span class='col_num'> 1</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span> <span class='col_word'>if</span> __pushKey = txtMenu[17] <span class='col_word'>then</span>
+			__txtMenuChoose +<span class='col_num'> 1</span>
+			<span class='col_word'>if</span> __txtMenuChoose > __txtMenuMax <span class='col_word'>then</span>
+				<span class='col_word'>if</span> txtMenu[13] =<span class='col_num'> 0</span> <span class='col_word'>then</span>
+					__txtMenuChoose = __txtMenuMax
+				<span class='col_word'>else</span>
+					__txtMenuChoose =<span class='col_num'> 0</span>
+					__txtMenuBottom =<span class='col_num'> 0</span>
+				<span class='col_word'>endif</span>
+			<span class='col_word'>else</span> <span class='col_word'>if</span> __txtMenuChoose > __txtMenuTop <span class='col_word'>then</span>
+				__txtMenuBottom +<span class='col_num'> 1</span>
+			<span class='col_word'>endif</span>
+		<span class='col_word'>else</span> <span class='col_word'>if</span> __pushKey = txtMenu[18] <span class='col_word'>then</span>
+			ret0 = __txtMenuChoose
+			__break =<span class='col_num'> 1</span>
+		<span class='col_word'>else</span> <span class='col_word'>if</span> __pushKey = txtMenu[19] <span class='col_word'>then</span>
+			ret0 = <span class='col_num'>-1</span>
+			__break =<span class='col_num'> 1</span>
+		<span class='col_word'>endif</span>
+	<span class='col_word'>endfor</span>
+	<span class='col_word'>for</span> __i =<span class='col_num'> 0</span> <span class='col_word'>to</span> __TXT_MAX_ARG
+		txtMenu[__i] = undefined <span class='col_comm'>; 未定義にする</span>
+	<span class='col_word'>endfor</span>
+<span class='col_word'>return</span>
+<span class='col_lbl'>*TxtMenuBar</span>
+	txtBarSizeX0 <<span class='col_num'> 6</span>
+	txtBarSizeY0 < ( txtMenu[3] * txtMenu[5] +<span class='col_num'> 40</span> ) +<span class='col_num'> 1</span>
+	txtBarPosY0  < txtMenu[2] + txtBarSizeY0 /<span class='col_num'> 2</span>
+	txtBarPosX0  < txtMenu[1] + txtMenu[4] +<span class='col_num'> 10</span>
+	txtBarSizeX1 <<span class='col_num'> 4</span>
+	txtBarSizeY1 < ( txtMenu[3] * txtMenu[5] +<span class='col_num'> 40</span> ) * txtMenu[5] / __txtMenuMax
+	txtBarPosY1  < txtMenu[2] + ( txtMenu[3] * txtMenu[5] +<span class='col_num'> 40</span> ) * __txtMenuBottom / __txtMenuMax + txtBarSizeY1 /<span class='col_num'> 2</span> +<span class='col_num'> 1</span>
+	txtBarPosX1  < txtMenu[1] + txtMenu[4] +<span class='col_num'> 10</span>
+	<span class='col_word'>size</span>         TXTBAR0 txtBarSizeX0 txtBarSizeY0
+	<span class='col_word'>size</span>         TXTBAR1 txtBarSizeX1 txtBarSizeY1
+	<span class='col_word'>locateCenter</span> TXTBAR0 txtBarPosX0  txtBarPosY0
+	<span class='col_word'>locateCenter</span> TXTBAR1 txtBarPosX1  txtBarPosY1
+	<span class='col_word'>paint</span>        TXTBAR0
+	<span class='col_word'>paint</span>        TXTBAR1
+<span class='col_word'>return</span>
+<span class='col_comm'>;##########################################     EOP      #############################################</span>
+</pre>
+<!-- source end -->
+						</div>
+					</div>
+<!-- ------------------------------------------------------------------------------- -->
+
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

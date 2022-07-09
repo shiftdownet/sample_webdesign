@@ -1,0 +1,395 @@
+<html>
+<head>
+	<title>Shotaのツクアド講座 - プリプロセッサ </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.js" />
+	<script type="text/javascript" src="../js/jquery.cookie.js" />
+	<script type="text/javascript" src="../js/cookie.js" />
+	<script type="text/javascript">
+		get = CookieLoad('cssmode');
+		document.write("<link rel=\"stylesheet\" href=\"../css/spt_style"+get+".css\" type=\"text/css\" />");
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html" class="menuleft">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html"  class="selected">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content">
+			<div id="middle">
+				<span class="category"><h3><a name="p00">プリプロセッサ</a></h3></span>
+				<div class="indent3">
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p00">マルチステートメント - :(コロン)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+文1 : 文2 : 文3 :  ...
+</pre>
+<div class="mdocument">
+	コロンで区切ると、1行に複数の命令が記述できる。
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	区切れるのは命令のみで、プリプロセッサは区切れません。<br />
+	つまり、#include "file.txt" : ファイル読み込み<br />
+	のような書き方はできません。<br />
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">複数の変数の定義を1行で</div>
+<pre>
+var0 = 0 : var1 = 5 : var2 = 10
+</pre>
+<div class="mdocument">msgを1行で記述</div>
+<pre>
+msg 0:こんにちは。今日の天気はいかがでしょう:endtext
+wait 12
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p01">コメント - /* */()</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+/*
+	コメント
+*/
+</pre>
+<div class="mdocument">
+	/**/で囲んだ部分をコメントアウトする
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	/* /* */ */ このような書き方はエラーとなります。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">色々な箇所にコメント</div>
+<pre>
+/* コメント */
+text /*
+コメント
+*/
+あ
+endtext /* コメント */
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p02">ファイル取り込み - #include(インクルード)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#include "ファイル名" オプション
+</pre>
+<pre>
+#include <ファイル名> オプション
+</pre>
+<div class="mdocument">
+	指定したファイルを、その行に埋め込む。<br />
+	""で指定した場合はカレントディレクトリ(メインのファイルと同じフォルダ)<br />
+	<>で指定した場合はmoduleフォルダを探しに行く
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	下記で説明してある-nオプションを使用する際は、ファイルの指定がループしないように注意してください。<br />
+	無限ループに陥った際の動作は保障しません。<br />
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">-w</span>
+	<div class="prm_exp">
+		ファイルが重複してもエラーを出しません。
+	</div>
+	<span class="bold">-n</span>
+	<div class="prm_exp">
+		ファイルが重複してもそのまま読み込みます
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">通常通りファイルを読み込む</div>
+<pre>
+#include "init.txt"
+</pre>
+<div class="mdocument">-wオプション付きでファイルを読み込む</div>
+<pre>
+#include "func.txt" -w
+</pre>
+<div class="mdocument">-nオプション付きでファイルを読み込む</div>
+<pre>
+#include "save.txt" -n
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p03">ファイル取り込み - #module(モジュール)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#module "ファイル名" オプション
+</pre>
+<pre>
+#module <ファイル名> オプション
+</pre>
+<div class="mdocument">
+	スクリプトの最後にファイルを埋め込む。<br />
+	""で指定した場合はカレントディレクトリ(メインのファイルと同じフォルダ)<br />
+	<>で指定した場合はmoduleフォルダを探しに行く
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">-w</span>
+	<div class="prm_exp">
+		ファイルが重複してもエラーを出しません。
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">通常通りファイルを読み込む</div>
+<pre>
+#module "func.txt"
+</pre>
+<div class="mdocument">-wオプション付きでファイルを読み込む</div>
+<pre>
+#module "func.txt" -w
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p04">csvファイル読み込み - #rcsv(リード･コンマ･セパレイティット･ヴァリューズ)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#rcsv "ファイル名"
+</pre>
+<div class="mdocument">
+	指定したファイルを配列化してその行に埋め込みます
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">csv読み込み</div>
+<pre>
+#rcsv "data.csv"
+</pre>
+<div class="mdocument">data.csvの内容</div>
+<pre>
+HP,MP,ATK,DFE
+20,10,15,20
+23,8,12,32
+45,3,20,10
+15,20,5,9
+</pre>
+<div class="mdocument">実行結果</div>
+<pre>
+HP = 20 23 45 15
+MP = 10 8 3 20
+ATK = 15 12 20 5
+DFE = 20 32 10 9
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p05">列挙型定数 - #enum(イナム)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#enum {定数1,定数2,定数3...}
+</pre>
+<pre>
+#enum {定数1=初期値,定数2,定数3...}
+</pre>
+<div class="mdocument">
+	列挙型定数を定義する。<br/>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">100から105までの定数を定義</div>
+<pre>
+#enum {NUM0=100,NUM1,NUM2,NUM3,NUM4}
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p06">定数定義 - #define(ディファイン)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#define 定数
+</pre>
+<pre>
+#define 定数 値
+</pre>
+<div class="mdocument">
+	定数を定義できます。<br />
+	値を指定した場合は、定数が値に置換され、
+	指定しなかった場合は定義のみ行います。
+	ABCと言う文字列のうちBを置換したいときは、A{B}Cと書くことで置換できます。
+	逆に、通常の文字列として表示したい場合は{!定数}と書きます。
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	関数マクロの定義は現時点でできません。
+</div>
+<h4>
+	パラメータ
+</h4>
+<div class="prm">
+	<span class="bold">値</span>
+	<div class="prm_exp">
+		定数の値
+	</div>
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">デバッグフラグの定義</div>
+<pre>
+#define DEBUG
+</pre>
+<div class="mdocument">最大ＨＰの定義</div>
+<pre>
+#define MAX_HP 999
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p07">定数破棄 - #undef(アンデファイン)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#undef 定数
+</pre>
+<div class="mdocument">
+	#defineで定義された定数を破棄します。<br />
+	元から定義されていない定数を指定してもエラーにはなりません
+</div>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p08">定義チェック - #ifdef(イフデファイン)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#ifdef 定数
+	ブロック
+#else
+	ブロック
+#endif
+</pre>
+<div class="mdocument">
+	定数が定義されているならブロックをコンパイルします<br />
+	定義されていない場合、無視されます。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">デバッグフラグがオンかチェック</div>
+<pre>
+#define DEBUG
+#ifdef DEBUG
+	デバッグ中です
+#endif
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p09">未定義チェック - #ifndef(イフアンディファイン)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#ifndef 定数
+	ブロック
+#else
+	ブロック
+#endif
+</pre>
+<div class="mdocument">
+	定数が定義されていないならブロックをコンパイルします<br />
+	定義されている場合、無視されます。
+</div>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p10">条件分岐 - #if(イフ)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+#if 条件式
+	ブロック
+#elif 条件式
+	ブロック
+#else
+	ブロック
+#endif
+</pre>
+<div class="mdocument">
+	条件分岐に従って真の場合にコンパイルします。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">定義の仕方によって読み込むファイルを変更する</div>
+<pre>
+#define FILE 0
+#if FILE = 0
+	#include "file0.txt"
+#elif FILE = 1
+	#include "file1.txt"
+#else
+	値が間違っています
+#endif
+</pre>
+</div>
+				</div>
+			</div>
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>

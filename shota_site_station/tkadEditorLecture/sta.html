@@ -1,0 +1,244 @@
+<html>
+<head>
+	<title>Shotaのツクアド講座 - 追加命令 </title>
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.js" />
+	<script type="text/javascript" src="../js/jquery.cookie.js" />
+	<script type="text/javascript" src="../js/cookie.js" />
+	<script type="text/javascript">
+		get = CookieLoad('cssmode');
+		document.write("<link rel=\"stylesheet\" href=\"../css/spt_style"+get+".css\" type=\"text/css\" />");
+	</script>
+</head>
+<body>
+	<div id="main">
+		<span id="header"><h1 id="top">Shotaのツクアド講座</h1></span>
+		<div id="menu-box">
+			<ul id="menu">
+				<li><a href="../index.html" class="menuleft">Top</a></li>
+				<li><a href="../info.html">Information</a></li>
+				<li><a href="../tukuado.html"  class="selected">Tukuado</a></li>
+				<li><a href="../comm.html">Communication</a></li>
+			</ul>
+		</div>
+		<div id="main-content">
+			<div id="middle">
+				<span class="category"><h3><a name="p00">追加命令</a></h3></span>
+				<div class="indent3">
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p00">条件分岐 - switch(スウィッチ)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+switch 変数
+	case 値
+		ブロック
+		break
+	case 値
+		ブロック
+		break
+	default
+		ブロック
+endswitch
+</pre>
+<div class="mdocument">
+	変数の値によって処理を分岐する<br />
+	breakでswitch文を抜ける<br />
+	defaultでelseの役割を果たす<br />
+</div>
+<h4>
+	注意
+</h4>
+<div class="mdocument">
+	caseに指定できるのは値です。変数は指定できません。<br />
+	プリプロセッサによる定数定義はコンパイル段階で値に変換されるので使用できます。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">switch文の条件分岐</div>
+<pre>
+var = 0
+switch var
+	case 0
+		varは1です。
+	case 1
+		varは0か1です。
+		break
+	case 2
+		varは2です
+	default
+		それ以外です
+endswitch
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p01">繰り返し - while(ホワイル)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+while 条件式
+	ブロック
+endwhile
+</pre>
+<div class="mdocument">
+	条件が真の時にブロックを繰り返し実行する<br />
+	breakでwhileを抜ける<br />
+	continueでwhile文の最初に戻る<br />
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">aが0から5になるまで繰り返し</div>
+<pre>
+a = 0
+while a <= 5
+	text 0 :$a$:endtext
+	a + 1
+endwhile
+</pre>
+<div class="mdocument">for文をwhileで書く</div>
+<pre>
+i = 0 : while i <= 10 : i + 2 ; for i = 0 to 10 step 2 と同じ
+	$i$
+endwhile
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p02">配列セーブ - saveArray(セーブアレイ)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+saveArray 配列名 個数(値)
+</pre>
+<div class="mdocument">
+	配列を一括セーブする<br />
+	この命令はsave,loadval命令の中に記述する<br />
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">セーブ＆ロード</div>
+<pre>
+#define ARY_MAX 10
+makeArray ary ARY_MAX
+data0 = 10
+data1 = 20
+gosub Save
+
+end
+*Save
+	save m0
+		saveArray ary ARY_MAX
+		data0
+		data1
+	endsave
+return
+*Load
+	loadval m0
+		saveArray ary ARY_MAX
+		data0
+		data1
+	endloadval
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p03">関数宣言 - deffunc(デファインファンクション)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+deffunc 関数名(引数1,引数2,...)
+</pre>
+<div class="mdocument">
+	関数を宣言する。
+	関数を定義する箇所が、関数を呼ぶ箇所よりも上にある場合は定義する必要はない。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">関数の宣言</div>
+<pre>
+以下の関数定義をごらんください。
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p04">関数定義 - func(ファンクション),endfunc(エンドファンクション)</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+func 関数名(引数1,引数2,...)
+	関数の処理内容
+endfunc 戻り値(省略可能)
+</pre>
+<div class="mdocument">
+	関数を定義する。
+	宣言されていない場合は、宣言と定義を同時にする。
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">関数の宣言と定義</div>
+<pre>
+deffunc FuncName(#var0,#var1) ; #←を変数の前につけると、自動的に外部の変数と被りにくい名前に変換してくれる。
+
+func FuncName(#var0,#var1)
+	#var2 < #var0 * #var1
+	if #var2 = 0 then
+		return #var2 ; returnの後に戻り値を書くことができる
+	endif
+	#var2 < #var0 + #var1
+endfunc #var2 ; endfuncの後に戻り値を書くことができる(省略可)
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<h2 class="statement"><a name="p05">関数呼び出し - &</a></h2>
+<div class="manual">
+<h4>
+	説明
+</h4>
+<pre>
+&関数名(引数1,引数2,...)
+</pre>
+<div class="mdocument">
+	関数を呼び出す
+</div>
+<h4>
+	例
+</h4>
+<div class="mdocument">関数を呼ぶ</div>
+<pre>
+func FuncName(#var0,#var1)
+	#var2 < #var0 + #var1
+endfunc #var2 ; endfuncの後に戻り値を書くことができる(省略可)
+
+&FuncName(5,6)
+5＋6＝$FuncName_2$ ; 関数の戻り値は　関数名_引数の数　で取得できる
+;var = &FuncName(5,6) ; 計算式や代入文、if文に含めることもできるが、text系の命令の中には書けない。
+
+</pre>
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+				</div>
+			</div>
+			&nbsp;
+		</div>
+		<div id="footer">
+			<p>使用ブラウザはOperaを推奨します。
+			他ブザウザでは多少レイアウトが崩れる可能性があります。</p>
+			<br />
+		</div>
+	</div>
+</body>
+</html>
