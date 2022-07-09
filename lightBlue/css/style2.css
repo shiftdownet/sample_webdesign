@@ -1,0 +1,149 @@
+/*-----------------------------------*/
+/* デザインを定義しています。        */
+/*-----------------------------------*/
+
+
+/***********************
+ 全体設定
+************************/
+
+div,h1,h2,h3,h4,pre,p,ul,ol,li{
+	margin : 0;
+	padding: 0;
+}
+
+h3{
+	font-size     : 1.5em;
+	text-indent   : 0.5em;
+	color         : #333333;
+	border-left   : solid 4px #666666;
+	border-bottom : solid 1px #666666;
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+.clear{
+	clear:both;
+}
+
+a:link{color:#999999;}
+a:visited{color:#999999;}
+a:hover, a:active{color:#999999;}
+
+select{
+
+}
+
+/***********************
+ ヘッダー
+************************/
+
+#titleBox p{
+	padding-top:0px;
+	color:#ffffff;
+	font-size:12px;
+	margin-left: 40px;
+	font-weight:bold;
+}
+
+#titleBox h1{
+	font-family: "ＭＳ ゴシック",sans-serif;
+	color:#ffffff;
+	font-size:36px;
+	margin-left: 40px;
+	font-weight:bold;
+}
+
+/***********************
+ パンくずボックス
+************************/
+#topicPath li{
+	font-size: 0.8em;
+	display:inline;
+	list-style-type:none;
+}
+
+#topicPath #current{
+	color: #ff3333;
+}
+
+#topicPath li.bet:after{
+	content : " ＞";
+}
+
+/***********************
+ コンテンツ
+************************/
+#contents li{
+	padding-left: 1em;
+	list-style-type:none;
+}
+
+
+#history dt{
+	float: left;
+	width: 7.5em;
+	padding-left: 5px;
+}
+
+#history dd:after{
+	clear:left;
+}
+
+/***********************
+ サイドメニュー
+************************/
+.menuBox{
+	margin:10px;
+	padding :0;
+	width:80%;
+}
+/* メニュータイトル */
+.menuBox h4{
+	display: block;
+	border-bottom: solid 1px #666666;
+	width:100%;
+	font-weight: bold;
+}
+/* メニューリスト */
+.menuBox dt{
+	padding-left: 0.5em;
+}
+.menuBox dd{
+	display:block;
+	margin: 0em 0em 1em 0em;
+	padding-left: 3em;
+	font-size:12px;
+}
+.menuBox dt:before{
+	content : url('../grp/list1.png') " ";
+}
+.menuBox a:link{color:#3333ff;}
+.menuBox a:visited{color:#3333ff;}
+.menuBox a:hover, a:active{color:#3333ff;}
+.menuBox a{font-weight:bold;}
+
+/***********************
+ カウンター
+************************/
+.counter{
+	text-align:center;
+}
+
+/***********************
+ フッター
+************************/
+
+#footer li{
+	font-size: 0.8em;
+	display:inline;
+	list-style-type:none;
+}
+
+#footer li.bet:after{
+	content : " -";
+}
+
+#footer a:link{color:#3333ff;}
+#footer a:visited{color:#3333ff;}
+#footer a:hover, a:active{color:#3333ff;}

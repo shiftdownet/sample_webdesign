@@ -1,0 +1,735 @@
+
+/******************************************************************************************************************************
+*    当CSSのコーディング規約(2011-11/18:k11096kk)
+*        このCSSファイルは、以下のルールに従って記述されています
+*        ソースをご覧になる際に参考にしてください
+*
+*        1.命名規則
+*            1.1.IDセレクタ名
+*                単語の最初の文字のみを大文字とする
+*                例 #MainMenu
+*                ただし、Livedoor側が自動的に挿入するHTMLコードに記述されているIDセレクタ名についてはこの限りではない
+*
+*            1.2.クラスセレクタ名
+*                最初の単語を小文字とし、それに続く単語がある場合は単語の最初の文字のみを大文字とする
+*                例 .subMenu
+*                ただし、Livedoor側が自動的に挿入するHTMLコードに記述されているクラスセレクタ名についてはこの限りではない
+*
+*            1.3.カラーコード
+*                カラーネームは使用せずに、16進数を使用する
+*                16進数の値は小文字で指定する
+*
+*        2.構文規約
+*            2.1.’{’の位置
+*                IDセレクタ名･クラスセレクタ名の直後に’{’を挿入する。セレクタ名の直後に改行を行わない
+*
+*            2.2.プロパティの記述順序
+*                構造や配置に影響するプロパティを優先的に上位に記述する
+*                
+*                セレクタ名{
+*                    display
+*                    float / clear
+*                    position
+*                    top / right / bottom / left
+*                    width / height
+*                    margin系統
+*                    padding系統
+*                    border系統
+*                    font-size
+*                    
+*                    ...
+*                    続いてレイアウトに関する背景画像･色･フォント･リストスタイルなどを記述する
+*                }
+*
+*            2.3.単位
+*                基本的に、単位には相対単位を用いる
+*                主にpxを使用する
+*                ただし、text-alignなど、行頭の空白を指定するものに関してはemを用いることがある
+******************************************************************************************************************************/
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	自作スタイル
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+/*----------------------------------------------------------------------------------
+	ページ全体に適用されるスタイル要素セレクタ
+----------------------------------------------------------------------------------*/
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	要素セレクタ
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+body{
+	margin              : 0px;
+	padding             : 0px;
+	background-color    : #fcfaff;
+	font-family         : "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
+}
+
+div,h1,h2,h3,h4,pre,p,ul,ol,li,dt,dd{
+	margin              : 0px;
+	padding             : 0px;
+	font-size           : 15px;
+}
+
+img{
+	border              : none;
+}
+
+
+
+/*----------------------------------------------------------------------------------
+	ページの局所に適用されるスタイル
+----------------------------------------------------------------------------------*/
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	ページ全体を囲うブロック
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+#Container{
+	width               : 100%;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	ヘッダーブロック
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+#Header{
+	width               : 100%;
+	height              : 150px;
+	background-color    : #614c8d;
+}
+
+#Header h1{
+	display             : block;
+	font-size           : 42px;
+	padding-top         : 90px;
+	padding-left        : 100px;
+	color               : #ffffff;
+	font-family         : "ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
+	font-weight         : bold;
+}
+
+#Header a:link,
+#Header a:hover,
+#Header a:visited{
+	color               : #ffffff;
+	text-decoration     : none;
+}
+
+#Header p{
+	display             : block;
+	font-size           : 14px;
+	text-align          : right;
+	color               : #ffffff;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	インナーブロック
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#Inner{
+	width               : 1110px;
+	margin              : 0px auto 10px auto;
+	padding-top         : 10px;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	サイトメニュー
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#TopMenu{
+	width               : 900px;
+	margin              : 10px auto 10px auto;
+	border-top          : solid 1px #9966cc;
+	border-bottom       : solid 1px #9966cc;
+	list-style          : none;
+}
+
+
+#TopMenu li{
+	float               : left;
+	width               : 110px;
+
+	margin-left         : 2px;
+	height              : 30px;
+}
+
+#TopMenu a{
+	display             : block;
+	height              : 21px;
+	width               : 100%;
+	padding-top         : 9px;
+	border-right        : solid 1px #9966cc;
+	border-left         : solid 1px #eeddff;
+	font-size           : 14px;
+	font-weight         : bold;
+	color               : #444444;
+	text-decoration     : none;
+	text-align          : center;
+	background          : url(http://livedoor.blogimg.jp/k11096kk/imgs/0/9/093b1699.png) no-repeat;
+	font-family         : "ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
+
+}
+
+#TopMenu a:visited{
+	color               : #444444;
+}
+
+#TopMenu a:hover{
+	background          : url(http://livedoor.blogimg.jp/k11096kk/imgs/2/4/2432cb0d.png) no-repeat;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	インナーを分割するブロック
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#AlphaWrap{
+	float               : left;
+	width               : 890px;
+}
+
+#BetaWrap{
+	float               : right;
+	width               : 206px;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	メインカラム
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#MainColumn{
+	float               : right;
+	width               : 670px;
+	padding             : 2px;
+}
+
+#MainColumn h4{
+	display             : block;
+	width               : 100%;
+	height              : 36px;
+	padding-top         : 10px;
+	border-top          : solid 1px #ccbbee;
+	border-bottom       : solid 1px #ccbbee;
+	text-align          : center;
+	color               : #553366;
+	background-color    : #eeccff;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	サブカラム
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+
+#SubColumn{
+	float               : left;
+	width               : 206px;
+	background          : url(http://parts.blog.livedoor.jp/img/usr/blogmedia/2ch/common/3c_side_middle.gif) repeat-y left top;
+}
+
+#SubColumn-inner1{
+	background          : url(http://parts.blog.livedoor.jp/img/usr/blogmedia/2ch/common/3c_side_btm.gif) no-repeat left bottom;
+}
+
+#SubColumn-inner2{
+	padding             : 7px 6px;
+	background          : url(http://parts.blog.livedoor.jp/img/usr/blogmedia/2ch/common/3c_side_top.gif) no-repeat left top;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	エキストラカラム
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#ExtraColumn{
+	width               : 206px;
+	background          : url(http://parts.blog.livedoor.jp/img/usr/blogmedia/2ch/common/3c_side_middle.gif) repeat-y left top;
+}
+
+#ExtraColumn-inner1{
+	background          : url(http://parts.blog.livedoor.jp/img/usr/blogmedia/2ch/common/3c_side_btm.gif) no-repeat left bottom;
+}
+
+#ExtraColumn-inner2{
+	padding             : 7px 6px;
+	background          : url(http://parts.blog.livedoor.jp/img/usr/blogmedia/2ch/common/3c_side_top.gif) no-repeat left top;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	フッターブロック
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#Footer{
+	width               : 100%;
+	border              : solid 1px #cc6699;
+	text-align          : center;
+	background-color    : #aa6699;
+}
+
+#Footer p{
+	font-size           : 12px;
+	color               : #ffffff;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	記事レイアウト
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+.article{
+	margin-bottom       : 30px;
+}
+
+.article hr{
+	display             : block;
+	position            : relative;
+	left                : -10px;
+	width               : 690px;
+	height              : 5px;
+	border              :  0px solid #000000;
+	background-color    : #cc99ff;
+}
+
+.article h2 a{
+	color               : #000000;
+	text-decoration     : none;
+}
+
+.article .time{
+	font-size           : 16px;
+	color               : #666666;
+	font-weight         : bold;
+}
+
+.article .category{
+	display             : inline;
+	margin-left         : 15px;
+	padding-left        : 15px;
+	font-size           : 14px;
+	color               : #333333;
+	background          : url("http://livedoor.blogimg.jp/k11096kk/imgs/7/c/7c84ee07.gif") no-repeat;
+}
+
+.article .category dd{
+	display             : inline;
+	padding-left        : 3px;
+	font-size           : 15px;
+}
+
+.article .category dt{
+	display             : none;
+}
+
+.article .more{
+	display             : block;
+	margin              : 15px 0px 15px -10px;
+	font-size           : 14px;
+}
+
+.article .article-tags{
+	display             : inline;
+	margin-left         : 15px;
+	padding-left        : 15px;
+	font-size           : 14px;
+	background          : url("http://livedoor.blogimg.jp/k11096kk/imgs/6/8/68feaca1.gif") no-repeat;
+}
+
+.article .article-tags dl{
+	font-size           : 14px;
+}
+
+.article .article-tags dd{
+	display             : inline;
+	padding-left        : 3px;
+	font-size           : 15px;
+}
+
+.article .article-tags dt{
+	display             : none;
+}
+
+.articleHeader{
+	display             : block;
+	height              : 30px;
+	margin-top          : 2px;
+	text-indent         : 10px;
+	background          : url("http://livedoor.blogimg.jp/k11096kk/imgs/a/f/af33732a.png") no-repeat;
+}
+
+.articleHeader h2{
+	display             : block;
+	float               : left;
+	width               : 520px;
+	margin-top          : 4px;
+	font-size           : 18px;
+}
+
+.articleHeader .twit{
+	padding-top         : 4px;
+}
+
+.articleBody{
+	margin-left         : 20px;
+	padding-top         : 5px;
+	font-size           : 14px;
+}
+
+.articleBody *{
+	font-size           : 14px;
+}
+
+.articleFooter{
+	display             : block;
+	height              : 16px;
+	margin-top          : 5px;
+	margin-bottom       : 20px;
+	padding             : 2px;
+	border              : solid 1px #bbaabb;
+	text-align          : right;
+	background-color    : #ddccdd;
+}
+
+.articleFooter li{
+	display             : block;
+	position            : relative;
+	bottom              : -5px;
+	font-size           : 12px;
+	list-style          : none;
+	color               : #333333;
+	background          : url("http://livedoor.blogimg.jp/k11096kk/imgs/9/0/90aebfec.png") no-repeat;
+	background-position : 585px;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	ページナビゲーター
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+.navigator{
+	font-size           : 12px;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	記事コメント
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#CommentList{
+	margin              : 20px 0px 10px 0px;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	回り込みの解除
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+.clearFix{
+	clear               : both;
+}
+
+#TopMenu,
+#BetaWrap{
+	zoom: 100%;
+}
+
+#TopMenu:after,
+#BetaWrap:after{
+	display             : block;
+	clear               : both;
+	height              : 0px;
+	content             : ".";
+	visibility          : hidden;
+}
+
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	Livedoorブログで生成されるセレクタ(上記の自作スタイルの中にも少し含まれているが)
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	一般的なプラグインのスタイル
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+.sidewrapper{
+	width               : 190px;
+	margin              : 0px auto 10px auto;
+	font-size           : 13px;
+}
+
+.sidetitlebody{
+	height              : 22px;
+	margin-bottom       : 5px;
+	padding             : 2px;
+	background          : url("http://livedoor.blogimg.jp/k11096kk/imgs/d/1/d1392c7c.png") no-repeat left top;
+}
+
+.sidetitle{
+	padding-top         : 3px;
+	font-size           : 15px;
+	text-indent         : 1em;
+	color               : #ffffff;
+	font-weight         : bold;
+}
+
+.sidebody{
+	margin-top          : 3px;
+	background          :url("http://livedoor.blogimg.jp/k11096kk/imgs/3/e/3edd7c05.png") no-repeat;
+	background-position : left center;
+	font-size           : 13px;
+	text-indent         : 20px;
+
+}
+
+.sidetitlebody a:link,
+.sidetitlebody a:hover,
+.sidetitlebody a:visited{
+	color               : #ffffff;
+}
+
+.popular-articles{
+	font-size           : 13px;
+}
+
+.recent-article-image a{
+	font-size           : 13px;
+}
+.recent-article-image li{
+	margin              : 0px;
+	padding             : 0px;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	そのまま転用したLivedoorブログのスタイル
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+/* ----------------------------------------------- */
+/** カレンダー */
+
+div.calendarheadbody {}
+div.calendarheadbody div.calendarhead {
+	margin: 0 0 5px;
+	padding: 5px 0;
+	text-align: center;
+	font-size: 83%;
+}
+
+div.caltop
+, div.calbottom {
+	display: none;
+}
+
+div.calbody {
+	margin-bottom: 20px;
+}
+
+table.caltbl {
+	width: 180px;
+	margin: 0 auto;
+	border: 0;
+}
+div.calbody table.calendartable {}
+td.caltblwkbg {}
+td.calendarwd {}
+td table.caltblwk td {
+	height: 20px;
+	font-size: 83%;
+}
+
+td table.caltblwk td.weekday {}
+td table.caltblwk td.sat {}
+td table.caltblwk td.sun {}
+td table.caltblwk td span.calendarweek {}
+td.caltbldaybg {}
+td table.caltblday {
+	margin: 0 auto;
+	width: 180px;
+	font-size: 83%;
+}
+td table.caltblday td {
+	width: 20px;
+	height: 24px;
+	padding: 0;
+	text-align: center;
+}
+td table.caltblday td.caloff {}
+td table.caltblday td.calendard {}
+td table.caltblday td.calon {}
+td table.caltblday td.calon a {}
+td table.caltblday td.calendardbg {}
+td table.caltblday td span.calendar {}
+
+
+/* ----------------------------------------------- */
+/** コメント一覧 */
+
+
+li.comment-set {
+	padding: 0 50px 10px;
+	font-size: 83%;
+}
+
+ul.comment-info li.comment-author {
+	display: inline;
+	font-size: 14px;
+}
+
+ul.comment-info li.comment-date {
+	display: inline;
+	margin-left: 10px;
+	font-size: 14px;
+}
+
+ul.comment-info li {
+	display: inline;
+}
+
+ul.comment-info li.comment-body {
+	display: block;
+	margin-top: 5px;
+	margin-left: 10px;
+	line-height: 1.4;
+	font-size: 14px;
+}
+
+ul.comment-info li.comment-body img.trackback-rating {}
+
+/* ----------------------------------------------- */
+/** コメントフォーム */
+
+div#comment-form-body {
+	padding: 15px 50px;
+}
+
+div#comment-form-body table {
+	border: 0;
+	width: 100%;
+	line-height: 25px;
+	font-size: 83%;
+}
+
+div#comment-form-body table th {
+	width: 3em;
+	padding-right: 5px;
+	text-align: right;
+	font-weight: normal;
+}
+
+input#author {
+	width: 65%;
+}
+
+input#email {
+	width: 65%;
+}
+
+input#url {
+	width: 97%;
+}
+
+input#bake {
+	margin: 0 0 0 5px;
+}
+
+textarea#text {
+	width: 97%;
+	height: 250px;
+}
+
+input.button {
+	margin-top: 10px;
+	width: 80px;
+}
+
+div#comment-form-body table tr.input-etc td {
+	padding-top: 6px;
+}
+
+label.input-rating {
+	margin-left: 20px;
+}
+
+label.input-rating select {
+	margin-left: 3px;
+}
+
+label.input-rating-face {
+	margin-left: 5px;
+}
+
+label.input-rating-star {}
+
+div#comment-form-body table tr.submit td {
+	text-align: center;
+}
+
+/*** コメント認証 */
+div.comment-auth-announcement {
+	margin: 10px 50px;
+	font-size: 83%;
+	border-width: 1px;
+	border-style: solid;
+}
+
+div.comment-auth-announcement p a {
+	margin: 0 3px;
+}
+
+/* ----------------------------------------------- */
+/** 関連記事 */
+
+div.related-articles {
+	padding: 15px 0 0;
+}
+
+div.related-articles h3 {
+	margin: 0 0 10px;
+	padding: 0;
+	font-size: 90%;
+	font-weight: normal;
+}
+
+div.related-articles h3 span {
+	font-weight: weight;
+}
+
+div.related-articles ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+	font-size: 90%;
+}
+div.related-articles ul li{
+	background: url(http://parts.blog.livedoor.jp/img/usr/canvas/common/dot.gif) no-repeat left 6px;
+	padding: 0 0 5px 12px;
+	margin-left: 5px;
+}
+
+
+
+/* ----------------------------------------------- */
+/** clearfix */
+div#container,
+div#content,
+div.blog-title-outer,
+h2.archives-title,
+div.article-body,
+div.article-footer,
+h2.article-title,
+div.pager,
+ul,
+div.index-navigator-outer,
+div#comment-form-body,
+div.message-board {
+	zoom: 1;
+}
+
+div#container:after,
+div#content:after,
+ul.article-navigator:after,
+ul.archives-navigator:after,
+div.article-body:after,
+div.article-body div.article-body-more:after,
+div#trackback-form ul:after,
+div.message-board:after {
+	content: ".";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+

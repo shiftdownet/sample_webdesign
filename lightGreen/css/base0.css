@@ -1,0 +1,125 @@
+#MainMenu{
+	list-style:none;
+}
+
+#MainMenu li{
+	font-size: 15px;
+	width: 137px;
+	height: 17px;
+	text-align: center;
+	float: left;
+	color: #006600;
+	background-color: #aaffaa;
+	border-left  : solid 2px #99ff99;
+	border-top   : solid 2px #ccffcc;
+	border-right : solid 2px #99cc99;
+	border-bottom: solid 2px #66cc66;
+}
+
+#MainMenu #Select{
+	color: #006600;
+	background-color: #66ff66;
+	border-left  : solid 2px #99cc99;
+	border-top   : solid 2px #66cc66;
+	border-right : solid 2px #66ff66;
+	border-bottom: solid 2px #99ff99;
+}
+#MainMenu #Space{
+	width: 100%;
+}
+
+#Container #Header p{
+	font-weight:bold;
+	color    : #ffffee;
+	font-size: 10pt;
+	margin-bottom: 8px;
+}
+
+#Container #Header h1{
+	text-indent: 1em;
+	color    : #ffffff;
+	font-size: 20pt;
+}
+
+#Footer{
+	border-top    : solid 1px #999999;
+	border-bottom : solid 1px #999999;
+	background-color: #ccffcc;
+	text-align: center;
+}
+
+#Footer li{
+	font-size: 10pt;
+	display:inline;
+	list-style-type:none;
+}
+
+#Footer li.bet:after{
+	content : " -";
+}
+
+#footer a:link{color:#339933;}
+#footer a:visited{color:#339933;}
+#footer a:hover, a:active{color:#339933;}
+
+.correctSourceHead{
+	font-size: 15px;
+	width : 120px;
+	color: #006600;
+	background-color: #bbffbb;
+	border-left  : solid 2px #99ff99;
+	border-top   : solid 2px #ccffcc;
+	border-right : solid 2px #99cc99;
+}
+.correctSource{
+	width : 800px;
+	color: #006600;
+	background-color: #aaffaa;
+	border-left  : solid 2px #99cc99;
+	border-top   : solid 2px #66cc66;
+	border-right : solid 2px #66ff66;
+	border-bottom: solid 2px #99ff99;
+}
+
+.errorSourceHead{
+	font-size: 15px;
+	width : 120px;
+	color: #660000;
+	background-color: #ffbbbb;
+	border-left  : solid 2px #ff8888;
+	border-top   : solid 2px #ff9999;
+	border-right : solid 2px #cc6666;
+}
+
+.errorSource{
+	width : 800px;
+	color: #660000;
+	background-color: #ffaaaa;
+	border-left  : solid 2px #cc9999;
+	border-top   : solid 2px #cc6666;
+	border-right : solid 2px #ff6666;
+	border-bottom: solid 2px #ff9999;
+}
+
+.sourceLine{
+	text-align : right;
+	font-size: 12px;
+	width : 35px;
+	float:left;
+	border-right: solid 1px #ff0000;
+}
+
+.source{
+	font-size: 12px;
+	width:760px;
+	float:right;
+}
+
+.correctSyntax{
+	color: #003300;
+}
+
+.errorSyntax{
+	color: #ff0000;
+}
+

@@ -1,0 +1,227 @@
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	要素セレクタ
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+body{
+	margin              : 0px;
+	padding             : 0px;
+	text-align: center;
+	left: auto;
+	right: auto;
+	background          : url("../grp/wood03.jpg");
+	font-family         : "ＭＳ 明朝",seriff;
+}
+
+div,h1,h2,h3,h4,pre,p,ul,ol,li,dt,dd{
+	font-size           : 15px;
+}
+
+*{
+	margin              : 0px;
+	padding             : 0px;
+}
+
+img{
+	border              : none;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	回り込み解除
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+.clearFix{
+	clear               : both;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	コンテナ
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#Container{
+	width : 950px;
+	margin: 10px auto 10px auto;
+	left: auto;
+	right: auto;
+	text-align: left;
+}
+
+#AlphaWrap{
+	width: 240px;
+	float : left;
+}
+
+#BetaWrap{
+	width : 700px;
+	float : right;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	ヘッダー
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#HeaderWrap {
+
+}
+
+#Menu{
+
+}
+
+#SideWrap{
+	top : 10px;
+	position : relative;
+	width : 228px;
+	background : url("../grp/menuMiddle.png") repeat-y left top;
+	height : 600px;
+}
+
+#DecorateSide1{
+	top : 50px;
+	position : relative;
+	background : url("../grp/menuTop.png") no-repeat left top;
+	height : 620px;
+}
+
+#DecorateSide2{
+	background : url("../grp/menuBottom.png") no-repeat left bottom;
+	height : 620px;
+}
+
+#SideWrap #Menu{
+	top : 10px;
+	left : 10px;
+	position : relative;
+}
+
+
+#SideWrap #Menu li{
+	text-indent : 10px;
+	list-style  : none;
+}
+
+
+#HeaderWrap #Menu li{
+	text-indent: 10px;
+	float : left;
+	list-style          : none;
+	width:100px;
+	height: 20px;
+	background : url("../grp/tag.png") no-repeat;
+	border-bottom: solid 1px #dddddd;
+}
+
+#HeaderWrap #Menu ul{
+	width : 400px;
+	height: 20px;
+}
+
+#HeaderWrap #Menu li a{
+	display: block;
+	height: 100%;
+}
+
+#HeaderWrap #Menu li a:link,
+#HeaderWrap #Menu li a:hover,
+#HeaderWrap #Menu li a:visited{
+	color: #000000;
+	text-decoration     : none;
+}
+
+#HeaderWrap #Menu li a:hover{
+	background : url("../grp/taghover.png") no-repeat;
+}
+
+#HeaderWrap #Menu #currentTag{
+	border-bottom: solid 1px #ffffff;
+}
+
+#HeaderWrap #Menu #currentTag a:hover{
+	background : url("./grp/tag.png") no-repeat;
+}
+
+/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+	ボディー
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*/
+
+#BodyWrap{
+	position : relative;
+	top: 20px;
+}
+
+#DecorateBody1{
+	background-position: left;
+	background : url("../grp/whole.png") repeat-y;
+}
+
+#DecorateBody2{
+	position: relative;
+	background-color : #ffffff;
+	margin : 0px 0px 0px 30px;
+	height : 810px;
+	border-bottom: solid 1px #aaaacc;
+}
+
+#BodyWrap h2{
+	width: 660px;
+	font-size: 24px;
+	line-height: 50px;
+	border-bottom: solid 1px #aaaacc;
+	border-top: solid 1px #aaaacc;
+}
+
+#FooterWrap{
+	width:100%;
+	height: 30px;
+	background-color : #ffffff;
+}
+
+#FooterWrap p{
+	font-size: 24px;
+}
+
+.documents{
+	width : 98%;
+	height: 730px;
+	background: url("../grp/looseleaf_dot.gif");
+
+}
+
+.documents p{
+	font-size: 18px;
+	vertical-align : bottom;
+	line_height    : 125px;
+}
+
+.clearFix{
+	clear               : both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

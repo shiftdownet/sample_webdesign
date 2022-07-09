@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+	<$HeadSectionCommon$>
+	<link rel="stylesheet" href="./newCss.css" type="text/css" />
+</head>
+<body>
+	<div id="Container">
+		<div id="Header" <IfBlogHeaderImageUrl>style="background:url(<$BlogHeaderImageUrl$>) no-repeat; background-color  : #614c8d;"</IfBlogHeaderImageUrl>>
+			<h1><a href="<$BlogUrl$>"><$BlogTitle ESCAPE$></a></h1>
+			<p><$BlogDescription$></p>
+		</div>
+		<ul id="TopMenu">
+			<li><a href=".././index.html">ƒgƒbƒv</a></li>
+			<li><a href="http://blog.livedoor.jp/ngzk46/archives/676564.html">ƒTƒCƒgŠT—v</a></li>
+			<li><a href="#">‚`‚j‚a‚S‚W</a></li>
+			<li><a href="#">‚r‚j‚d‚S‚W</a></li>
+			<li><a href="#">‚m‚l‚a‚S‚W</a></li>
+			<li><a href="#">‚g‚j‚s‚S‚W</a></li>
+			<li><a href="#">”T–Øâ‚S‚U</a></li>
+			<li><a href="#">‚»‚Ì‘¼</a></li>
+		</ul>
+		<div class="clearFix"></div>
+		<div id="Inner">
+			<div id="AlphaWrap">
+				<div id="MainColumn">
+					<h4 class="subTitle"><$CategoryName$></h4>
+					<CategorizedArticlesLoop>
+					<$TrackBackAutoDiscovery$>
+					<div class="article">	
+						<hr>
+						<span class="time"><$ArticleDate$><$ArticleTime$></span>
+						<$ArticleTagsList$>
+						<div class="articleHeader">
+							<h2><a href="<$ArticlePermalink$>"><$ArticleTitle$></a></h2>
+							<div class="twit"><a href="https://twitter.com/share" class="twitter-share-button" data-url="<$ArticlePermalink$>" data-count="horizontal" data-via="ngzk46matome" data-lang="ja">ƒcƒC[ƒg</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div>
+						</div>
+						<div class="clearFix"></div>
+						<div class="articleBody">
+							<p><$CommonTheme$></p>
+							<p><$ArticleBody$></p>
+							<IfArticleBodyMore><span class="more"><a href="<$ArticlePermalink$>#more">‘±‚«‚ğ“Ç‚Ş</a></span></IfArticleBodyMore>
+							<IfFirstArticle><$Advertise$></IfFirstArticle>
+						</div>
+						<ul class="articleFooter">
+							<IfArticleAllowComment><li><a href="<$ArticlePermalink$>#comments">ƒRƒƒ“ƒg(<$ArticleCommentCount$>)</a></li></IfArticleAllowComment>
+						</ul>
+					</div>
+					</CategorizedArticlesLoop>
+					<span class="navigator"><$IndexNavigator$></span>
+				</div>
+				<div id="SubColumn"><div id="SubColumn-inner1"><div id="SubColumn-inner2"><$PluginList_A$></div></div></div>
+			</div>
+			<div id="BetaWrap"><div id="ExtraColumn"><div id="ExtraColumn-inner1"><div id="ExtraColumn-inner2"><$PluginList_B$></div></div></div></div>
+			<div class="clearFix"></div>
+		</div>
+		<div id="Footer">
+			<$BlogFooter$>
+		</div>
+	</div>
+</body>
+</html>

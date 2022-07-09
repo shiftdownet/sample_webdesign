@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>緑基調のサンプルページ</title>
+		<link rel="stylesheet" href="./css/common.css" type="text/css" />
+		<link rel="stylesheet" href="./css/base0.css" type="text/css" />
+		<link rel="stylesheet" href="./css/design0.css" type="text/css" />
+		<script src="./js/sourceArea/sourceArea.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="Container">
+			<div id="Header">
+				<p>サルでもわかるだか猫でもわかるだかの</p>
+				<h1>ほにゃらら言語のプログラミング講座</h1>
+			</div>
+			<ul id="MainMenu">
+				<li id="Select">トップ</li>
+				<li>ほにゃらら言語講座</li>
+				<li>リンク</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div class="clearFix"></div>
+			<div id="Inner">
+				<p class="errorSourceHead">間違ったコード</p>
+				<pre class="errorSource">
+#include &lt;stdio.h&gt;
+
+int main(){
+    printf("Hello World!"\n);
+    return 0;
+}
+				</pre>
+				<br>
+				<p class="correctSourceHead">正しいコード</p>
+				<pre class="correctSource">
+#include &lt;stdio.h&gt;
+
+int main(){
+    printf("Hello World!"\n);
+    return 0;
+}
+				</pre>
+				<br>
+			</div>
+			<script language="JavaScript">
+				var source = new sourceArea(true,"errorSource", "source", "sourceLine", "errorSyntax", "reservedName", true);
+				var source = new sourceArea(true,"correctSource", "source", "sourceLine", "correctSyntax", "reservedName", true);
+			</script>
+			<div id="Footer">
+				<li class="bet"><a href="#">運営者</a></li>
+				<li class="bet"><a href="#">更新履歴</a></li>
+				<li><a href="#">お問い合わせ</a></li>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+

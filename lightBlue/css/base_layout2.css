@@ -1,0 +1,117 @@
+/*-----------------------------------*/
+/* ページ全体の構造を定義しています。*/
+/*-----------------------------------*/
+
+
+body{
+	margin     :  0;
+	padding    :  0;
+	line-height:1.4;
+	color      :#333333;
+	font-size  :0.9em;
+	background-color: #f0f0c0;
+}
+
+#container{
+	margin: 0px auto;
+	border-left  : solid 1px #cccccc;
+	border-right : solid 1px #cccccc;
+	background-color: #f0f0f0;
+	width :990px;
+}
+
+#header{
+	margin             : 0;
+	padding            : 0;
+	height             : 60px;
+	width              : 990px;
+	background-image   : url("../grp/site_logo.png");
+	background-repeat  : no-repeat;
+	background-position: 0 0;
+}
+
+#header:after{
+	clear:both;
+}
+
+#titleBox{
+	float:left;
+	height:60px;
+}
+
+/* googleのスタイルがすでにidを使用しているので仕方なくクラスに…。 */
+.searchBox{
+	margin: 30px 5px 0px 0px;
+	text-align:left;
+	float:right;
+}
+
+#styleChange{
+	width:120px;
+	margin: 30px 5px 0px 0px;
+	text-align:left;
+	float:right;
+}
+
+#searchBox:after{
+	clear:both;
+}
+
+
+#topicPath{
+	padding-top:3px;
+	padding-left:1em;
+	height:25px;
+}
+
+#inner{
+	border-top : solid 1px #cccccc;
+	background-color: #ffffff;
+}
+
+#inner:after{
+	display: block;
+	content: ".";
+	visibility: hidden;
+	clear:both;
+}
+
+#alphaWrap{
+	float:left;
+	width:980px;
+}
+
+#betaWrap{
+	width:250px;
+}
+
+#contents{
+	float:right;
+	width:720px;
+}
+
+#aBlock{
+	float:left;
+	width:250px;
+	background:#ffffef;
+	border-right: solid 1px #cccccc;
+}
+
+
+#bBlock{
+	float:left;
+	width:100%;
+	background:#ffffef;
+	border-right: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+}
+
+
+
+#footer{
+	border-top    : solid 1px #999999;
+	border-bottom : solid 1px #999999;
+	background-color: #ccccff;
+	text-align: center;
+}
+

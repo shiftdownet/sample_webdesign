@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" >
+<script type="text/javascript" src="./func.js"></script>
+<script language="JavaScript"><!--
+retrieveGETqs();
+// --></script>
+	<title>TITLE</title>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<!-- ヘッダタイトル -->
+			<div id="titleBox">
+				<p>www.shiftdownet.com</p>
+				<h1>SITE-TITLE</h1>
+			</div><!-- title -->
+			<!-- 検索フォーム -->
+			<!-- リリースしたら下のセレクトボックスを削除してこちらに置き換える。
+			<form name="cse" class="searchBox" id="searchbox_demo" action="http://www.google.com/cse" target="_blank">
+				<input type="hidden" name="cref" value="" >
+				<input type="hidden" name="ie"   value="utf-8" >
+				<input type="hidden" name="hl"   value="ja" >
+				<input type="text"   name="q"    size="20" >
+				<input type="submit" name="sa"   value="検索" >
+			</form>
+			<script type="text/javascript" src="http://www.google.com/cse/tools/onthefly?form=searchbox_demo&lang=ja"></script>                
+			-->
+			<select onchange="location.href = this.options[selectedIndex].value" id="styleChange">
+				<option value="">スタイルの変更</option>
+				<option value="./index.html?style=1">その1</option>
+				<option value="./index.html?style=2">その2</option>
+				<option value="./index.html?style=-1#66CC00">Non Style</option>
+			</select>
+			<div class="clear"></div>
+		</div><!-- header -->
+		<!-- パンくずボックス -->
+		<ul id="topicPath">
+			<li class="bet"><a href="#">home</a></li>
+			<li id="current">現在のページ</li>
+		</ul>
+		<div id="inner">
+			<div id="alphaWrap">
+				<div id="contents">
+					<h3>コンテンツ紹介</h3>
+					<p>コンテンツ紹介文</p>
+					<h3>更新履歴</h3>
+					<dl id="history">
+						<dt>XX-XX/XX</dt>
+						<dd>更新履歴その１</dd>
+						<dt>XX-XX/XX</dt>
+						<dd>更新履歴その２</dd>
+					</dl>
+				</div><!-- contents -->
+				<div id="aBlock">
+					<div class="menuBox">
+						<h4>メニュー1(メインメニュー)</h4>
+						<dl>
+							<dt><a href="#">選択肢1</a></dt>
+							<dd>選択肢1説明</dd>
+							<dt><a href="#">選択肢2</a></dt>
+							<dd>選択肢2説明</dd>
+							<dt><a href="#">選択肢3</a></dt>
+							<dd>選択肢3説明</dd>
+							<dt><a href="#">選択肢4</a></dt>
+							<dd>選択肢4説明</dd>
+						</dl>
+					</div><!-- menuBox -->
+					<div class="menuBox">
+						<h4>メニュー2(サブメニュー)</h4>
+						<dl>
+							<dt><a href="#">選択肢1</a></dt>
+							<dd>選択肢1説明</dd>
+							<dt><a href="#">選択肢2</a></dt>
+							<dd>選択肢2説明</dd>
+							<dt><a href="#">選択肢3</a></dt>
+							<dd>選択肢3説明</dd>
+							<dt><a href="#">選択肢4</a></dt>
+							<dd>選択肢4説明</dd>
+						</dl>
+					</div><!-- menuBox -->
+				</div><!-- aBlock -->
+			</div><!-- alphaWrap -->
+			<div id="betaWrap">
+				<div id="bBlock">
+					<div class="menuBox">
+						<h4>携帯用QRコード</h4>
+					</div><!-- menuBox -->
+					<div class="menuBox">
+						<h4>アクセス数</h4>
+						<div class="counter">
+						</div><!-- counter -->
+					</div><!-- menuBox -->
+					<div class="menuBox">
+						<h4>閲覧者数</h4>
+						<div class="counter">
+						</div><!-- counter -->
+					</div><!-- menuBox -->
+					<div class="menuBox">
+						<h4>メニュー3(リンクなど)</h4>
+						<dl>
+							<dt><a href="#">選択肢1</a></dt>
+							<dd>選択肢1説明</dd>
+							<dt><a href="#">選択肢2</a></dt>
+							<dd>選択肢2説明</dd>
+							<dt><a href="#">選択肢3</a></dt>
+							<dd>選択肢3説明</dd>
+						</dl>
+					</div><!-- menuBox -->
+<div class="clear"></div>
+				</div><!-- bBlock -->
+			</div><!-- betaWrap -->
+		</div><!-- inner -->
+		<ul id="footer">
+			<li class="bet"><a href="#">運営者</a></li>
+			<li class="bet"><a href="#">更新履歴</a></li>
+			<li><a href="#">お問い合わせ</a></li>
+		</ul>
+	</div><!-- container -->
+</body>
+</html>

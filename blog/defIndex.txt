@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<$HeadSectionCommon$>
+<link rel="alternate" media="handheld" type="application/xhtml+xml" href="<$BlogMobileUrl$>" />
+<IfFoafUrl><link rel="meta" type="application/rdf+xml" title="FOAF" href="<$FoafUrl$>" /></IfFoafUrl>
+<title><$BlogTitle ESCAPE$></title>
+</head>
+<body class="default_2010 index"<IfBlogBackgroundImageUrl> style="background-image:url(<$BlogBackgroundImageUrl$>);"</IfBlogBackgroundImageUrl>><a name="top"></a>
+<!-- ............... Header ............... -->
+<$BlogHeader$>
+
+<!-- ............... ContainerWrap ............... -->
+<div id="containerWrap">
+
+<!-- ............... Container ............... -->
+<div id="container">
+
+<!-- ..... Title ..... -->
+<div class="blog-title-outer"<IfBlogHeaderImageUrl> style="background:url(<$BlogHeaderImageUrl$>) no-repeat;height:<$BlogHeaderImageHeight$>px;"</IfBlogHeaderImageUrl>>
+<div class="blog-title-outer-2">
+<div class="blog-title-outer-3">
+	<h1 id="blog-title"><a href="<$BlogUrl$>"><$BlogTitle ESCAPE$></a></h1>
+	<div class="blog-description-outer"><p id="blog-description"><$BlogDescription$></p></div>
+</div>
+</div>
+</div>
+
+<div id="content" class="hfeed">
+<!-- ..... MainColumn ..... -->
+<div id="main" class="column">
+<div class="column-inner">
+<div class="column-inner-2">
+	<$MessageBoard$>
+	<$IndexNavigator$>
+<!-- ArticlesLoop Start -->
+<!-- google_ad_section_start -->
+<IndexArticlesLoop>
+<$TrackBackAutoDiscovery$>
+<div class="article-outer hentry">
+<div class="article-outer-2">
+<div class="article-outer-3">
+	<div class="article-header">
+		<div class="article-date-outer">
+			<span class="article-month"><$ArticleDateMonthName$></span><span class="article-date"><$ArticleDateDay$></span>
+		</div>
+		<div class="article-title-outer">
+			<h2 class="article-title entry-title"><a href="<$ArticlePermalink$>" rel="bookmark"><$ArticleTitle ESCAPE$></a><IfArticleRating><span class="rating"><$ArticleRatingIcon$></span></IfArticleRating></h2>
+		</div>
+		<IfArticleCategory>
+		<div class="article-category-outer">
+			<dl class="article-category"><dt>カテゴリ:</dt><IfArticleCategory1><dd class="article-category"><a href="<$ArticleCategory1Url$>"><$ArticleCategory1$></a></dd></IfArticleCategory1><IfArticleCategory2><dd class="article-category-second"><a href="<$ArticleCategory2Url$>"><$ArticleCategory2$></a></dd></IfArticleCategory2></dl>
+		</div>
+		</IfArticleCategory>
+	</div><!-- articleHeader End -->
+
+	<div class="article-body entry-content">
+		<div class="article-body-inner">
+		<$CommonTheme$>
+		<$ArticleBody$>
+		<IfArticleBodyMore><span class="article-continue"><a href="<$ArticlePermalink$>#more">続きを読む</a></span></IfArticleBodyMore>
+		</div>
+		<$ArticleTagsList$>
+	</div><!-- articleBody End -->
+
+	<div class="article-footer">
+		<ul class="article-info">
+			<li><abbr class="updated" title="<$ArticleDateISO8601$>"><span class="article-date"><$ArticleDate$></span><span class="article-time"><$ArticleTime$></span></abbr></li>
+			<li class="article-author vcard author"><a href="<$ArticleAuthorProfileUrl$>" class="url"><span class="nickname fn"><$ArticleAuthor$></span></a></span></li>
+			<IfArticleAllowComment><li class="article-comment-count"><a href="<$ArticlePermalink$>#comments">コメント:<$ArticleCommentCount$></a></li></IfArticleAllowComment>
+			<IfArticleAllowPing><li class="article-trackback-count"><a href="<$ArticlePermalink$>#trackbacks">トラックバック:<$ArticlePingCount$></a></li></IfArticleAllowPing>
+		</ul>
+		<ul class="article-post">
+			<li class="article-tool-box"><$ArticleToolBox$></li>
+		</ul>
+
+		<IfFirstArticle><$Advertise$></IfFirstArticle>
+	</div><!-- articleFooter End -->
+</div>
+</div>
+</div><!-- articleOuter End -->
+</IndexArticlesLoop>
+<!-- google_ad_section_end -->
+<!-- ArticlesLoop End -->
+
+	<$IndexNavigator$>
+</div>
+</div>
+</div><!-- mainColumn End -->
+
+<div id="sub" class="column">
+<div class="column-inner">
+<div class="column-inner-2">
+<!-- ..... PluginList A ..... -->
+<$PluginList_A$>
+
+</div>
+</div>
+</div><!-- subColumn End -->
+
+<div id="extra" class="column"> 
+<div class="column-inner">
+<div class="column-inner-2">
+<!-- ..... PluginList B ..... -->
+<$PluginList_B$>
+
+<$LDServices$>
+</div>
+</div>
+</div><!-- extraColumn End -->
+
+</div><!-- content End -->
+</div><!-- container End -->
+
+<!-- ................ Footer .................. -->
+<div class="footer-outer">
+<div class="footer-outer-2">
+<$BlogFooter$>
+</div>
+</div>
+
+</div><!-- containerWrap End -->
+
+</body>
+</html>

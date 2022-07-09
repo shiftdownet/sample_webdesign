@@ -1,0 +1,152 @@
+
+/*******************************************
+	#-------------------#
+	# 構文規則          #
+	#-------------------#
+	プロパティの定義の順序
+	temp
+	{
+		レイアウト       -> 記述例
+		--------------------------------------------------
+		< 枠組 >
+			ディスプレイ方法 -> display : block;
+			表示位置         -> float   : left;
+			表示方法         -> position: 100px;
+			表示座標         -> left    : 50px;
+			外余白           -> margin  : 10px;
+			内余白           -> padding : 10px;
+			横幅             -> width   : 100px;
+			縦幅             -> height  : 100px;
+			その他           -> ----    : ----;
+		< 装飾 >
+			フォント関連     -> font-weight     : bold;
+			背景関連         -> background-color: #FFFFFF;
+			罫線関連         ->
+			その他           -> ----    : ----;
+		--------------------------------------------------
+	}
+
+	#-------------------#
+	# 命名規則          #
+	#-------------------#
+	○   ID名   ○
+	大文字スタート･大文字区切り
+	IdentifyName
+	{
+		プロパティ
+	}
+	
+	○ クラス名 ○
+	小文字スタート･小文字区切り
+	className
+	{
+		プロパティ
+	}
+*******************************************/
+
+/* 全体設定 */
+
+html
+{
+	overflow: hidden;
+}
+
+body
+{
+	margin  : 0px;
+	padding : 0px;
+	background-color: #c9c9cf;
+}
+
+div,h1,h2,h3,h4,h5,pre,p,ul,ol,li,dt,dd
+{
+	margin : 0;
+	padding: 0;
+}
+
+h3{
+
+	margin-top   : 5px;
+	padding-left : 5px;
+	border-left  : solid 10px #666699;	
+	border-bottom: solid 2px  #666699;
+}
+
+p{
+	text-indent: 1em;
+}
+
+img{
+	border: none;
+}
+
+.clearFix
+{
+	clear   :both;
+}
+
+.documents{
+	margin-top : 5px;
+	margin-left: 25px;
+}
+
+.point{
+	color: #ff0000;
+}
+
+#Container
+{	
+	margin: 0px auto;
+	width : 1000px;
+	background-color: #f0f0ff;
+}
+
+#Inner{
+	padding: 5px;		
+}
+
+
+
+#Header{
+	background-color: #000000;
+}
+
+#Header h1{
+	color : #ffffff;
+}
+
+#Header h5{
+	color : #eeeeee;
+	text-align: right;
+}
+
+#Footer{
+	background-color: #333360;
+	color : #ffffff;
+}
+
+#Contents
+{
+	float: left;
+	width: 75%;
+}
+
+#Contents li{
+	list-style-type : none;
+	margin-left: 40px;
+}
+
+#MainMenu
+{
+	margin:10px;
+	float: right;
+	width: 20%;
+}
+
+#MainMenu h4{
+	background-color: #9999cc;
+}
+
+#MainMenu li{
+	list-style-type : none;
+}

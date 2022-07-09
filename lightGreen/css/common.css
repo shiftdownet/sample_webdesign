@@ -1,0 +1,45 @@
+/*******************************************
+* common.css                               *
+*     すべてのページに共通なスタイルを     *
+*     定義しています                       *
+********************************************/
+
+html{
+	overflow: hidden;
+}
+
+body{
+	margin  : 0px;
+	padding : 0px;
+	overflow: hidden;
+	background-color: #fafffa;
+}
+
+div,h1,h2,h3,h4,pre,p,ul,ol,li,dt,dd{
+	font-size: 15pt;
+	margin   : 0;
+	padding  : 0;
+}
+
+img{
+	border: none;
+}
+
+.clearFix{
+	clear   :both;
+}
+
+#Container{
+	margin: 0px auto;
+	background-color: #e0eee0;
+	width:990px;
+}
+#Inner{
+	padding: 10px;
+}
+
+#Header{
+	width :990px;
+	height:60px;
+	background-image   : url("../grp/head0.png");
+}

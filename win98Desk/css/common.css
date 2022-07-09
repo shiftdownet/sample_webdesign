@@ -1,0 +1,326 @@
+/*******************************************
+* basic.css                                *
+*     すべてのページに共通なスタイルを     *
+*     定義しています                       *
+********************************************/
+
+/*******************************************
+	#-------------------#
+	# 構文規則          #
+	#-------------------#
+	プロパティの定義の順序
+	temp
+	{
+		レイアウト       -> 記述例
+		--------------------------------------------------
+		< 枠組 >
+			ディスプレイ方法 -> display : block;
+			表示位置         -> float   : left;
+			表示方法         -> position: 100px;
+			表示座標         -> left    : 50px;
+			外余白           -> margin  : 10px;
+			内余白           -> padding : 10px;
+			横幅             -> width   : 100px;
+			縦幅             -> height  : 100px;
+			その他           -> ----    : ----;
+		< 装飾 >
+			フォント関連     -> font-weight     : bold;
+			背景関連         -> background-color: #FFFFFF;
+			罫線関連         ->
+			その他           -> ----    : ----;
+		--------------------------------------------------
+	}
+
+	#-------------------#
+	# 命名規則          #
+	#-------------------#
+	○   ID名   ○
+	大文字スタート･大文字区切り
+	IdentifyName
+	{
+		プロパティ
+	}
+	
+	○ クラス名 ○
+	小文字スタート･小文字区切り
+	className
+	{
+		プロパティ
+	}
+*******************************************/
+
+/* 全体設定 */
+
+html
+{
+	overflow: hidden;
+}
+
+body
+{
+	/*<枠組>*/
+	margin  : 0px;
+	padding : 0px;
+	overflow: hidden;
+	/*<装飾>*/
+	background-color: #3A6EA5;
+}
+
+div,h1,h2,h3,h4,pre,p,ul,ol,li,dt,dd
+{
+	margin : 0;
+	padding: 0;
+}
+
+img{
+	border: none;
+}
+
+.clearFix
+{
+	clear   :both;
+}
+
+/* メインメニュー */
+
+#MainMenu
+{
+	/*<枠組>*/
+	display : block;
+	float   : left;
+	margin  : 5px;
+	padding : 0px;
+	width   : auto;
+	/*<装飾>*/
+	text-align      : center;
+}
+
+#MainMenu a
+{
+	color           : #ffffff;
+	text-decoration : none;
+}
+
+/* メインコンテンツ */
+
+#MainBlock
+{
+	/*<枠組>*/
+	display : block;
+	float   : right;
+	margin  : 5px;
+	padding : 1px;
+	width   : 85%;
+	/*<装飾>*/
+	background-color: #D4D0C8;
+	border          : solid 1px #999999;
+}
+
+#MainBlock h1
+{
+	color           : #FFFFFF;
+	font-size       : 15px;
+	background-color: #204080;
+}
+
+#MainBlock h1 span
+{
+	margin  : 1px;
+	float   : right;
+}
+
+#MainBlock li
+{
+	/*<枠組>*/
+	display : block;
+	float   : left;
+	margin  : 2px;
+	padding-left : 5px;
+	padding-right: 5px;
+	/*<装飾>*/
+	font-size       : 13px;
+	list-style-type : none;
+}
+
+#MainBlock li a
+{
+	color           : #000000;
+	text-decoration : none;
+}
+
+#MainBlock li:hover
+{
+	margin  : 1px;
+	border-left     : solid 1px #ffffff;
+	border-top      : solid 1px #ffffff;
+	border-right    : solid 1px #808080;
+	border-bottom   : solid 1px #808080;
+}
+
+#MainBlock #Current
+{
+	margin  : 1px;
+	border-left     : solid 1px #808080;
+	border-top      : solid 1px #808080;
+	border-right    : solid 1px #ffffff;
+	border-bottom   : solid 1px #ffffff;
+}
+
+#MainBlock #Content
+{
+	/*<枠組>*/
+	height  : 480px;
+	/*<装飾>*/
+	font-family     : "FixedSys",monospace;
+	font-size       : 14px;
+	border          : solid 1px #999999;
+
+}
+
+.notepad{
+    font-size:14px;
+    width: auto;
+    background-color: white;
+    color: black;
+	overflow-y      : scroll;
+}
+
+.Command{
+    font-size:14px;
+    width: auto;
+    background-color: #000000;
+    color: #eeeeee;
+	overflow-y      : scroll;
+}
+
+/* フッター */
+
+#Footer
+{
+	/*<枠組>*/
+	display : block;
+	position: fixed;
+	bottom  : 0px;
+	margin  : 0px;
+	padding : 0px;
+	width   : 100%;
+	height  : 25px;
+	z-index : 50;
+	/*<装飾>*/
+	background-color: #D4D0C8;
+}
+
+#Footer li
+{
+	/*<枠組>*/
+	position: relative;
+	top     : 3px;
+	float   : left;
+	/*<装飾>*/
+	list-style-type : none;
+}
+
+#Footer ul li
+{
+	float   : none;
+}
+
+/* 開閉式メニュー */
+
+/* 親メニュー */
+
+#ParentMenu
+{
+	display : block;
+}
+
+#ParentMenu #Start
+{
+	/*<枠組>*/
+	margin  : 5px;
+	padding : 2px;
+	cursor  : pointer;
+	/*<装飾>*/
+	font-size       : 14px;
+	font-weight     : bold;
+	border-left     : solid 1px #ffffff;
+	border-top      : solid 1px #ffffff;
+	border-right    : solid 1px #808080;
+	border-bottom   : solid 1px #808080;
+}
+
+/* 子メニュー */
+
+#ChildMenu
+{
+	/*<枠組>*/
+	display : none;
+	position: relative;
+	left    : 3px;
+	top     : -300px;
+	width   : 396px;
+	height  : 285px;
+	z-index : 100;
+	/*<装飾>*/
+	list-style-type : none;
+	background-color: #D4D0C8;
+	border          : solid 1px #666666;
+}
+
+#ChildMenu span
+{
+	/*<枠組>*/
+	display : block;
+	padding-top : 10px;
+	padding-left: 10px;
+	width   : 384px;
+	height  : 30px;
+	/*<装飾>*/
+	color            : #FFFFFF;
+	font-size        : 20px;
+	font-weight      : bold;
+	background       : url("../grp/menu_logo.png");
+	background-repeat: no-repeat;
+}
+
+#ChildMenu li a
+{
+	/*<枠組>*/
+	display : block;
+	margin-left  : 5px;
+	padding-left : 10px;
+	width    : 175px;
+	/*<装飾>*/
+	line-height    : 18px;
+	color          : #000000;
+	font-size      : 14px;
+	text-decoration: none;
+}
+
+#ChildMenu li a:hover
+{
+	color           : #FFFFFF;
+	background-color: #000060;
+}
+
+#ChildMenu #Sub1
+{
+	font-weight      : bold;
+}
+
+#ChildMenu hr{
+	margin-left: 5px;
+	height  : 1px;
+	width   : 190px;
+	text-align    : left;
+	border-color  : #ffffff;
+}
+
+#ParentMenu:hover #ChildMenu
+{
+	/*
+		子メニューは通常display:noneだが、
+		親メニューにオンマウスされた時のみ、display:blockとする
+	*/
+	display : block;
+}
