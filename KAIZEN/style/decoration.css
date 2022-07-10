@@ -1,10 +1,49 @@
 /**********************************************
 *
+* root
+*
+**********************************************/
+:root {
+    --main-color-for-background:lavender;
+    --main-color-for-font:black;
+    
+    --sub-color-for-background:rgb(255,255,250);
+    --sub-color-for-font:black;
+
+    --block-color-for-background:#444;
+    --block-color-for-font:gainsboro;
+
+    --block_bold-color-for-background:black;
+    --block_bold-color-for-font:white;
+
+    --block_week-color-for-background: lightgray;
+    --block_week-color-for-font: gray;
+    
+    --accent-color-for-background:crimson;
+    --accent-color-for-font:crimson;
+}
+
+/*
+gainsboro		#dcdcdc	rgb(220, 220, 220)
+lightgray		#d3d3d3	rgb(211, 211, 211)
+silver			#c0c0c0	rgb(192, 192, 192)
+darkgray		#a9a9a9	rgb(169, 169, 169)
+gray			#808080	rgb(128, 128, 128)
+dimgray			#696969	rgb(105, 105, 105)
+lightslategray	#778899	rgb(119, 136, 153)
+slategray		#708090	rgb(112, 128, 144)
+darkslategray	#2f4f4f	rgb( 47,  79,  79)
+black			#000000	rgb(  0,   0,   0)
+*
+
+/**********************************************
+*
 * body
 *
 **********************************************/
 body {
-    background-color: #eeeeff;
+    background-color: var(--main-color-for-background);
+    color:var(--main-color-for-font);
 }
 
 /**********************************************
@@ -15,25 +54,26 @@ body {
 header {
     padding-left: 30px;
     padding-top: 10px;
+    background-color: var(--block-color-for-background);
     background-image: url("../grp/ptn000.jpg");
     display: flex;
 }
 
 header h1 {
     font-size: 28px;
-    color: #cccccc;
+    color: var(--block-color-for-font);
 }
 
 header h1::first-letter {
     font-size: 40px;
-    color: #b61616;
+    color: var(--accent-color-for-font);
 }
 
 header p {
     margin-left: 30px;
     margin-top: 20px;
     display: block;
-    color: #999999;
+    color: var(--block_week-color-for-font);
 }
 
 header p::before,
@@ -76,14 +116,14 @@ nav ul li a {
 
 nav ul li a:link,
 nav ul li a:visited {
-    color: #999999;
+    color: var(--block_week-color-for-font);
     text-decoration: none;
     text-decoration: underline;
 }
 
 nav ul li a:hover,
 nav ul li a:active {
-    color: #ffffff;
+    color: var(--block_bold-color-for-font);
     background: rgba(100, 100, 100, 0.5);
     text-decoration: none;
     border-bottom: solid 5px #cccccc;
@@ -127,9 +167,8 @@ main section {
 main section h2 {
     padding: 8px 0px 2px 10px;
     font-size: 17px;
-    color: #eeeeee;
-    border-right: solid 2px #333333;
-    border-bottom: solid 2px #333333;
+    color: var(--block-color-for-font);
+    background-color: var(--block-color-for-background);
     background-image: url("../grp/ptn001.png");
     margin-bottom: 10px;
 }
@@ -139,29 +178,78 @@ main section h2 {
 * aside
 *
 **********************************************/
-aside{
-    background-color:rgb(255, 255, 250);
-    border-radius: 10px;
-    padding: 5px;
+aside {
+    background-color: var(--sub-color-for-background);
 }
 
 aside h3 {
     font-size: 12px;
 }
 
-aside h3::before,
-aside h3::after{
-    font-family: monospace;
-    content: " - ";
-}
-
-aside li{
+aside li {
     font-size: 12px;
 }
 
-aside section{
+aside section {
     margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
+
+aside section h3 label {
+    display: block;
+    padding: 1em;
+    color: var(--block-color-for-font);
+    background-color: var(--block-color-for-background);
+    border-left   : 5px solid var(--accent-color-for-font);
+    border-bottom : 1px solid var(--accent-color-for-font);
+}
+
+aside section ul {
+    margin-left: 5px;
+}
+
+/* リスト要素 */
+aside section ul li a{
+    display: block;
+    padding: 0.5em;
+    color: var(--block-color-for-font);
+    background: var(--block_week-color-for-background);
+    font-family: sans-serif;
+    font-weight: bold;
+    border-bottom: white 1px solid;
+}
+
+/* ホバー時 */
+aside section li a:hover,
+aside section h3 label:hover {
+    color: var(--block-color-for-font);
+    background: dimgray;
+}
+
+/* アイコン表示 */
+aside section h3 label::before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 10px;
+    width: 0.5em;
+    height: 0.5em;
+    border-top: var(--block_bold-color-for-background) 2px solid;
+    border-left: var(--block_bold-color-for-background) 2px solid;
+    transform: rotate(225deg);
+}
+
+/* ドロップダウン非表示 */
+aside section input[id*="dropdown_menu"],
+aside section input[id*="dropdown_menu"]+.dropdown {
+    display: none;
+}
+
+aside section input[id*="dropdown_menu"]:checked+.dropdown {
+    display: block;
+}
+
 
 /**********************************************
 *
@@ -169,6 +257,7 @@ aside section{
 *
 **********************************************/
 footer {
+    background-color: var(--block-color-for-background);
     background-image: url("../grp/ptn000.jpg");
-    color: #cccccc;
+    color: var(--block-color-for-font);
 }

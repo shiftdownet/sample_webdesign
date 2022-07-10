@@ -50,11 +50,13 @@ main {
 
 aside {
     position: fixed;
-    left:5px;
-    top:90px;
+    left:0px;
+    top:75px;
+    padding-top:5px;
     width: 180px;
+    height: 100%;
+    border-right: 1px double gray;
     grid-area: aside;
-    border: 1px dashed #999999;
 }
 
 footer {
